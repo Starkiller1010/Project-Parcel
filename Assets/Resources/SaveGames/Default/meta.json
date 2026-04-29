@@ -1,0 +1,8 @@
+{
+    "name": "Default",
+    "description": "This is the default save state for the game. It contains the initial settings and configurations for a new game.",
+    "version": "1.0",
+    "created_at": "2024-06-01T12:00:00Z",
+    "updated_at": "2024-06-01T12:00:00Z",
+    "playtime": 0
+}

@@ -1,0 +1,32 @@
+.panel {
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(19, 56, 236);
+}
+
+.menu {
+    align-items: stretch;
+    justify-content: center;
+}
+
+.unity-button:hover {
+    color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(245, 215, 36);
+}
+
+.unity-button {
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: resource('Sprite/9Sliced');
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    -unity-font-style: bold;
+    -unity-font: url("project://database/Library/unity%20default%20resources?fileID=10102&guid=0000000000000000e000000000000000&type=0#Arial");
+    -unity-text-align: middle-center;
+    white-space: normal;
+    -unity-text-outline-color: rgb(0, 0, 0);
+}
+
+.unity-text-element {
+}

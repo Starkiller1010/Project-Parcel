@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/main%20menu.uss?fileID=7433441132597879392&amp;guid=e6b4e11dedf7aae499a2fde5c2ef5df7&amp;type=3#main menu" />
+    <ui:VisualElement name="Panel" class="panel" style="height: 629px;">
+        <ui:VisualElement name="Container" class="menu" style="height: 302px; width: 271px;">
+            <ui:VisualElement name="Logo" />
+            <ui:Label text="Paper Trail" display-tooltip-when-elided="true" name="Label" />
+            <ui:Button text="New Game" display-tooltip-when-elided="false" name="NewGame" />
+            <ui:Button text="Load Game" display-tooltip-when-elided="true" name="LoadGame" />
+            <ui:Button text="Exit Game" display-tooltip-when-elided="true" name="ExitGame" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

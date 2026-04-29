@@ -1,0 +1,73 @@
+{
+    "A": {
+        "fromSymbol": "A",
+        "toAddress": 123,
+        "receivedMail" : [
+            {
+
+            }
+        ]
+    },
+    "B": {
+        "fromSymbol": "B",
+        "toAddress": 456,
+        "receivedMail" : [
+            {
+
+            }
+        ]
+    },
+    "C": {
+        "fromSymbol": "C",
+        "toAddress": 789,
+        "receivedMail" : [
+            {
+        
+            }
+        ]
+    },
+    "D": {
+        "fromSymbol": "D",
+        "toAddress": 321,
+        "receivedMail" : [
+            {
+            }
+        ]
+    },
+    "E": {
+        "fromSymbol": "E",
+        "toAddress": 654,
+        "receivedMail" : [
+            {
+
+            }
+        ]
+    },
+    "F": {
+        "fromSymbol": "F",
+        "toAddress": 987,
+        "receivedMail" : [
+            {
+
+            }
+        ]
+    },
+    "G": {
+        "fromSymbol": "G",
+        "toAddress": 111,
+        "receivedMail" : [
+            {
+
+            }
+        ]
+    },
+    "H": {
+        "fromSymbol": "H",
+        "toAddress": 222,
+        "receivedMail" : [
+            {
+
+            }
+        ]
+    }
+}
