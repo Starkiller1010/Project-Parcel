@@ -105,3 +105,20 @@ InitTestScene*.unity*
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
 
+# Remove Meta files from ignored folders
+/**/*.meta
+
+# Ignore files in plastic SCM folders
+/**/.plastic
+
+# Ignore node modules
+/node_modules/
+
+# Ignore Project Settings, as these are often user-specific and can cause merge conflicts
+/ProjectSettings/
+/.vscode/
+
+# Ignore Package Folder
+/Packages/
+
+

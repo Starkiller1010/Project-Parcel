@@ -22,7 +22,7 @@ public abstract class TextEmitter : MonoBehaviour
         {
             pathBuilder.Append(transform.parent.name + "/");
         }
-        pathBuilder.Append(Game.GetGameState().GetCurrentDay() + "/");
+        pathBuilder.Append(Game.GET_GAME_STATE().GetTimeTracker().GetDay() + "/");
         pathBuilder.Append(this.name);
         Debug.Log("Constructed path: " + pathBuilder.ToString());
         return pathBuilder.ToString();

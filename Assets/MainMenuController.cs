@@ -32,12 +32,8 @@ public class MainMenuController : MonoBehaviour
     {
         Debug.Log("Clicked on New Game Button");
         // SceneManager.LoadScene("WorkroomScene");
-        StartCoroutine(LoadAsyncScene());
-        // GameObject gameObject = GameObject.FindGameObjectWithTag("GameState");
-        // Debug.Log(gameObject);
-        GameState state = Game.GetGameState();
-        // Game.CreateNewGameState(0);
-        // state.InitGame();
+        StartCoroutine(LoadAsyncScene());   
+        Game.MAKE_GAME_STATE();
     }
 
     private void OnLoadGameClicked()
@@ -45,9 +41,8 @@ public class MainMenuController : MonoBehaviour
         Debug.Log("Clicked on Load Game Button");
         SceneManager.LoadScene("WorkroomScene");
         string save = FileManager.GetSavedGameStates(FileManager.debugDirectory)[0];
-        GameState state = Game.GetGameState();
+        GameState state = Game.GET_GAME_STATE();
         FileManager.LoadGameState(save);
-        state.InitGame();
     }
 
     IEnumerator LoadAsyncScene()

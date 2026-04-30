@@ -4,11 +4,11 @@ using UnityEngine;
 
 public static class Game
 {
-    private static GameState2 GAME_STATE = null;
+    private static GameState GAME_STATE = null;
     private static Player PLAYER = null;
-
-
-    public static GameState2 GET_GAME_STATE()
+    private static Director DIRECTOR = new Director();
+    // TODO Setting Script should be init placed here
+    public static GameState GET_GAME_STATE()
     {
         if (GAME_STATE == null)
         {
@@ -18,8 +18,17 @@ public static class Game
     }
 
     public static Player GET_PLAYER()
-    {   
+    {
+        if (PLAYER == null)
+        {
+            PLAYER = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        }
         return PLAYER;
+    }
+    
+    public static Director GET_DIRECTOR()
+    {
+        return DIRECTOR;
     }
 
     public static void MAKE_GAME_STATE(int startDayCount = 0, string filename = null)
@@ -42,7 +51,7 @@ public static class Game
     private static void FindGameState()
     {
         GameObject gameObject = GameObject.FindGameObjectWithTag("GameState");
-        GAME_STATE = gameObject.GetComponent<GameState2>();
+        GAME_STATE = gameObject.GetComponent<GameState>();
     }
 
     private static void LoadGameState(string filename)
@@ -54,6 +63,6 @@ public static class Game
     private static void CreateNewGameState(int startDayCount)
     {
         if (GAME_STATE == null) FindGameState();
-        GAME_STATE.SetState(startDayCount, null, 0, null, "00:00:00");
+        GAME_STATE.SetState(startDayCount, null, MailSystem.GenerateOffset(), "00:00:00");
     }
 }

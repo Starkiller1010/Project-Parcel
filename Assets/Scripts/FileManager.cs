@@ -12,7 +12,7 @@ public class FileManager
     private static string debugFilePath = debugDirectory + "/" + fileName;
     private static string saveFilePath = saveDirectory + "/" + fileName;
 
-    public static void SaveGameState(GameState gameState, int offset = 0)
+    public static void SaveGameState(GameState gameState)
     {
         if (!Directory.Exists(saveDirectory))
         {
@@ -22,11 +22,11 @@ public class FileManager
         {
             created_at = DateTime.UtcNow.ToString("o"),
             updated_at = DateTime.UtcNow.ToString("o"),
-            // playtime = gameState.GetTimer().GetPlayTime(),
-            dayCount = int.Parse(gameState.GetCurrentDay().Split(' ')[1]),
-            characterAddresses = gameState.GetAllAddresses(),
-            offset = offset,
-            flags = SerializeFlags(gameState.getFlags())
+            playtime = gameState.GetTimeTracker().GetPlayTime(),
+            dayCount = gameState.GetTimeTracker().GetDay(),
+            characterAddresses = gameState.GetMailSystem().GetAllMailBoxAddresses(),
+            offset = gameState.GetGameFlags().GetOffset(),
+            flags = SerializeFlags(gameState.GetGameFlags().GetMarkers())
         };
         string json = JsonUtility.ToJson(meta);
 #if UNITY_EDITOR
@@ -86,40 +86,24 @@ public class FileManager
             offset: saveState.offset,
             addresses: saveState.characterAddresses,
             flags: DeserializeFlags(saveState.flags),
-            timer: saveState.playtime);
-        // Debug.Log(saveState.ToString());
-        // game.SetState(
-        //     offset: saveState.offset,
-        //     dayCount: saveState.dayCount,
-        //     addresses: saveState.characterAddresses,
-        //     flags: DeserializeFlags(saveState.flags),
-        //     timer: saveState.playtime);
-        // StateInfo(game);
-        // game.SetOffset(saveState.offset);
-        // game.SetDayCount(saveState.dayCount);
-        // game.SetAddresses(saveState.characterAddresses);
-        // game.SetFlags(DeserializeFlags(saveState.flags));
-        // game.gameObject.AddComponent<Timer>();
-        // CharacterGenerator.generateCharacters(game);
-        // StateInfo(game);
-        // game.assignCharactersToMailboxes();
+            playTime: saveState.playtime);
         return game;
     }
 
-    public static void StateInfo(GameState state)
-    {
-        if (state == null) Debug.LogError("Game State is null");
-        if (state.GetTimer() == null) Debug.LogError("Timer is null");
-        if (state.GetCurrentDay() == null) Debug.LogError("Day is null");
-        if (state.addresses == null || state.addresses.Length == 0) Debug.LogError("Addresses are null or empty");
-        Debug.Log(state.offset);
+    // public static void StateInfo(GameState state)
+    // {
+    //     if (state == null) Debug.LogError("Game State is null");
+    //     if (state.GetTimer() == null) Debug.LogError("Timer is null");
+    //     if (state.GetCurrentDay() == null) Debug.LogError("Day is null");
+    //     if (state.addresses == null || state.addresses.Length == 0) Debug.LogError("Addresses are null or empty");
+    //     Debug.Log(state.offset);
 
-        // Debug.Log("Conversion complete. " +
-        //     "\nPlaytime: " + state.GetTimer().GetPlayTime() +
-        //     ",\nDay Count: " + state.GetCurrentDay() +
-        //     ",\nOffset: " + state.offset +
-        //     ",\nAddresses: " + string.Join(", ", state.GetAllAddresses()));
-    }
+    //     // Debug.Log("Conversion complete. " +
+    //     //     "\nPlaytime: " + state.GetTimer().GetPlayTime() +
+    //     //     ",\nDay Count: " + state.GetCurrentDay() +
+    //     //     ",\nOffset: " + state.offset +
+    //     //     ",\nAddresses: " + string.Join(", ", state.GetAllAddresses()));
+    // }
 
     public static string SerializeFlags(bool[,] flagGrid)
     {

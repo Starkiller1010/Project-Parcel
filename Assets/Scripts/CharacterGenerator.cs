@@ -11,40 +11,22 @@ public class CharacterGenerator
         "Mother",
         "Cult Leader",
         "Kidnapper" };
-    public static Sprite[] sprite;
     // Start is called before the first frame update
-    public static void generateCharacters(GameState gameState)
+    public static void generateCharacters(int[] addresses, int offset = 0)
     {
-        // bool loaded = false;
-        // if (gameState == null || gameState.characters == null)
-        // {
-        //     Debug.LogError("GameState component not found on GameObject with tag 'GameState'.");
-        //     return;
-        // }
-
-        for (int i = 0; i < characterNames.Length; i++)
+        int index = offset * 2; // Start index for character names based on the offset, multiplied by 2 because each mailbox has 2 addresses
+        foreach (int address in addresses)
         {
-            Character character = new Character();
-            character.setName(characterNames[i]);
-            character.setAddress(generateRandomCharacterAddress());
-            // character.setSymbol(sprite[i]);
-            // Debug.Log("Symbol for " + character.getName() + ": " + character.getSymbol());
-            gameState.addCharacter(character);
+            generateCharacter(address, index);
+            index = (index + 1) % characterNames.Length; // Move to the next character for the next address, wrap around if we exceed the array length
         }
-        // FileManager.SaveCharacters(gameState.characters);
-        
     }
 
-    private static void getSprites()
+    public static void generateCharacter(int address, int offset)
     {
-        for (int i = 0; i < sprite.Length; i++)
-        {
-            sprite[i] = Resources.Load<Sprite>("Sprites/Character" + (i + 1)); // Assuming your sprites are named "Character1", "Character2", etc. and are located in a Resources folder
-            if (sprite[i] == null)
-            {
-                Debug.LogError("Sprite not found for Character" + (i + 1));
-            }
-        }
+        Character character = new Character();
+        character.setName(characterNames[offset]);
+        character.setAddress(address);
     }
 
     static public string[] getCharacterNames()
@@ -52,9 +34,6 @@ public class CharacterGenerator
         return characterNames;
     }
 
-    static int generateRandomCharacterAddress()
-    {
-        return Random.Range(1000, 9999);
-    }
+
 
 }

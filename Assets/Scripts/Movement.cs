@@ -4,7 +4,8 @@
 
 using UnityEngine;
 
-public class Movement
+[RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
+public class Movement : MonoBehaviour
 {
     // Movement
     public float moveSpeed = 5f; // units per second
@@ -12,14 +13,33 @@ public class Movement
     public bool allowMovement;
     private Rigidbody2D rbody;
     private Vector2 vel = Vector2.zero;
-    // Centering options (rotate to face target on Z axis)
-    public Transform target = null;
-    public bool centerTarget = false;
+    private InteractionDetection detector = null;
 
 
     void Start()
     {
+        rbody = GetComponent<Rigidbody2D>();
+        detector = new InteractionDetection();
         allowMovement = false;
+    }
+
+    private void GetMovementInput()
+    {
+        vel.x = Input.GetAxisRaw("Horizontal");
+        vel.y = Input.GetAxisRaw("Vertical");
+
+        vel.Normalize();
+    }
+
+    public void freezeMovement()
+    {
+        allowMovement = false;
+        rbody.velocity = Vector2.zero;
+    }
+
+    public void unfreezeMovement()
+    {
+        allowMovement = true;
     }
 
     public void SetBody(Rigidbody2D rigidbody)
@@ -31,10 +51,7 @@ public class Movement
     {
         if (allowMovement)
         {
-            vel.x = Input.GetAxisRaw("Horizontal");
-            vel.y = Input.GetAxisRaw("Vertical");
-
-            vel.Normalize();
+            GetMovementInput();
         }
     }
 
@@ -49,11 +66,12 @@ public class Movement
 
     void OnBecameVisible()
     {
-        allowMovement = true;
+        unfreezeMovement();
     }
 
     void OnBecameInvisible()
     {
-        allowMovement = false;
+        freezeMovement();
     }
+
 }
