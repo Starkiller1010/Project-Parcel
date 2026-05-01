@@ -1,19 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SceneManagement;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class InteractionDetection
 {
-    void OnCollisionEnter2D(Collision2D collision)
+
+    bool isInteracting = false;
+    
+    public void OnCollisionStay2D(Collision2D collision)
     {
-        CollisionCheck(collision.gameObject);
+        if (Input.GetKeyDown(KeyCode.E) && !isInteracting)
+        {
+            CollisionCheck(collision.gameObject);
+        }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    public void OnCollisionExit2D(Collision2D collision)
     {
         GameObject gameObject = collision.gameObject;
         if (gameObject.tag == "DialogueEmitter")

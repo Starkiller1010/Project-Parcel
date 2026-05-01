@@ -5,11 +5,19 @@ public class Director
 {
     static List<Camera> cameras = new List<Camera>();
     public static int currentCameraIndex = 0;
-    public Director()
+
+    public static int GetCurrentCameraIndex()
     {
+        return currentCameraIndex;
+    }
+
+    public static void InitDirector()
+    {
+        Debug.Log("Initializing Director and setting up cameras.");
         GetCameras();
         foreach (Camera camera in cameras)
         {
+            Debug.Log("Deactivating camera: " + camera.name);
             camera.gameObject.SetActive(false);
         }
         ActivateCamera(currentCameraIndex);
@@ -17,7 +25,7 @@ public class Director
 
     private static void GetCameras()
     {
-        GameObject[] cameraObjects = GameObject.FindGameObjectsWithTag("Camera");
+        GameObject[] cameraObjects = GameObject.FindGameObjectsWithTag("MainCamera");
         foreach (GameObject cameraObject in cameraObjects)
         {
             Camera camera = cameraObject.GetComponent<Camera>();

@@ -64,6 +64,19 @@ public class Movement : MonoBehaviour
         }
     }
 
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            detector.OnCollisionStay2D(collision);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        detector.OnCollisionExit2D(collision);
+    }
+
     void OnBecameVisible()
     {
         unfreezeMovement();

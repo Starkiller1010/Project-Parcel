@@ -5,12 +5,17 @@ public class GameState : MonoBehaviour
     MailSystem mailSystem = null;
     Flags gameFlags = new Flags();
     Director director = new Director();
-    
-    public GameState()
-    {
-        mailSystem = new MailSystem(new int[5] { 0, 1, 2, 3, 4 });
-    }
 
+    void Start()
+    {
+        Debug.Log("Initializing GameState.");
+        Director.InitDirector();
+        if (mailSystem == null)
+        {
+            mailSystem = new MailSystem();
+        }
+    }
+    
     public GameState(int dayCount, int[] addresses, int offset, string playTime, bool[,] flags = null)
     {
         mailSystem = new MailSystem(addresses);

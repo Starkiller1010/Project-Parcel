@@ -7,6 +7,11 @@ public class MailSystem
 {
     private List<Mailbox> mailboxes = new List<Mailbox>();
 
+    public MailSystem()
+    {
+        FindAllMailBoxes();
+    }
+
     public MailSystem(int[] character_addresses)
     {
         FindAllMailBoxes();
@@ -35,7 +40,7 @@ public class MailSystem
 
     public void FindAllMailBoxes()
     {
-        GameObject[] boxes = GameObject.FindGameObjectsWithTag("MailBox");
+        GameObject[] boxes = GameObject.FindGameObjectsWithTag("Mail Container");
         foreach (GameObject box in boxes) mailboxes.Add(box.GetComponent<Mailbox>());
     }
 
