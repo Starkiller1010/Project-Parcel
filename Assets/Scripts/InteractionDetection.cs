@@ -3,19 +3,21 @@ using UnityEngine;
 public class InteractionDetection
 {
 
-    bool isInteracting = false;
-    
-    public void OnCollisionStay2D(Collision2D collision)
+    public bool isInteracting = false;
+    public bool processingInteraction = false;
+
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.E) && !isInteracting)
-        {
-            CollisionCheck(collision.gameObject);
-        }
+        // This method is intentionally left empty to ensure that the Rigidbody2D's collision detection is active.
+        // The actual interaction logic is handled in the OnCollisionStay2D and OnCollisionExit2D methods.
+        Debug.Log("Player has collided with an object: " + collision.gameObject.name);
     }
 
     public void OnCollisionExit2D(Collision2D collision)
     {
         GameObject gameObject = collision.gameObject;
+        isInteracting = false;
+        processingInteraction = false;
         if (gameObject.tag == "DialogueEmitter")
         {
             TextEmitter textEmitter = gameObject.GetComponent<TextEmitter>();
@@ -28,34 +30,40 @@ public class InteractionDetection
         }
     }
     
-    private void CollisionCheck(GameObject gameObject)
+    public void CollisionCheck(GameObject gameObject)
     {
-        Debug.Log("Player is touching a collider and has pressed E.");
-                switch (gameObject.tag)
-                {
-                    case "TransitionObject":
-                        interactWithDoorway();
-                        break;
-                    case "DialogueEmitter":
-                        interactWithDialogueEmitter(gameObject.GetComponent<TextEmitter>());
-                        break;
-                    case "Bed":
-                        interactWithBed();
-                        break;
-                    case "Mail Container":
-                        interactWithMailContainer(gameObject.GetComponent<Mailbox>());
-                        break;
-                    // case "Mail Chute":
-                    //     interactWithChute();
-                    //     break;
-                    case "Test":
-                        Debug.Log("Interacting with Test Object");
-                        interactToSave();
-                        break;
-                    default:
-                        Debug.LogWarning("Player is touching a collider with an unhandled tag: " + gameObject.tag);
-                        break;
-                }
+        if (isInteracting && !processingInteraction)
+        {
+            processingInteraction = true;
+            Debug.Log("Player is touching a collider and has pressed E.");
+            switch (gameObject.tag)
+            {
+                case "TransitionObject":
+                    interactWithDoorway();
+                    break;
+                case "DialogueEmitter":
+                    interactWithDialogueEmitter(gameObject.GetComponent<TextEmitter>());
+                    break;
+                case "Bed":
+                    interactWithBed();
+                    break;
+                case "Mail Container":
+                    interactWithMailContainer(gameObject.GetComponent<Mailbox>());
+                    break;
+                // case "Mail Chute":
+                //     interactWithChute();
+                //     break;
+                case "Test":
+                    Debug.Log("Interacting with Test Object");
+                    interactToSave();
+                    break;
+                default:
+                    Debug.LogWarning("Player is touching a collider with an unhandled tag: " + gameObject.tag);
+                    break;
+            }
+            processingInteraction = false;
+            isInteracting = false;
+        }
     }
 
     private void interactToSave()

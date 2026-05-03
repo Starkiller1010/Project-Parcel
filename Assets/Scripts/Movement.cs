@@ -53,6 +53,14 @@ public class Movement : MonoBehaviour
         {
             GetMovementInput();
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            detector.isInteracting = true;
+        } else if (Input.GetKeyUp(KeyCode.E) && detector.isInteracting)
+        {
+            detector.isInteracting = false;
+        }
     }
 
     void FixedUpdate()
@@ -64,12 +72,17 @@ public class Movement : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // This method is intentionally left empty to ensure that the Rigidbody2D's collision detection is active.
+        // The actual interaction logic is handled in the InteractionDetection class via OnCollisionStay2D and OnCollisionExit2D.
+        detector.OnCollisionEnter2D(collision);
+    }
+
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            detector.OnCollisionStay2D(collision);
-        }
+        // detector.OnCollisionStay2D(collision);
+        detector.CollisionCheck(collision.gameObject);
     }
 
     void OnCollisionExit2D(Collision2D collision)
