@@ -102,5 +102,6 @@ public class InteractionDetection
     private void interactWithDoorway()
     {
         Debug.Log("Interacted with doorway, switching cameras.");
+        Director.SwitchCamera(Director.GetNextCameraIndex());
     }
 }

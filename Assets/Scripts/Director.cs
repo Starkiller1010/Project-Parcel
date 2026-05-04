@@ -4,11 +4,16 @@ using UnityEngine;
 public class Director
 {
     static List<Camera> cameras = new List<Camera>();
-    public static int currentCameraIndex = 0;
+    private static int currentCameraIndex = 0;
 
     public static int GetCurrentCameraIndex()
     {
         return currentCameraIndex;
+    }
+
+    public static int GetNextCameraIndex()
+    {
+        return (currentCameraIndex + 1) % cameras.Count;
     }
 
     public static void InitDirector()

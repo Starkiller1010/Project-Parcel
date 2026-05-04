@@ -37,6 +37,11 @@ public class GameState : MonoBehaviour
         return gameFlags;
     }
 
+    public Director GetDirector()
+    {
+        return director;
+    }
+
     public void SetState(GameState newState)
     {
         SetState(
