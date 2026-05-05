@@ -1,31 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class Dialogue : TextEmitter
 {
-    protected override void GetText()
+    private static string DIALOGUE_DIRECTORY = "Dialogue";
+
+    private List<string> gameAreas = new List<string>() { "Home", "Street", "Workroom" };
+
+    public override string GetText()
     {
-        textFile = FileManager.LoadDialogueFile(PathBuilder(true));
-        if (textFile != null)
+        base.directory = DIALOGUE_DIRECTORY;
+        return base.GetText();
+    }
+
+    protected override string PathBuilder()
+    {
+        StringBuilder pathBuilder = new StringBuilder();
+        GameState gameState = Game.GET_GAME_STATE();
+        if (transform.parent == null || !gameAreas.Contains(transform.parent.name))
         {
-            Debug.Log("Dialogue text loaded successfully: " + textFile.text);
-            SetText(textFile.text);
+            pathBuilder.Append("Default");
         }
         else
         {
-            Debug.LogError("Failed to load dialogue text for: " + this.name);
+            pathBuilder.Append(transform.parent.name + "/");
+            pathBuilder.Append(gameState.GetTimeTracker().GetDay() + "/");
+            pathBuilder.Append(this.name);
         }
-    }
-
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Constructed path: " + pathBuilder.ToString());
+        return pathBuilder.ToString();
     }
 }

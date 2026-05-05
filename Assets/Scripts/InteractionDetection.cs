@@ -21,10 +21,11 @@ public class InteractionDetection
         if (gameObject.tag == "DialogueEmitter")
         {
             TextEmitter textEmitter = gameObject.GetComponent<TextEmitter>();
-            if (textEmitter != null && textEmitter.IsActivated())
+            if (textEmitter != null)
             {
-                textEmitter.Deactivate();
-                textEmitter.HideTextPanel(); // Hide the panel when the player moves away from the DialogueEmitter
+                // textEmitter.Deactivate();
+                // textEmitter.HideTextPanel(); // Hide the panel when the player moves away from the DialogueEmitter
+                HUD.HideDialoguePanel(); // Hide the dialogue panel when the player moves away from the DialogueEmitter
                 HUD.HideConfirmationPanel(); // Hide the confirmation panel as well, in case it was triggered by the DialogueEmitter
             }
         }
@@ -42,7 +43,7 @@ public class InteractionDetection
                     interactWithDoorway();
                     break;
                 case "DialogueEmitter":
-                    interactWithDialogueEmitter(gameObject.GetComponent<TextEmitter>());
+                    interactWithDialogueEmitter(gameObject.GetComponent<Dialogue>());
                     break;
                 case "Bed":
                     interactWithBed();
@@ -91,12 +92,13 @@ public class InteractionDetection
         HUD.ShowConfirmationPanel("Do you want to sleep and end the day?");
     }
     
-    private void interactWithDialogueEmitter(TextEmitter textEmitter = null)
+    private void interactWithDialogueEmitter(Dialogue textEmitter = null)
     {
         Debug.Log("Player has interacted with a DialogueEmitter.");
         // Additional logic for interacting with a DialogueEmitter can be added here
-        textEmitter.Activate();
-        textEmitter.DisplayText();
+        // textEmitter.Activate();
+        // textEmitter.DisplayText();
+        HUD.ShowDialoguePanel(textEmitter.GetText());
     }
 
     private void interactWithDoorway()

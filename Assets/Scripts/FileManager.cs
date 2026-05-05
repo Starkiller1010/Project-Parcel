@@ -62,17 +62,17 @@ public class FileManager
         return ConvertSaveStateToGameState(loadState);
     }
 
-    public static TextAsset LoadLetterFile(string fileName)
-    {
-        return LoadTextFile("Letter", fileName);
-    }
+    // public static TextAsset LoadLetterFile(string fileName)
+    // {
+    //     return LoadTextFile("Letter", fileName);
+    // }
 
-    public static TextAsset LoadDialogueFile(string fileName)
-    {
-        return LoadTextFile("Dialogue", fileName);
-    }
+    // public static TextAsset LoadDialogueFile(string fileName)
+    // {
+    //     return LoadTextFile("Dialogue", fileName);
+    // }
 
-    private static TextAsset LoadTextFile(string directory, string fileName)
+    public static TextAsset LoadTextFile(string directory, string fileName)
     {
         // Path within the Resources folder, without file extension
         string fullPath = directory + "/" + fileName;

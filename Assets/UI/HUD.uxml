@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/TextOutputBox.uss?fileID=7433441132597879392&amp;guid=a9466373b2dfcb44aa1167a8d305f8e1&amp;type=3#TextOutputBox" />
+    <ui:GroupBox name="DialogueBox" view-data-key="DialogueBox" style="flex-direction: row; align-items: flex-end; bottom: auto; position: relative; top: 75%; height: 114px;">
+        <ui:TextField name="DialogueText" password="false" readonly="true" is-delayed="false" multiline="true" data-source-type="Dialogue, Assembly-CSharp" data-source-path="text" focusable="true" select-all-on-focus="false" select-all-on-mouse-up="false" select-word-by-double-click="false" select-line-by-triple-click="false" emoji-fallback-support="false" hide-mobile-input="false" value="Test" placeholder-text="Where is this text?" hide-placeholder-on-focus="false" picking-mode="Ignore" label="Me: " style="top: auto; flex-direction: row; flex-wrap: wrap; align-items: auto; justify-content: flex-start; width: auto; left: auto; bottom: auto; flex-grow: 0.5; align-self: auto; -unity-text-align: upper-left; min-width: 98%; height: 100%; visibility: visible; display: flex; overflow: hidden; -unity-font-style: bold; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=5b917cfb2f2467346a5027a40d814a8c&amp;type=3#NotInter-Regular&quot;); text-overflow: clip; opacity: 1; padding-bottom: 10px; border-bottom-width: 0; color: rgb(255, 255, 255); white-space: normal; border-left-width: 12px; border-right-width: 12px;">
+            <Bindings>
+                <ui:DataBinding property="value" binding-mode="ToTarget" data-source-type="Dialogue, Assembly-CSharp" data-source-path="text" />
+            </Bindings>
+        </ui:TextField>
+    </ui:GroupBox>
+</ui:UXML>
