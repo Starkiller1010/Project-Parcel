@@ -26,7 +26,7 @@ public class Dialogue : TextEmitter
         else
         {
             pathBuilder.Append(transform.parent.name + "/");
-            pathBuilder.Append(gameState.GetTimeTracker().GetDay() + "/");
+            pathBuilder.Append(Game.GET_TIME_TRACKER().GetDay() + "/");
             pathBuilder.Append(this.name);
         }
         Debug.Log("Constructed path: " + pathBuilder.ToString());

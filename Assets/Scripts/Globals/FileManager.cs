@@ -9,8 +9,6 @@ public class FileManager
     public static string saveDirectory = Application.persistentDataPath + "/SaveGames";
     public static string debugDirectory = Application.dataPath;
     private static string fileName = "SaveGame_" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".json";
-    private static string debugFilePath = debugDirectory + "/" + fileName;
-    private static string saveFilePath = saveDirectory + "/" + fileName;
 
     public static void SaveGameState(GameState gameState)
     {
@@ -22,19 +20,17 @@ public class FileManager
         {
             created_at = DateTime.UtcNow.ToString("o"),
             updated_at = DateTime.UtcNow.ToString("o"),
-            playtime = gameState.GetTimeTracker().GetPlayTime(),
-            dayCount = gameState.GetTimeTracker().GetDay(),
+            playtime = Game.GET_TIME_TRACKER().GetTimer().GetPlayTime(),
+            dayCount = Game.GET_TIME_TRACKER().GetDay(),
             characterAddresses = gameState.GetMailSystem().GetAllMailBoxAddresses(),
             offset = gameState.GetGameFlags().GetOffset(),
             flags = SerializeFlags(gameState.GetGameFlags().GetMarkers())
         };
         string json = JsonUtility.ToJson(meta);
 #if UNITY_EDITOR
-        System.IO.File.WriteAllText(debugFilePath, json);
-        Debug.Log("Game state saved to: " + debugFilePath);
+        WriteFile(debugDirectory, fileName, json);
 #else
-        System.IO.File.WriteAllText(saveFilePath, json);
-        Debug.Log("Game state saved to: " + saveFilePath);
+        WriteFile(saveDirectory, fileName, json);
 #endif
     }
 
@@ -51,32 +47,36 @@ public class FileManager
     public static GameState LoadGameState(string fileName)
     {
         string json = null;
-#if UNITY_EDITOR
-        json = System.IO.File.ReadAllText(debugDirectory + "/" + fileName + ".json");
-        Debug.Log("Game state loaded from: " + debugDirectory + "/" + fileName + ".json");
-#else
-        json = System.IO.File.ReadAllText(saveDirectory + "/" + fileName + ".json");
-        Debug.Log("Game state loaded from: " + saveFilePath);
-#endif
+        #if UNITY_EDITOR
+        json = ReadFile(debugDirectory, fileName);
+        #else
+        json = ReadFile(saveDirectory, fileName);
+        #endif
         SaveState loadState = JsonUtility.FromJson<SaveState>(json);
         return ConvertSaveStateToGameState(loadState);
     }
-
-    // public static TextAsset LoadLetterFile(string fileName)
-    // {
-    //     return LoadTextFile("Letter", fileName);
-    // }
-
-    // public static TextAsset LoadDialogueFile(string fileName)
-    // {
-    //     return LoadTextFile("Dialogue", fileName);
-    // }
 
     public static TextAsset LoadTextFile(string directory, string fileName)
     {
         // Path within the Resources folder, without file extension
         string fullPath = directory + "/" + fileName;
         return Resources.Load<TextAsset>(fullPath);
+    }
+
+    private static string ReadFile(string directory, string fileName)
+    {
+        string json = null;
+        json = System.IO.File.ReadAllText(directory + "/" + fileName + ".json");
+        Debug.Log("Game state loaded from: " + debugDirectory + "/" + fileName + ".json");
+        return json;
+    }
+
+    private static string WriteFile(string directory, string fileName, string content)
+    {
+        string filePath = directory + "/" + fileName + ".json";
+        System.IO.File.WriteAllText(filePath, content);
+        Debug.Log("Ga written to: " + filePath);
+        return filePath;
     }
 
     private static GameState ConvertSaveStateToGameState(SaveState saveState)

@@ -1,4 +1,5 @@
 //TODO - Create Class responsible for all HUD UI objects
+using System;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -10,7 +11,8 @@ public class HUD : MonoBehaviour
 {
     public VisualElement ui;
     static VisualElement interactionBox = null;
-    public static Confirmation confirmationPanel = null;
+    static VisualElement confirmationPanel = null;
+    public static Confirmation confirmationCommands = null;
     public static string dialogueText = "";
 
     void OnEnable()
@@ -22,6 +24,8 @@ public class HUD : MonoBehaviour
     void Start()
     {
         interactionBox = ui.Q<VisualElement>("DialogueBox");
+        confirmationPanel = ui.Q<VisualElement>("ConfirmationPanel");
+        confirmationCommands = this.gameObject.GetComponentInChildren<Confirmation>();
         HideAllUI();
     }
 
@@ -43,12 +47,13 @@ public class HUD : MonoBehaviour
         }
     }
 
-    public static void ShowConfirmationPanel(string promptText)
+    public static void ShowConfirmationPanel(string promptText, Action onConfirm, Action onReject)
     {
         if (confirmationPanel != null)
         {
-            confirmationPanel.gameObject.SetActive(true);
-            confirmationPanel.SetPromptText(promptText);
+            SetConfirmationPromptText(promptText);
+            SetConfirmationActions(onConfirm, onReject);
+            confirmationPanel.RemoveFromClassList("hide");
         }
         else
         {
@@ -60,7 +65,7 @@ public class HUD : MonoBehaviour
     {
         if (confirmationPanel != null)
         {
-            confirmationPanel.gameObject.SetActive(false);
+            confirmationPanel.AddToClassList("hide");
         }
         else
         {
@@ -101,6 +106,31 @@ public class HUD : MonoBehaviour
         else
         {
             Debug.LogError("TextElement with name 'DialogueText' not found in the scene.");
+        }
+    }
+
+    private static void SetConfirmationPromptText(string promptText)
+    {
+        if (confirmationPanel != null)
+        {
+            Label promptLabel = confirmationPanel.Q<Label>("ConfirmationHeader");
+            promptLabel.text = promptText;
+        }
+        else
+        {
+            Debug.LogError("Label with name 'ConfirmationHeader' not found in the scene.");
+        }
+    }
+
+    private static void SetConfirmationActions(Action onConfirm, Action onReject)
+    {
+        if (confirmationCommands != null)
+        {
+            confirmationCommands.SetActions(onConfirm, onReject);
+        }
+        else
+        {
+            Debug.LogError("Confirmation component not found in the scene.");
         }
     }
 }

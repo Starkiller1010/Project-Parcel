@@ -8,6 +8,7 @@ public class TimeTracker
     public TimeTracker()
     {
         timer = new Timer();
+        current_day = 0;
     }
 
     public string GetPlayTime()
@@ -30,6 +31,11 @@ public class TimeTracker
     public void SetDay(int day)
     {
         current_day = day;
+    }
+
+    public void NextDay()
+    {
+        current_day++;
     }
 
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InteractionDetection
 {
@@ -69,8 +70,7 @@ public class InteractionDetection
 
     private void interactToSave()
     {
-        GameState gameState = Game.GET_GAME_STATE();
-        FileManager.SaveGameState(gameState);
+        FileManager.SaveGameState(Game.GET_GAME_STATE());
     }
 
     private void interactWithMailContainer(Mailbox mailbox)
@@ -78,26 +78,41 @@ public class InteractionDetection
         int mailCount = mailbox.GetMailCount();
         if (mailCount > 0)
         {
-            HUD.ShowConfirmationPanel("You collected " + mailCount + " pieces of mail.");
+            HUD.ShowConfirmationPanel("You collected " + mailCount + " pieces of mail.", null, null);
         }
         else
         {
-            HUD.ShowConfirmationPanel("Your mailbox is empty.");
+            HUD.ShowConfirmationPanel("Your mailbox is empty.", null, null);
         }
         mailbox.GetLetters();
     }
 
     private void interactWithBed()
     {
-        HUD.ShowConfirmationPanel("Do you want to sleep and end the day?");
+        Game.GET_PLAYER().GetControls().ToggleMovementState(); // Freeze player movement when interacting with a DialogueEmitter
+        HUD.ShowConfirmationPanel("Do you want to sleep and end the day?", OnBedConfirmation, OnBedReject);
+
+    }
+
+    private void OnBedConfirmation()
+    {
+        Debug.Log("Player has chosen to sleep and end the day.");
+        Game.GET_GAME_STATE().EndDay();
+         // Reload the current scene to reflect the new day
+        // ToggleFreezePlayer(); // Unfreeze player movement after confirming the action
+        // HUD.HideConfirmationPanel(); // Hide the confirmation panel after the player makes a choice
+    }
+
+    private void OnBedReject()
+    {
+        Debug.Log("Player has chosen not to sleep and end the day.");
+        ToggleFreezePlayer(); // Unfreeze player movement after rejecting the action
+        HUD.HideConfirmationPanel(); // Hide the confirmation panel after the player makes a choice
     }
     
     private void interactWithDialogueEmitter(Dialogue textEmitter = null)
     {
         Debug.Log("Player has interacted with a DialogueEmitter.");
-        // Additional logic for interacting with a DialogueEmitter can be added here
-        // textEmitter.Activate();
-        // textEmitter.DisplayText();
         HUD.ShowDialoguePanel(textEmitter.GetText());
     }
 
@@ -105,5 +120,10 @@ public class InteractionDetection
     {
         Debug.Log("Interacted with doorway, switching cameras.");
         Director.SwitchCamera(Director.GetNextCameraIndex());
+    }
+
+    private void ToggleFreezePlayer()
+    {
+        Game.GET_PLAYER().GetControls().ToggleMovementState();
     }
 }

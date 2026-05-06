@@ -166,8 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59acc680d9cc2a447855ff0eb459e0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: 
-  textPanel: {fileID: 0}
 --- !u!61 &56421712
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -553,7 +551,7 @@ GameObject:
   - component: {fileID: 303507072}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2198,6 +2196,7 @@ GameObject:
   - component: {fileID: 1422921591}
   - component: {fileID: 1422921590}
   - component: {fileID: 1422921592}
+  - component: {fileID: 1422921593}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -2248,7 +2247,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98683388db846848891d0d9acd4414a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueText: 
+--- !u!114 &1422921593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422921589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e781f403fb5e6d43b96d7a960037001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onConfirm: 0
+  confirmButton: {fileID: 0}
+  rejectButton: {fileID: 0}
 --- !u!1 &1512403051
 GameObject:
   m_ObjectHideFlags: 0
@@ -2527,7 +2540,7 @@ GameObject:
   - component: {fileID: 1934080303}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
