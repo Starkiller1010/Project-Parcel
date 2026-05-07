@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Director
+public static class Director
 {
     static List<Camera> cameras = new List<Camera>();
     private static int currentCameraIndex = 0;
@@ -18,13 +18,18 @@ public class Director
 
     public static void InitDirector()
     {
-        Debug.Log("Initializing Director and setting up cameras.");
+        cameras.Clear();
         GetCameras();
         foreach (Camera camera in cameras)
         {
-            Debug.Log("Deactivating camera: " + camera.name);
+            if (camera == null)
+            {
+                Debug.LogError("Camera reference is null. Please check the camera setup.");
+                continue;
+            }
             camera.gameObject.SetActive(false);
         }
+        currentCameraIndex = 0;
         ActivateCamera(currentCameraIndex);
     }
 

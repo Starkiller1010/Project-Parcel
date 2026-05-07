@@ -1,5 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/main%20menu.uss?fileID=7433441132597879392&amp;guid=e6b4e11dedf7aae499a2fde5c2ef5df7&amp;type=3#main menu" />
+    <Style src="project://database/Assets/UI/MainMenu.uss?fileID=7433441132597879392&amp;guid=e6b4e11dedf7aae499a2fde5c2ef5df7&amp;type=3#MainMenu" />
+    <Style src="project://database/Assets/UI/TextOutputBox.uss?fileID=7433441132597879392&amp;guid=a9466373b2dfcb44aa1167a8d305f8e1&amp;type=3#TextOutputBox" />
     <ui:VisualElement name="Panel" class="panel" style="height: 629px;">
         <ui:VisualElement name="Container" class="menu" style="height: 302px; width: 271px;">
             <ui:VisualElement name="Logo" />

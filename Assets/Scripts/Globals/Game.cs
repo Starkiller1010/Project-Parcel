@@ -6,7 +6,7 @@ public static class Game
 {
     private static GameState GAME_STATE = null;
     private static Player PLAYER = null;
-    private static Director DIRECTOR = new Director();
+    private static TimeTracker timeTracker = null;
     // TODO Setting Script should be init placed here
     public static GameState GET_GAME_STATE()
     {
@@ -21,14 +21,18 @@ public static class Game
     {
         if (PLAYER == null)
         {
-            PLAYER = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            PLAYER = new Player();
         }
         return PLAYER;
     }
     
-    public static Director GET_DIRECTOR()
+    public static TimeTracker GET_TIME_TRACKER()
     {
-        return DIRECTOR;
+        if (timeTracker == null)
+        {
+            timeTracker = new TimeTracker();
+        }
+        return timeTracker;
     }
 
     public static void MAKE_GAME_STATE(int startDayCount = 0, string filename = null)

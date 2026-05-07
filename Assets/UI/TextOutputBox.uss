@@ -1,0 +1,161 @@
+.unity-text-field {
+    visibility: visible;
+    overflow: hidden;
+    display: flex;
+    opacity: 1;
+    align-items: auto;
+    justify-content: flex-start;
+    align-self: auto;
+    min-width: auto;
+    min-height: auto;
+    max-height: none;
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgba(23, 28, 123, 0.71);
+    background-image: resource('Sprite/9Sliced');
+    -unity-background-scale-mode: stretch-to-fill;
+    color: rgb(255, 255, 255);
+    flex-shrink: 0;
+    -unity-font-style: italic;
+    height: 80%;
+    -unity-text-align: upper-left;
+    width: auto;
+    flex-grow: 1;
+    flex-basis: -15px;
+}
+
+.unity-label {
+    position: absolute;
+    top: auto;
+    bottom: 70%;
+}
+
+.unity-base-text-field__input {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
+    left: auto;
+    align-items: flex-start;
+    align-self: auto;
+    justify-content: space-evenly;
+    position: relative;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+    top: 25%;
+    bottom: auto;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    -unity-font-style: italic;
+}
+
+.hide {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+.confirmation-panel {
+    background-image: resource('Sprite/9Sliced');
+    align-self: stretch;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    -unity-background-scale-mode: scale-to-fit;
+    width: 100%;
+    min-width: auto;
+    height: auto;
+    transform-origin: center;
+    scale: 1 1;
+    background-color: rgba(255, 255, 255, 0);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    flex-grow: 0.6;
+    flex-direction: column;
+    top: 10%;
+}
+
+.confirmation-title-label {
+    font-size: 14px;
+    left: auto;
+    right: auto;
+    visibility: visible;
+    display: flex;
+    overflow: visible;
+    position: relative;
+    top: auto;
+    bottom: 15%;
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.confirmation-button {
+    position: relative;
+    left: auto;
+    align-self: center;
+    justify-content: center;
+    align-items: auto;
+}
+
+.confirmation-button:hover {
+    scale: 1.5 1.2;
+    transition-property: scale;
+}
+
+.confirmation-button:focus {
+    scale: 1.5 1.2;
+    transition-property: scale;
+    transition-duration: 0.3s;
+}
+
+.ui-header {
+    flex-shrink: 0;
+    flex-basis: 15%;
+    top: auto;
+}
+
+.dialogue-box {
+    height: 25%;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: 10%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.modal-area {
+    flex-grow: 1;
+    flex-shrink: 0;
+    bottom: auto;
+    max-height: 50%;
+    max-width: 100%;
+    flex-basis: 100%;
+}
+
+.day-label {
+    flex-shrink: 0;
+    flex-direction: row;
+    left: 48.2%;
+    background-image: resource('Sprite/Circle');
+    -unity-background-image-tint-color: rgb(85, 155, 195);
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    top: 135%;
+    flex-grow: 1;
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-slice-scale: 2px;
+}
