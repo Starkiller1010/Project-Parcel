@@ -14,6 +14,8 @@ public class HUD : MonoBehaviour
     static VisualElement confirmationPanel = null;
     public static Confirmation confirmationCommands = null;
     public static string dialogueText = "";
+    public static string dialogueAuthor = "Me:";
+    public static string dayText = "Day ";
 
     void OnEnable()
     {
@@ -26,6 +28,7 @@ public class HUD : MonoBehaviour
         interactionBox = ui.Q<VisualElement>("DialogueBox");
         confirmationPanel = ui.Q<VisualElement>("ConfirmationPanel");
         confirmationCommands = this.gameObject.GetComponentInChildren<Confirmation>();
+        SetDayText(Game.GET_TIME_TRACKER().GetDay().ToString());
         HideAllUI();
     }
 
@@ -33,6 +36,20 @@ public class HUD : MonoBehaviour
     {
         HideDialoguePanel();
         HideConfirmationPanel();
+    }
+
+    public void SetDayText(string text)
+    {
+        // dayText = "Day " + text;
+        Label dayLabel = ui.Q<Label>("DayCounter");
+        if (dayLabel != null)
+        {
+            dayLabel.text = dayText + text;
+        }
+        else
+        {
+            Debug.LogError("Label with name 'DayCounter' not found in the scene.");
+        }
     }
 
     public void SetInteractionText(string text)

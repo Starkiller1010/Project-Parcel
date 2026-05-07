@@ -1,14 +1,3 @@
-.unity-group-box {
-    top: 70%;
-    bottom: auto;
-    background-color: rgba(229, 229, 229, 0);
-    height: auto;
-    left: 4%;
-    right: auto;
-    max-width: 90%;
-    min-width: 50%;
-}
-
 .unity-text-field {
     visibility: visible;
     overflow: hidden;
@@ -17,7 +6,6 @@
     align-items: auto;
     justify-content: flex-start;
     align-self: auto;
-    padding-bottom: 0;
     min-width: auto;
     min-height: auto;
     max-height: none;
@@ -26,19 +14,19 @@
     background-image: resource('Sprite/9Sliced');
     -unity-background-scale-mode: stretch-to-fill;
     color: rgb(255, 255, 255);
-    position: relative;
     flex-shrink: 0;
     -unity-font-style: italic;
-    padding-top: 2px;
-    padding-left: 5px;
-    padding-right: 5px;
-    height: auto;
+    height: 80%;
+    -unity-text-align: upper-left;
+    width: auto;
+    flex-grow: 1;
+    flex-basis: -15px;
 }
 
 .unity-label {
     position: absolute;
     top: auto;
-    bottom: 65px;
+    bottom: 70%;
 }
 
 .unity-base-text-field__input {
@@ -73,35 +61,40 @@
 
 .confirmation-panel {
     background-image: resource('Sprite/9Sliced');
-    align-self: center;
-    justify-content: space-evenly;
+    align-self: stretch;
+    justify-content: center;
     align-items: center;
-    flex-shrink: 1;
-    position: relative;
-    bottom: auto;
-    left: auto;
+    flex-shrink: 0;
     -unity-background-scale-mode: scale-to-fit;
-    width: auto;
+    width: 100%;
     min-width: auto;
     height: auto;
     transform-origin: center;
     scale: 1 1;
     background-color: rgba(255, 255, 255, 0);
     -unity-background-image-tint-color: rgb(255, 255, 255);
+    flex-grow: 0.6;
+    flex-direction: column;
+    top: 10%;
 }
 
 .confirmation-title-label {
-    font-size: 20px;
+    font-size: 14px;
     left: auto;
     right: auto;
     visibility: visible;
     display: flex;
     overflow: visible;
     position: relative;
-    align-items: center;
-    align-self: center;
-    justify-content: center;
-    top: 3%;
+    top: auto;
+    bottom: 15%;
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
 }
 
 .confirmation-button {
@@ -118,6 +111,51 @@
 }
 
 .confirmation-button:focus {
-    scale: 1.2 1.2;
+    scale: 1.5 1.2;
     transition-property: scale;
+    transition-duration: 0.3s;
+}
+
+.ui-header {
+    flex-shrink: 0;
+    flex-basis: 15%;
+    top: auto;
+}
+
+.dialogue-box {
+    height: 25%;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: 10%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.modal-area {
+    flex-grow: 1;
+    flex-shrink: 0;
+    bottom: auto;
+    max-height: 50%;
+    max-width: 100%;
+    flex-basis: 100%;
+}
+
+.day-label {
+    flex-shrink: 0;
+    flex-direction: row;
+    left: 48.2%;
+    background-image: resource('Sprite/Circle');
+    -unity-background-image-tint-color: rgb(85, 155, 195);
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    top: 135%;
+    flex-grow: 1;
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-slice-scale: 2px;
 }
