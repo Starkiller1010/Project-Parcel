@@ -12,7 +12,7 @@ public class GameState : MonoBehaviour
         GetGameFlags();
         TimeTracker timeTracker = Game.GET_TIME_TRACKER();
         timeTracker.GetTimer().StartTimer(timeTracker.GetTimer().GetTimeinSeconds());
-
+        mailSystem.PopulateMailboxes();
     }
     
     void FixedUpdate()

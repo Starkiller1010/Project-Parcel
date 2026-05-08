@@ -16,6 +16,23 @@ public class Player
         return collectedLetter;
     }
 
+    public static List<Letter> ClearCollectedLetters()
+    {
+        List<Letter> lettersToReturn = new List<Letter>(collectedLetter);
+        collectedLetter.Clear();
+        return lettersToReturn;
+    }
+
+    public static void AddLetters(List<Letter> letters)
+    {
+        collectedLetter.AddRange(letters);
+    }
+
+    public static void AddLetters(Letter[] letters)
+    {
+        collectedLetter.AddRange(letters);
+    }
+
     public Player()
     {
         GetControls();

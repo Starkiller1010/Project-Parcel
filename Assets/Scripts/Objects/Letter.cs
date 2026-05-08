@@ -9,7 +9,7 @@ public class Letter
     private string content;
     public GameObject gameObject; // Reference to the GameObject representing the letter in the scene
 
-    public Letter(Sprite fromSymbol, int toAddress, string content, int uuid = 0)
+    public Letter(int toAddress, string content, int uuid = 0, Sprite fromSymbol = null)
     {
         this.uuid = uuid;
         this.fromSymbol = fromSymbol;

@@ -78,13 +78,14 @@ public class InteractionDetection
         int mailCount = mailbox.GetMailCount();
         if (mailCount > 0)
         {
-            HUD.ShowConfirmationPanel("You collected " + mailCount + " pieces of mail.", null, null);
+            Debug.Log("Player has collected " + mailCount + " pieces of mail from the mailbox.");
+            Player.AddLetters(mailbox.GetLetters());
+            mailbox.ClearMail();
         }
         else
         {
-            HUD.ShowConfirmationPanel("Your mailbox is empty.", null, null);
+            Debug.Log("Player attempted to collect mail from an empty mailbox.");
         }
-        mailbox.GetLetters();
     }
 
     private void interactWithBed()

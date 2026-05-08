@@ -115,6 +115,30 @@ public class MailSystem
             }
         }
     }
+
+    public void PopulateMailboxes ()
+    {
+        List<Letter> letters = GenerateMail();
+        int index = 0;
+        foreach(Mailbox mailbox in mailboxes)
+        {
+            Debug.Log(string.Format("Generated mail for mailbox: {0}", mailbox.name));
+            mailbox.GenerateMail(letters[index]);
+            index = (index + 1) % letters.Count;
+        }
+    }
+
+    private List<Letter> GenerateMail()
+    {
+        TextAsset[] files = FileManager.GetLetterFiles();
+        List<Letter> letters = new List<Letter>();
+        foreach (TextAsset file in files)
+        {
+            Debug.Log(string.Format("File: {0} Content: {0}\n", file.name, file.text));
+            letters.Add(new Letter(0, file.text));
+        }
+        return letters;
+    }
     
     private static int GenerateCharacterAddress()
     {

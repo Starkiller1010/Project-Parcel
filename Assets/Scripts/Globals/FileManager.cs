@@ -63,6 +63,24 @@ public class FileManager
         return Resources.Load<TextAsset>(fullPath);
     }
 
+    public static TextAsset[] GetLetterFiles()
+    {
+        // string path = "Letter/Day " + Game.GET_TIME_TRACKER().GetDay() + "/Default.txt";
+        string path = "Letter/Test.txt";
+        Debug.Log("Attempting to load letter files from path: " + path);
+        TextAsset[] letterFiles = Resources.LoadAll<TextAsset>(path);
+        if (letterFiles == null || letterFiles.Length == 0)
+        {
+            Debug.LogError("No letter files found at path: " + path);
+            return null;
+        }
+        foreach (TextAsset letterFile in letterFiles)
+        {
+            Debug.Log("Loaded letter file: " + letterFile.name);
+        }
+        return letterFiles;
+    }
+
     private static string ReadFile(string directory, string fileName)
     {
         string json = null;

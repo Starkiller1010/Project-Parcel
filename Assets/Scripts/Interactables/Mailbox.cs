@@ -42,9 +42,14 @@ public class Mailbox : MonoBehaviour
         this.addresses.Clear(); // Clear the addresses list to remove all character associations from the mailbox
     }
 
-    public void GenerateMail(Sprite Symbol, int address, string content = "Empty letter content")
+    public void GenerateMail(int address, string content = "Empty letter content", Sprite Symbol = null)
     {
-        Letter letter = new Letter(Symbol, address, content); // Create a new letter with the character's address and name
+        Letter letter = new Letter(address, content, fromSymbol: Symbol); // Create a new letter with the character's address and name
+        GenerateMail(letter);
+    }
+
+    public void GenerateMail(Letter letter)
+    {
         this.letters.Add(letter); // Add the letter to the mailbox's letters list
     }
 }
