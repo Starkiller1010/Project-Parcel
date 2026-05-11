@@ -26,6 +26,7 @@ public class Mailbox : MonoBehaviour
 
     public Letter[] GetLetters()
     {
+        if (letters == null) letters = new List<Letter>();
         return this.letters.ToArray();
     }
 
@@ -50,6 +51,7 @@ public class Mailbox : MonoBehaviour
 
     public void GenerateMail(Letter letter)
     {
+        GetLetters();
         this.letters.Add(letter); // Add the letter to the mailbox's letters list
     }
 }

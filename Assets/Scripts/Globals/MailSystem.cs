@@ -116,10 +116,11 @@ public class MailSystem
         }
     }
 
-    public void PopulateMailboxes ()
+    public void PopulateMailboxes()
     {
         List<Letter> letters = GenerateMail();
         int index = 0;
+        if (mailboxes == null) FindAllMailBoxes();
         foreach(Mailbox mailbox in mailboxes)
         {
             Debug.Log(string.Format("Generated mail for mailbox: {0}", mailbox.name));

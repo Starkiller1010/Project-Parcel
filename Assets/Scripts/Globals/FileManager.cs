@@ -66,7 +66,7 @@ public class FileManager
     public static TextAsset[] GetLetterFiles()
     {
         // string path = "Letter/Day " + Game.GET_TIME_TRACKER().GetDay() + "/Default.txt";
-        string path = "Letter/Test.txt";
+        string path = "Letter/Day 0";
         Debug.Log("Attempting to load letter files from path: " + path);
         TextAsset[] letterFiles = Resources.LoadAll<TextAsset>(path);
         if (letterFiles == null || letterFiles.Length == 0)
