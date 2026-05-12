@@ -1,11 +1,15 @@
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using System;
+using Random = UnityEngine.Random;
 
 
 public class MailSystem
 {
     private List<Mailbox> mailboxes = new List<Mailbox>();
+
+    private Dictionary<int, List<LetterProbabilityTable>> LetterDeliveryTable = new Dictionary<int, List<LetterProbabilityTable>>(); 
 
     public MailSystem()
     {
@@ -140,10 +144,15 @@ public class MailSystem
         }
         return letters;
     }
-    
+
     private static int GenerateCharacterAddress()
     {
         return Random.Range(1000, 9999);
+    }
+    
+    struct LetterProbabilityTable {
+        string id;
+        float probability;
     }
 
 }

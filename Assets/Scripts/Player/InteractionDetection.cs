@@ -31,7 +31,9 @@ public class InteractionDetection
             }
         }
     }
-    
+
+    #region Tags (Constants)
+
     public void CollisionCheck(GameObject gameObject)
     {
         if (isInteracting && !processingInteraction)
@@ -67,6 +69,8 @@ public class InteractionDetection
             isInteracting = false;
         }
     }
+    
+    #endregion
 
     private void interactToSave()
     {

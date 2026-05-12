@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public static class Game
@@ -8,6 +6,14 @@ public static class Game
     private static Player PLAYER = null;
     private static TimeTracker timeTracker = null;
     // TODO Setting Script should be init placed here
+
+    [RuntimeInitializeOnLoadMethod]
+    static void OnGameStart()
+    {
+        string[] paths = { "/SaveGames" };
+        FileUtils.MakeDirectories(paths);
+    }
+
     public static GameState GET_GAME_STATE()
     {
         if (GAME_STATE == null)
