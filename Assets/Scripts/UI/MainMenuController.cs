@@ -40,7 +40,7 @@ public class MainMenuController : MonoBehaviour
     {
         Debug.Log("Clicked on Load Game Button");
         SceneManager.LoadScene("WorkroomScene");
-        string save = FileManager.GetSavedGameStates(FileManager.debugDirectory)[0];
+        string save = FileManager.GetSavedGameStates()[0];
         GameState state = Game.GET_GAME_STATE();
         FileManager.LoadGameState(save);
     }

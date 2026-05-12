@@ -1,302 +1,354 @@
 {
-    "1": {
-        "fromIndex": 0,
-        "toAddress": 2,
-        "requirements": [],
-        "content": "Hello, this is a letter from A to 123."
-    },
-    "2": {
-        "fromIndex": 1,
-        "toAddress": 5,
-        "requirements": [],
-        "content": "Hi, this is a letter from B to 456."
-    },
-    "3": {
-        "fromIndex": 2,
-        "toAddress": 6,
-        "requirements": [],
-        "content": "Greetings, this is a letter from C to 789."
-    },
-    "4": {
-        "fromIndex": 3,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Hey, this is a letter from D to 321."
-    },
-    "5": {
-        "fromIndex": 4,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Hello, this is a letter from E to 654."
-    },
-    "6": {
-        "fromIndex": 5,
-        "toAddress": 7,
-        "requirements": [],
-        "content": "Hi, this is a letter from F to 987."
-    },
-    "7": {
-        "fromIndex": 6,
-        "toAddress": 3,
-        "requirements": [],
-        "content": "Greetings, this is a letter from G to 111."
-    },
-    "8": {
-        "fromIndex": 7,
-        "toAddress": 5,
-        "requirements": [],
-        "content": "Hey, this is a letter from H to 222."
-    },
-    "9": {
-        "fromIndex": 0,
-        "toAddress": 3,
-        "requirements": [],
-        "content": "Hello, this is a letter from I to 333."
-    },
-    "10": {
-        "fromIndex": 1,
-        "toAddress": 4,
-        "requirements": [],
-        "content": "Hi, this is a letter from J to 444."
-    },
-    "11": {
-        "fromIndex": 2,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Greetings, this is a letter from K to 555."
-    },
-    "12": {
-        "fromIndex": 3,
-        "toAddress": 6,
-        "requirements": [],
-        "content": "Hey, this is a letter from L to 666."
-    },
-    "13": {
-        "fromIndex": 4,
-        "toAddress": 1,
-        "requirements": [],
-        "content": "Hello, this is a letter from M to 777."
-    },
-    "14": {
-        "fromIndex": 5,
-        "toAddress": 7,
-        "requirements": [],
-        "content": "Hi, this is a letter from N to 888."
-    },
-    "15": {
-        "fromIndex": 6,
-        "toAddress": 2,
-        "requirements": [],
-        "content": "Greetings, this is a letter from O to 999."
-    },
-    "16": {
-        "fromIndex": 7,
-        "toAddress": 4,
-        "requirements": [],
-        "content": "Hey, this is a letter from P to 112."
-    },
-    "17": {
-        "fromIndex": 0,
-        "toAddress": 6,
-        "requirements": [],
-        "content": "Hello, this is a letter from Q to 223."
-    },
-    "18": {
-        "fromIndex": 1,
-        "toAddress": 7,
-        "requirements": [],
-        "content": "Hi, this is a letter from R to 334."
-    },
-    "19": {
-        "fromIndex": 2,
-        "toAddress": 4,
-        "requirements": [],
-        "content": "Greetings, this is a letter from S to 445."
-    },
-    "20": {
-        "fromIndex": 3,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Hey, this is a letter from T to 556."
-    },
-    "21": {
-        "fromIndex": 4,
-        "toAddress": 6,
-        "requirements": [],
-        "content": "Hello, this is a letter from U to 667."
-    },
-    "22": {
-        "fromIndex": 5,
-        "toAddress": 1,
-        "requirements": [],
-        "content": "Hi, this is a letter from V to 778."
-    },
-    "23": {
-        "fromIndex": 6,
-        "toAddress": 7,
-        "requirements": [],
-        "content": "Greetings, this is a letter from W to 889."
-    },
-    "24": {
-        "fromIndex": 7,
-        "toAddress": 2,
-        "requirements": [],
-        "content": "Hey, this is a letter from X to 990."
-    },
-    "25": {
-        "fromIndex": 0,
-        "toAddress": 4,
-        "requirements": [],
-        "content": "Hello, this is a letter from Y to 1234."
-    },
-    "26": {
-        "fromIndex": 1,
-        "toAddress": 2,
-        "requirements": [],
-        "content": "Hi, this is a letter from Z to 5678."
-    },
-    "27": {
-        "fromIndex": 2,
-        "toAddress": 1,
-        "requirements": [],
-        "content": "Greetings, this is a letter from AA to 9101."
-    },
-    "28": {
-        "fromIndex": 3,
-        "toAddress": 6,
-        "requirements": [],
-        "content": "Hey, this is a letter from BB to 1121."
-    },
-    "29": {
-        "fromIndex": 4,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Hello, this is a letter from CC to 3141."
-    },
-    "30": {
-        "fromIndex": 5,
-        "toAddress": 7,
-        "requirements": [],
-        "content": "Hi, this is a letter from DD to 5161."
-    },
-    "31": {
-        "fromIndex": 6,
-        "toAddress": 5,
-        "requirements": [],
-        "content": "Greetings, this is a letter from EE to 7181."
-    },
-    "32": {
-        "fromIndex": 7,
-        "toAddress": 6,
-        "requirements": [],
-        "content": "Hey, this is a letter from FF to 9202."
-    },
-    "33": {
-        "fromIndex": 0,
-        "toAddress": 3,
-        "requirements": [],
-        "content": "Hello, this is a letter from GG to 1222."
-    },
-    "34": {
-        "fromIndex": 3,
-        "toAddress": 1,
-        "requirements": [],
-        "content": "Hi, this is a letter from HH to 3242."
-    },
-    "35": {
-        "fromIndex": 5,
-        "toAddress": 6,
-        "requirements": [],
-        "content": "Greetings, this is a letter from II to 5262."
-    },
-    "36": {
-        "fromIndex": 6,
-        "toAddress": 4,
-        "requirements": [],
-        "content": "Hey, this is a letter from JJ to 7282."
-    },
-    "37": {
-        "fromIndex": 8,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Hello, this is a letter from KK to 9303."
-    },
-    "38": {
-        "fromIndex": 8,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Hi, this is a letter from LL to 1323."
-    },
-    "39": {
-        "fromIndex": 8,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Greetings, this is a letter from MM to 3343."
-    },
-    "40": {
-        "fromIndex": 8,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Hey, this is a letter from NN to 5363."
-    },
-    "41": {
-        "fromIndex": 8,
-        "toAddress": 4,
-        "requirements": [],
-        "content": "Hello, this is a letter from OO to 7383."
-    },
-    "42": {
-        "fromIndex": 8,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Hi, this is a letter from PP to 9404."
-    },
-    "43": {
-        "fromIndex": 8,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Greetings, this is a letter from QQ to 1424."
-    },
-    "44": {
-        "fromIndex": 8,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Hey, this is a letter from RR to 3444."
-    },
-    "45": {
-        "fromIndex": 8,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Hello, this is a letter from SS to 5464."
-    },
-    "46": {
-        "fromIndex": 8,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Hi, this is a letter from TT to 7484."
-    },
-    "47": {
-        "fromIndex": 8,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Greetings, this is a letter from UU to 9505."
-    },
-    "48": {
-        "fromIndex": 8,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Hey, this is a letter from VV to 1525."
-    },
-    "49": {
-        "fromIndex": 8,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Hello, this is a letter from WW to 3545."
-    },
-    "50": {
-        "fromIndex": 8,
-        "toAddress": 0,
-        "requirements": [],
-        "content": "Hi, this is a letter from XX to 5565."
-    }
+    "letters": [
+        {
+            "UID": 1,
+            "fromIndex": 0,
+            "toIndex": 2,
+            "requirements": [],
+            "content": "Hello, this is a letter from A to 123."
+        },
+        {
+            "UID": 2,
+            "fromIndex": 1,
+            "toIndex": 5,
+            "requirements": [],
+            "content": "Hi, this is a letter from B to 456."
+        },
+        {
+            "UID": 3,
+            "fromIndex": 2,
+            "toIndex": 6,
+            "requirements": [],
+            "content": "Greetings, this is a letter from C to 789."
+        },
+        {
+            "UID": 4,
+            "fromIndex": 3,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hey, this is a letter from D to 321."
+        },
+        {
+            "UID": 5,
+            "fromIndex": 4,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hello, this is a letter from E to 654."
+        },
+        {
+            "UID": 6,
+            "fromIndex": 5,
+            "toIndex": 7,
+            "requirements": [],
+            "content": "Hi, this is a letter from F to 987."
+        },
+        {
+            "UID": 7,
+            "fromIndex": 6,
+            "toIndex": 3,
+            "requirements": [],
+            "content": "Greetings, this is a letter from G to 111."
+        },
+        {
+            "UID": 8,
+            "fromIndex": 7,
+            "toIndex": 5,
+            "requirements": [],
+            "content": "Hey, this is a letter from H to 222."
+        },
+        {
+            "UID": 9,
+            "fromIndex": 0,
+            "toIndex": 3,
+            "requirements": [],
+            "content": "Hello, this is a letter from I to 333."
+        },
+        {
+            "UID": 10,
+            "fromIndex": 1,
+            "toIndex": 4,
+            "requirements": [],
+            "content": "Hi, this is a letter from J to 444."
+        },
+        {
+            "UID": 11,
+            "fromIndex": 2,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Greetings, this is a letter from K to 555."
+        },
+        {
+            "UID": 12,
+            "fromIndex": 3,
+            "toIndex": 6,
+            "requirements": [],
+            "content": "Hey, this is a letter from L to 666."
+        },
+        {
+            "UID": 13,
+            "fromIndex": 4,
+            "toIndex": 1,
+            "requirements": [],
+            "content": "Hello, this is a letter from M to 777."
+        },
+        {
+            "UID": 14,
+            "fromIndex": 5,
+            "toIndex": 7,
+            "requirements": [],
+            "content": "Hi, this is a letter from N to 888."
+        },
+        {
+            "UID": 15,
+            "fromIndex": 6,
+            "toIndex": 2,
+            "requirements": [],
+            "content": "Greetings, this is a letter from O to 999."
+        },
+        {
+            "UID": 16,
+            "fromIndex": 7,
+            "toIndex": 4,
+            "requirements": [],
+            "content": "Hey, this is a letter from P to 112."
+        },
+        {
+            "UID": 17,
+            "fromIndex": 0,
+            "toIndex": 6,
+            "requirements": [],
+            "content": "Hello, this is a letter from Q to 223."
+        },
+        {
+            "UID": 18,
+            "fromIndex": 1,
+            "toIndex": 7,
+            "requirements": [],
+            "content": "Hi, this is a letter from R to 334."
+        },
+        {
+            "UID": 19,
+            "fromIndex": 2,
+            "toIndex": 4,
+            "requirements": [],
+            "content": "Greetings, this is a letter from S to 445."
+        },
+        {
+            "UID": 20,
+            "fromIndex": 3,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hey, this is a letter from T to 556."
+        },
+        {
+            "UID": 21,
+            "fromIndex": 4,
+            "toIndex": 6,
+            "requirements": [],
+            "content": "Hello, this is a letter from U to 667."
+        },
+        {
+            "UID": 22,
+            "fromIndex": 5,
+            "toIndex": 1,
+            "requirements": [],
+            "content": "Hi, this is a letter from V to 778."
+        },
+        {
+            "UID": 23,
+            "fromIndex": 6,
+            "toIndex": 7,
+            "requirements": [],
+            "content": "Greetings, this is a letter from W to 889."
+        },
+        {
+            "UID": 24,
+            "fromIndex": 7,
+            "toIndex": 2,
+            "requirements": [],
+            "content": "Hey, this is a letter from X to 990."
+        },
+        {
+            "UID": 25,
+            "fromIndex": 0,
+            "toIndex": 4,
+            "requirements": [],
+            "content": "Hello, this is a letter from Y to 1234."
+        },
+        {
+            "UID": 26,
+            "fromIndex": 1,
+            "toIndex": 2,
+            "requirements": [],
+            "content": "Hi, this is a letter from Z to 5678."
+        },
+        {
+            "UID": 27,
+            "fromIndex": 2,
+            "toIndex": 1,
+            "requirements": [],
+            "content": "Greetings, this is a letter from AA to 9101."
+        },
+        {
+            "UID": 28,
+            "fromIndex": 3,
+            "toIndex": 6,
+            "requirements": [],
+            "content": "Hey, this is a letter from BB to 1121."
+        },
+        {
+            "UID": 29,
+            "fromIndex": 4,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hello, this is a letter from CC to 3141."
+        },
+        {
+            "UID": 30,
+            "fromIndex": 5,
+            "toIndex": 7,
+            "requirements": [],
+            "content": "Hi, this is a letter from DD to 5161."
+        },
+        {
+            "UID": 31,
+            "fromIndex": 6,
+            "toIndex": 5,
+            "requirements": [],
+            "content": "Greetings, this is a letter from EE to 7181."
+        },
+        {
+            "UID": 32,
+            "fromIndex": 7,
+            "toIndex": 6,
+            "requirements": [],
+            "content": "Hey, this is a letter from FF to 9202."
+        },
+        {
+            "UID": 33,
+            "fromIndex": 0,
+            "toIndex": 3,
+            "requirements": [],
+            "content": "Hello, this is a letter from GG to 1222."
+        },
+        {
+            "UID": 34,
+            "fromIndex": 3,
+            "toIndex": 1,
+            "requirements": [],
+            "content": "Hi, this is a letter from HH to 3242."
+        },
+        {
+            "UID": 35,
+            "fromIndex": 5,
+            "toIndex": 6,
+            "requirements": [],
+            "content": "Greetings, this is a letter from II to 5262."
+        },
+        {
+            "UID": 36,
+            "fromIndex": 6,
+            "toIndex": 4,
+            "requirements": [],
+            "content": "Hey, this is a letter from JJ to 7282."
+        },
+        {
+            "UID": 37,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hi, this is a letter from LL to 1323."
+        },
+        {
+            "UID": 38,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Greetings, this is a letter from MM to 3343."
+        },
+        {
+            "UID": 39,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hey, this is a letter from NN to 5363."
+        },
+        {
+            "UID": 40,
+            "fromIndex": 8,
+            "toIndex": 4,
+            "requirements": [],
+            "content": "Hello, this is a letter from OO to 7383."
+        },
+        {
+            "UID": 41,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hi, this is a letter from PP to 9404."
+        },
+        {
+            "UID": 42,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Greetings, this is a letter from QQ to 1424."
+        },
+        {
+            "UID": 43,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hey, this is a letter from RR to 3444."
+        },
+        {
+            "UID": 44,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hello, this is a letter from SS to 5464."
+        },
+        {
+            "UID": 45,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hi, this is a letter from TT to 7484."
+        },
+        {
+            "UID": 46,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Greetings, this is a letter from UU to 9505."
+        },
+        {
+            "UID": 47,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hey, this is a letter from VV to 1525."
+        },
+        {
+            "UID": 48,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hello, this is a letter from WW to 3545."
+        },
+                {
+            "UID": 49,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hello, this is a letter from KK to 9303."
+        },
+        {
+            "UID": 50,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "If you're seeing this message, you got the wrong letter."
+        }
+    ]
 }

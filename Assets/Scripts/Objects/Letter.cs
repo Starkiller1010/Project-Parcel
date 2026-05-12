@@ -1,48 +1,74 @@
-using Unity.VisualScripting;
-using UnityEngine;
+using System;
+using System.Collections.Generic;
 
+[Serializable]
 public class Letter
 {
-    private int uuid;
-    private Sprite fromSymbol;
-    private int toAddress;
+    private int uid;
+    private int fromIndex;
+    private int toIndex;
     private string content;
-    public GameObject gameObject; // Reference to the GameObject representing the letter in the scene
+    private List<int> requirements;
 
-    public Letter(int toAddress, string content, int uuid = 0, Sprite fromSymbol = null)
+    public Letter(int toIndex, string content, int uuid = 50, int fromIndex = 0, int[] requirements = null)
     {
-        this.uuid = uuid;
-        this.fromSymbol = fromSymbol;
-        this.toAddress = toAddress;
-        this.content = content;
+        SetUID(uuid);
+        SetFromIndex(fromIndex);
+        SetToIndex(toIndex);
+        SetContent(content);
+        SetRequirements(requirements);
     }
 
-    public int getAddress()
+    public int GetUID()
     {
-        return toAddress;
+        return uid;
     }
 
-    public int setAddress(int newAddress)
+    public void SetUID(int newUid)
     {
-        toAddress = newAddress;
-        return toAddress;
-    }   
+        uid = newUid;
+    }
 
-    public string getContent()
+    public int GetToIndex()
+    {
+        return toIndex;
+    }
+
+    public void SetToIndex(int newAddress)
+    {
+        toIndex = newAddress;
+    }
+
+    public string GetContent()
     {
         return content;
     }
 
-    public string getFromSymbol()
+    public void SetContent(string content)
     {
-        return fromSymbol.name; // Return the name of the sprite as the symbol representing the sender
+        this.content = content;
     }
 
-    public void setFromSymbol(Sprite newSymbol)
+    public int GetFromIndex()
     {
-        fromSymbol = newSymbol;
-        this.gameObject = new GameObject("Letter for " + toAddress); // Create a new GameObject for the letter
-        SpriteRenderer renderer = this.gameObject.AddComponent<SpriteRenderer>(); // Add a SpriteRenderer component to the GameObject
-        renderer.sprite = fromSymbol; // Set the sprite of the SpriteRenderer to the symbol representing the sender
+        return fromIndex;
+    }
+
+    public void SetFromIndex(int newIndex)
+    {
+        fromIndex = newIndex;
+    }
+
+    public List<int> GetRequirements()
+    {
+        return requirements;
+    }
+
+    public void SetRequirements(int[] requirements)
+    {
+        if (requirements != null)
+        {
+            this.requirements = new List<int>(requirements);
+        }
     }
 }

@@ -4,8 +4,8 @@ using System.IO;
 
 static class FileUtils
 {
-
-    public static string GetSaveDirectory()
+    static List<string> SavedDirectories = new List<string>();
+    public static string GetRootDirectory()
     {
         string path = "";
 #if UNITY_EDITOR
@@ -16,13 +16,21 @@ static class FileUtils
         return path;
     }
 
+    public static string GetResourcesDirectory()
+    {
+        return Application.dataPath + "/Resources";
+    }
+
     public static void MakeDirectories(string[] directories)
     {
         foreach (string directory in directories)
         {
-            string path = GetSaveDirectory() + "/" + directory;
+            string path = GetRootDirectory() + "/" + directory;
             if (!Directory.Exists(path))
+            {
                 Directory.CreateDirectory(path);
+                SavedDirectories.Add(directory);
+            }
         }
     }
     
@@ -44,36 +52,28 @@ static class FileUtils
 
     public static string ReadFile(string filePath)
     {
-        string file = System.IO.File.ReadAllText(filePath);
+        string file = System.IO.File.ReadAllText(GetRootDirectory() + filePath);
         if (file == null)
         {
             Debug.LogError(string.Format("Failed to read file at {0}", filePath));
         }
         return file;
     }
-
-    public static string ReadFile(string directory, string fileName)
-    {
-        string filePath = GetSaveDirectory() + directory + "/" + fileName;
-        return ReadFile(filePath);
-    }
     
     public static void WriteFile(string filePath, string content)
     {
-        System.IO.File.WriteAllText(filePath, content);
+        System.IO.File.WriteAllText(GetRootDirectory() + filePath, content);
     }
 
-    public static void WriteFile(string directory, string fileName, string content)
+    public static TextAsset LoadTextFile(string filePath)
     {
-        string filePath = directory + "/" + fileName;
-        WriteFile(filePath, content);
+        Debug.Log(filePath);
+        return Resources.Load<TextAsset>(filePath);
     }
 
-    public static TextAsset LoadTextFile(string directory, string fileName)
+    public static T LoadJsonFile<T>(string filePath)
     {
-        // Path within the Resources folder, without file extension
-        string fullPath = directory + "/" + fileName;
-        return Resources.Load<TextAsset>(fullPath);
+        return JsonUtility.FromJson<T>(ReadFile(filePath));
     }
 
 
