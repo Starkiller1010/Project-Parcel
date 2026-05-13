@@ -1,0 +1,360 @@
+{
+    "days": [
+        {
+            "probabilities": {
+                "letterProbabilities": [
+                    {
+                        "UID": 4,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 8,
+                        "probability": 0.50
+                    }
+                ],
+                "eventProbabilities" : [
+                    {
+                        "UID": 1000,
+                        "probability" : 0.33
+                    }
+                ]
+            }
+        },
+        {
+            "probabilities": {
+                "letterProbabilities": [
+                     {
+                        "UID": 1,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 2,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 12,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 5,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 6,
+                        "probability": 0.50
+                    }
+                ],
+                "eventProbabilities" : [
+                    {
+                        "UID": 1000,
+                        "probability" : 0.33
+                    }
+                ]
+            }
+        },
+        {
+            "probabilities": {
+                "letterProbabilities": [
+                    {
+                        "UID": 1,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 2,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 3,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 12,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 5,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 6,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 14,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 16,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 10,
+                        "probability": 0.50
+                    }
+                ],
+                "eventProbabilities" : [
+                    {
+                        "UID": 1000,
+                        "probability" : 0.33
+                    }
+                ]
+            }
+        },
+        {
+            "probabilities": {
+                "letterProbabilities": [
+                    {
+                        "UID": 9,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 17,
+                        "probability": 0.33
+                    },
+                    {
+                        "UID": 10,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 20,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 13,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 14,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 22,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 7,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 16,
+                        "probability": 1
+                    }
+                ],
+                "eventProbabilities" : [
+                    {
+                        "UID": 1000,
+                        "probability" : 0.33
+                    }
+                ]
+            }
+        },
+        {
+            "probabilities": {
+                "letterProbabilities": [
+                    {
+                        "UID": 17,
+                        "probability": 0.66
+                    },
+                    {
+                        "UID": 25,
+                        "probability": 0.33
+                    },
+                                        {
+                        "UID": 20,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 18,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 11,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 28,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 13,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 21,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 22,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 15,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 24,
+                        "probability": 0.50
+                    }
+                ],
+                "eventProbabilities" : [
+                    {
+                        "UID": 1000,
+                        "probability" : 0.33
+                    }
+                ]
+            }
+        },
+        { 
+            "probabilities": {
+                "letterProbabilities": [
+                    {
+                        "UID": 9,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 17,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 25,
+                        "probability": 0.66
+                    },
+                    {
+                        "UID": 18,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 11,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 19,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 28,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 21,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 30,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 23,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 24,
+                        "probability": 1
+                    }
+                ],
+                "eventProbabilities" : [
+                    {
+                        "UID": 1000,
+                        "probability" : 0.33
+                    }
+                ]
+            }
+        },
+        {
+            "probabilities": {
+                "letterProbabilities": [
+                    {
+                        "UID": 25,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 33,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 26,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 19,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 27,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 34,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 29,
+                        "probability": 0.50
+                    },
+                    {
+                        "UID": 30,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 31,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 32,
+                        "probability": 0.50
+                    }
+                ],
+                "eventProbabilities" : [
+                    {
+                        "UID": 1000,
+                        "probability" : 0.33
+                    }
+                ]
+            }
+        },
+        {
+            "probabilities": {
+                "letterProbabilities": [
+                    {
+                        "UID": 33,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 26,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 27,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 34,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 29,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 35,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 36,
+                        "probability": 1
+                    },
+                    {
+                        "UID": 32,
+                        "probability": 1
+                    }
+                ],
+                "eventProbabilities" : [
+                    {
+                        "UID": 1000,
+                        "probability" : 0.33
+                    }
+                ]
+            }
+        }
+    ]
+}
