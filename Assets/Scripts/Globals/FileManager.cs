@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using UnityEditor;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class FileManager
 {
-    public static string Directory = FileUtils.GetRootDirectory();
-    public static string SAVE_DIRECTORY = "/SaveGames";
+    private static string RNG_TABLE_FILE_NAME = "/RNGTable";
+    private static string LETTERS_FILE_NAME = "/letters";
 
     public static void SaveGameState(GameState gameState)
     {
@@ -22,37 +20,38 @@ public class FileManager
             offset = gameState.GetGameFlags().GetOffset(),
             flags = FileUtils.StringifyFlags(gameState.GetGameFlags().GetMarkers())
         };
-        string json = JsonUtility.ToJson(meta);
-        FileUtils.WriteFile(FileUtils.CreateSaveFileName(DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")), json);
+        FileUtils.SaveGameFile(meta);
     }
 
     public static string[] GetSavedGameStates()
     {
-        string[] files = System.IO.Directory.GetFiles(FileUtils.GetRootDirectory() + SAVE_DIRECTORY, "SaveGame_*.json");
-        for (int i = 0; i < files.Length; i++)
-        {
-            files[i] = System.IO.Path.GetFileNameWithoutExtension(files[i]);
-        }
-        return files;
+        return FileUtils.GetFiles(FileUtils.SAVE_DIRECTORY, "SaveGame_*.json");
     }
 
-    public static DayTable LoadDayTable()
+    public static RNGTable LoadDayTable()
     {
-        string filePath = FileUtils.GetResourcesDirectory() + "/DayTable.json";
-        return FileUtils.LoadJsonFile<DayTable>(filePath);
+        string filePath = FileUtils.GetResourcesDirectory(RNG_TABLE_FILE_NAME);
+        RNGTable table = FileUtils.LoadJsonFile<RNGTable>(filePath);
+        return table;
     }
 
 
     public static GameState LoadGameState(string fileName)
     {
-        SaveState loadState = JsonUtility.FromJson<SaveState>(FileUtils.ReadFile(fileName));
-        FileUtils.LoadJsonFile<SaveState>(fileName);
+        SaveState loadState = FileUtils.LoadJsonFile<SaveState>(fileName);
         return FileUtils.ParseSaveStateIntoGameState(loadState);
     }
 
-    public static TextAsset[] GetLetterFiles()
+    public static List<Letter> GetLetters()
     {
-        string path = "Letter/Day 0";
+        string filePath = FileUtils.GetResourcesDirectory(LETTERS_FILE_NAME);
+        Letters letters = FileUtils.LoadJsonFile<Letters>(filePath);
+        return letters.letters;
+    }
+
+    public static TextAsset[] GetLetterFiles(int dayIndex)
+    {
+        string path = "Letter/Day " + dayIndex;
         Debug.Log("Attempting to load letter files from path: " + path);
         TextAsset[] letterFiles = Resources.LoadAll<TextAsset>(path);
         if (letterFiles == null || letterFiles.Length == 0)

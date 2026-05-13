@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class MailSystem
 {
     private List<Mailbox> mailboxes = new List<Mailbox>();
+    private int offset = 0;
 
     private Dictionary<int, List<LetterProbabilityTable>> LetterDeliveryTable = new Dictionary<int, List<LetterProbabilityTable>>(); 
 
@@ -20,6 +21,7 @@ public class MailSystem
     {
         FindAllMailBoxes();
         SetMailBoxAddresses(character_addresses);
+        offset = Game.GET_GAME_STATE().GetGameFlags().GetOffset();
     }
 
     public static int GenerateOffset()
@@ -120,29 +122,52 @@ public class MailSystem
         }
     }
 
-    public void PopulateMailboxes()
+    public void PopulateMailboxes(int dayIndex)
     {
-        List<Letter> letters = GenerateMail();
-        int index = 0;
+        List<Letter> letters = GenerateMail(dayIndex);
         if (mailboxes == null) FindAllMailBoxes();
-        foreach(Mailbox mailbox in mailboxes)
+        foreach(Letter letter in letters)
         {
-            Debug.Log(string.Format("Generated mail for mailbox: {0}", mailbox.name));
-            mailbox.GenerateMail(letters[index]);
-            index = (index + 1) % letters.Count;
+            int index = CalculateMailbox(letter.toIndex);
+            Debug.Log(string.Format("Populating mailbox {0}", index));
+            Mailbox mailbox = mailboxes.ToArray()[index];
+            if (mailbox != null)
+            {
+                mailbox.GenerateMail(letter);
+            }
         }
     }
 
-    private List<Letter> GenerateMail()
+    private List<Letter> GenerateMail(int dayIndex)
     {
-        TextAsset[] files = FileManager.GetLetterFiles();
         List<Letter> letters = new List<Letter>();
-        foreach (TextAsset file in files)
+        List<Letter> allLetters = FileManager.GetLetters();
+        List<Probability> letterChances = FileManager.LoadDayTable().days[dayIndex].probabilities.letterProbabilities;
+        foreach (Probability chance in letterChances)
         {
-            Debug.Log(string.Format("File: {0} Content: {0}\n", file.name, file.text));
-            letters.Add(new Letter(0, file.text));
+            Letter letter = allLetters.Find(x => x.GetUID() == chance.UID);
+            if (letter != null && CheckRequirements(letter))
+            {
+                letters.Add(letter);
+            }
         }
         return letters;
+    }
+    
+    private bool CheckRequirements(Letter letter)
+    {
+        foreach(int requirement in letter.requirements)
+        {
+            if (!Game.GET_GAME_STATE().GetGameFlags().GetCompletedLetters().ContainsKey(requirement))
+                return false;
+        }
+        return true;
+    }
+    
+    private int CalculateMailbox(int toIndex)
+    {
+        int mailBoxIndex = Math.Abs(toIndex / 2);
+        return 0 + mailBoxIndex;
     }
 
     private static int GenerateCharacterAddress()

@@ -101,11 +101,7 @@ public class InteractionDetection
 
     private void OnBedConfirmation()
     {
-        Debug.Log("Player has chosen to sleep and end the day.");
         Game.GET_GAME_STATE().EndDay();
-         // Reload the current scene to reflect the new day
-        // ToggleFreezePlayer(); // Unfreeze player movement after confirming the action
-        // HUD.HideConfirmationPanel(); // Hide the confirmation panel after the player makes a choice
     }
 
     private void OnBedReject()

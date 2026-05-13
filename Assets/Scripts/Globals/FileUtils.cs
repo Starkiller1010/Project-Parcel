@@ -1,11 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
+using System;
 
 static class FileUtils
 {
-    static List<string> SavedDirectories = new List<string>();
+    // static List<string> SavedDirectories = new List<string>();
+    public static string SAVE_DIRECTORY = "/SaveGames";
+
     public static string GetRootDirectory()
+    {
+        return Application.dataPath;
+    }
+
+    public static string GetSaveDirectory()
     {
         string path = "";
 #if UNITY_EDITOR
@@ -16,27 +25,29 @@ static class FileUtils
         return path;
     }
 
-    public static string GetResourcesDirectory()
+    public static string GetResourcesDirectory(string file = "")
     {
-        return Application.dataPath + "/Resources";
+        return GetRootDirectory() + "/Resources" + file;
     }
 
-    public static void MakeDirectories(string[] directories)
+    // public static void MakeDirectories(string[] directories)
+    // {
+    //     foreach (string directory in directories)
+    //     {
+    //         string path = GetRootDirectory() + "/" + directory;
+    //         if (!Directory.Exists(path))
+    //         {
+    //             Directory.CreateDirectory(path);
+    //             SavedDirectories.Add(directory);
+    //         }
+    //     }
+    // }
+
+    public static void SaveGameFile(SaveState state)
     {
-        foreach (string directory in directories)
-        {
-            string path = GetRootDirectory() + "/" + directory;
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-                SavedDirectories.Add(directory);
-            }
-        }
-    }
-    
-    public static string CreateSaveFileName(string date)
-    {
-        return "SaveGame_" + date + ".json";
+        string fileName = string.Format("SaveGame_{0}.json", DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
+        string json = JsonConvert.SerializeObject(state);
+        WriteFile(fileName, json);
     }
 
     public static GameState ParseSaveStateIntoGameState(SaveState saveState)
@@ -50,9 +61,19 @@ static class FileUtils
         return game;
     }
 
-    public static string ReadFile(string filePath)
+    public static string[] GetFiles(string filePath, string regex)
     {
-        string file = System.IO.File.ReadAllText(GetRootDirectory() + filePath);
+        string[] files = System.IO.Directory.GetFiles(GetRootDirectory() + filePath, regex);
+        for (int i = 0; i < files.Length; i++)
+        {
+            files[i] = System.IO.Path.GetFileNameWithoutExtension(files[i]);
+        }
+        return files;
+    }
+
+    private static string ReadFile(string filePath)
+    {
+        string file = System.IO.File.ReadAllText(filePath);
         if (file == null)
         {
             Debug.LogError(string.Format("Failed to read file at {0}", filePath));
@@ -60,20 +81,20 @@ static class FileUtils
         return file;
     }
     
-    public static void WriteFile(string filePath, string content)
+    private static void WriteFile(string filePath, string content)
     {
         System.IO.File.WriteAllText(GetRootDirectory() + filePath, content);
     }
 
     public static TextAsset LoadTextFile(string filePath)
     {
-        Debug.Log(filePath);
         return Resources.Load<TextAsset>(filePath);
     }
 
     public static T LoadJsonFile<T>(string filePath)
     {
-        return JsonUtility.FromJson<T>(ReadFile(filePath));
+        T file = JsonConvert.DeserializeObject<T>(ReadFile(filePath + ".json"));
+        return file;
     }
 
 

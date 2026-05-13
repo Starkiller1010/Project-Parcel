@@ -65,7 +65,7 @@
                     },
                     {
                         "UID": 3,
-                        "probability": 1
+                        "probability": 0.50
                     },
                     {
                         "UID": 12,
@@ -106,6 +106,10 @@
                     {
                         "UID": 9,
                         "probability": 0.50
+                    },
+                    {
+                        "UID": 3,
+                        "probability": 1
                     },
                     {
                         "UID": 17,

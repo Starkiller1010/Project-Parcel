@@ -10,8 +10,8 @@ public static class Game
     [RuntimeInitializeOnLoadMethod]
     static void OnGameStart()
     {
-        string[] paths = { "/SaveGames" };
-        FileUtils.MakeDirectories(paths);
+        // string[] paths = { "/SaveGames" };
+        // FileUtils.MakeDirectories(paths);
     }
 
     public static GameState GET_GAME_STATE()

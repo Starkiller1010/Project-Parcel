@@ -43,11 +43,11 @@ public class Mailbox : MonoBehaviour
         this.addresses.Clear(); // Clear the addresses list to remove all character associations from the mailbox
     }
 
-    public void GenerateMail(int address, string content = "Empty letter content", int from = -1)
-    {
-        Letter letter = new Letter(address, content, fromIndex: from); // Create a new letter with the character's address and name
-        GenerateMail(letter);
-    }
+    // public void GenerateMail(int address, string content = "Empty letter content", int from = -1)
+    // {
+    //     Letter letter = new Letter(address, content, fromIndex); // Create a new letter with the character's address and name
+    //     GenerateMail(letter);
+    // }
 
     public void GenerateMail(Letter letter)
     {

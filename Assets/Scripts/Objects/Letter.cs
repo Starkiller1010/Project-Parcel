@@ -1,32 +1,40 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
+using Newtonsoft.Json;
+
+public class Letters
+{
+    public List<Letter> letters { get; set; }
+
+    public override string ToString()
+    {
+        List<string> output = new List<string>();
+        foreach(Letter letter in letters)
+        {
+            output.Add(letter.ToString() + "\n");
+        }
+        return string.Join(", ", output);
+    }
+}
 
 [Serializable]
 public class Letter
 {
-    private int uid;
-    private int fromIndex;
-    private int toIndex;
-    private string content;
-    private List<int> requirements;
-
-    public Letter(int toIndex, string content, int uuid = 50, int fromIndex = 0, int[] requirements = null)
-    {
-        SetUID(uuid);
-        SetFromIndex(fromIndex);
-        SetToIndex(toIndex);
-        SetContent(content);
-        SetRequirements(requirements);
-    }
+    public int UID;
+    public int fromIndex;
+    public int toIndex;
+    public string content;
+    public List<int> requirements;
 
     public int GetUID()
     {
-        return uid;
+        return UID;
     }
 
     public void SetUID(int newUid)
     {
-        uid = newUid;
+        UID = newUid;
     }
 
     public int GetToIndex()
@@ -70,5 +78,17 @@ public class Letter
         {
             this.requirements = new List<int>(requirements);
         }
+    }
+
+    public override string ToString()
+    {
+        StringBuilder builder = new StringBuilder();
+        string template = "{0}: {1}\n";
+        builder.Append(string.Format(template, "UID", GetUID()));
+        builder.Append(string.Format(template, "To", GetToIndex()));
+        builder.Append(string.Format(template, "From", GetFromIndex()));
+        builder.Append(string.Format(template, "Requirements", GetRequirements()));
+        builder.Append(string.Format(template, "Content", GetContent()));
+        return builder.ToString();
     }
 }
