@@ -60,4 +60,22 @@ public class Controls
             }
         }
     }
+
+    public void ToggleMovementState(bool movementAllowed)
+    {
+        foreach (Movement movementScript in movementScripts)
+        {
+            if (movementScript != null && movementScript.gameObject.GetComponent<Renderer>().isVisible)
+            {
+                if (movementAllowed)
+                {
+                    movementScript.unfreezeMovement();
+                }
+                else
+                {
+                    movementScript.freezeMovement();
+                }
+            }
+        }
+    }
 }

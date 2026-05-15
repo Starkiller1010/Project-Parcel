@@ -31,6 +31,7 @@ public class Flags
     public void AddCompletedLetter(Letter letter)
     {
         completedLetters.Add(letter.UID, letter);
+        Player.GetLetters().Remove(letter);
     }
 
     public bool[,] GetMarkers()

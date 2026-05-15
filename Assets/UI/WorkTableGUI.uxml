@@ -1,6 +1,0 @@
-<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <engine:Template name="GUI" src="project://database/Assets/UI/GUI.uxml?fileID=9197481963319205126&amp;guid=4683f5ef7daaf36458a4ac37a627efd1&amp;type=3#GUI" />
-    <Style src="project://database/Assets/UI/GUI.uss?fileID=7433441132597879392&amp;guid=14de6ee1ae3f19d4ea76912169060a4a&amp;type=3#GUI" />
-    <Style src="project://database/Assets/UI/mail-button.uss?fileID=7433441132597879392&amp;guid=80dbde61a38d5e04588c9c6f168a0515&amp;type=3#mail-button" />
-    <engine:Instance template="GUI" name="GUI" style="width: 100%; height: 100%;" />
-</engine:UXML>

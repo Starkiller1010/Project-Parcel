@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -18,25 +17,64 @@ public class Workstation : MonoBehaviour
 
     private List<Button> letters;
 
-    void OnEnable()
+    private LetterUI letterUI;
+    private bool opened = false;
+
+    void Start()
     {
-        ui = new GUI(gameObject);
         letters = new List<Button>();
+        letterUI = GetComponent<LetterUI>();
         mailSystem = Game.GET_GAME_STATE().GetMailSystem();
-        ui.MakeTable();
-        ui.HideGUI();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && opened)
+        {
+            DisableWorkTable();
+        }
+    }
+
+    private void CreateTable()
+    {
+        if (ui == null) 
+            ui = new GUI(gameObject);
+        ShowTable();
+    }
+
+    private void DestroyTable()
+    {
+        ui.DestroyGUI();
+    }
+
+    private void RemoveTable()
+    {
+        ui.RemoveClassFromColumn(GUI.Column.Middle, "table");
+        RemoveLetters();
+    }
+
+    private void ShowTable()
+    {
+        ui.ChangeColumnWithClass(GUI.Column.Middle, "table");
+        CheckLetters();
     }
 
     public void EnableWorkTable()
     {
-        CheckLetters();
-        ui.ShowGUI();
+        CreateTable();
+        Game.GET_PLAYER().GetControls().ToggleMovementState(false);
+        opened = true;
     }
 
     public void DisableWorkTable()
     {
-        // RemoveLetters();
-        ui.HideGUI();
+        if (ui != null)
+        {
+            RemoveTable();
+            letterUI.Close();
+        }
+        Game.GET_PLAYER().GetControls().ToggleMovementState(true);
+        opened = false;
     }
 
     public void AddLetter(Letter letter)
@@ -44,11 +82,8 @@ public class Workstation : MonoBehaviour
         int index = GetIndex();
         if (letters.Count < rowCount * 3)
         {
-            Button letterElement = ui.AddTemplateToColumn<Button>(GUI.Column.Middle, mailButton, index);
-            //index needs to be generated from letter toIndex
+            Button letterElement = ui.AddTemplateToColumnWithRow<Button>(GUI.Column.Middle, mailButton, index);
             letterElement.text = mailSystem.GetCharacterAddress(letter.toIndex).ToString();
-            // letterElement.RegisterCallback<OnButtonClick>(letter.Deliver);
-            // letterElement.clicked += OpenLetter;
             letterElement.clicked += delegate { OpenLetter(letter); };
             letters.Add(letterElement);
         }
@@ -61,7 +96,9 @@ public class Workstation : MonoBehaviour
 
     private void OpenLetter(Letter letter)
     {
-        Debug.Log(string.Format("Letter Opened: \n{0}", letter ));
+        Debug.Log(string.Format("Letter Opened: \n{0}", letter));
+        RemoveTable();
+        letterUI.Open(ui, letter);
     }
 
     private void CheckLetters()
@@ -104,14 +141,22 @@ public class Workstation : MonoBehaviour
         }
         return index;
     }
-    
+
     private void RemoveLetter(VisualElement letter)
     {
-        // ui.RemoveElementFromRow(GUI.Column.Middle, letter, GetIndex());
         letter.RemoveFromHierarchy();
     }
     
     private void RemoveLetters()
+    {
+        foreach (VisualElement element in letters)
+        {
+            RemoveLetter(element);
+        }
+        ClearLetters();
+    }
+
+    private void ClearLetters()
     {
         letters.Clear();
     }

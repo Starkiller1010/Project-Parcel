@@ -153,11 +153,17 @@ public class MailSystem
             Letter letter = allLetters.Find(x => x.GetUID() == chance.UID);
             if (letter != null && CheckRequirements(letter))
             {
-                Debug.Log(string.Format("Chance probability: {0}. Rolled {1}.", chance.probability * 100, ChanceRoll()));
-                letters.Add(letter);
+                int roll = ChanceRoll();
+                Debug.Log(string.Format("Chance probability: {0}.\n Rolled {1}.\n Delivered? {2}", chance.probability * 100, roll, Deliver(roll, chance.probability) ? "Yes" : "No"));
+                if (Deliver(roll, chance.probability)) letters.Add(letter);
             }
         }
         return letters;
+    }
+    
+    private bool Deliver(int roll, double probability)
+    {
+        return roll <= probability * 100;
     }
 
     private int ChanceRoll()

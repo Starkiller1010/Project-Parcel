@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -14,10 +15,20 @@ public class GUI
         CreateGUI(gameObject);
     }
 
+    void OnDestroy()
+    {
+        DestroyGUI();
+    }
+
     private void CreateGUI(GameObject gameObject)
     {
         gui = gameObject.GetComponent<UIDocument>().rootVisualElement;
         gui.Bind(new SerializedObject(gameObject));
+    }
+
+    public void DestroyGUI()
+    {
+        if (gui != null) gui.RemoveFromHierarchy();
     }
 
     private VisualElement GetCol(Column col)
@@ -36,11 +47,17 @@ public class GUI
         }
     }
 
-    public VisualElement MakeTable()
+    public VisualElement ChangeColumnWithClass(Column column, string className)
     {
-        VisualElement table = GetCol(Column.Middle);
-        table.AddToClassList("table");
-        return table;
+        VisualElement element = GetCol(column);
+        element.AddToClassList(className.ToLower());
+        return element;
+    }
+
+    public void RemoveClassFromColumn(Column column, string className)
+    {
+        VisualElement element = GetCol(column);
+        element.RemoveFromClassList(className);
     }
 
     public void AddRow(Column col)
@@ -69,6 +86,17 @@ public class GUI
         gui.RemoveFromClassList("hide");
     }
 
+    public void AddElement(Column column, VisualElement element)
+    {
+        if (element != null)
+        {
+            GetCol(column).Add(element);
+        } else
+        {
+            LogError("Add", "AddElement");
+        }
+    }
+
     public void AddElementToRow(Column column, VisualElement element, int index = 0)
     {
         if (element != null)
@@ -92,18 +120,17 @@ public class GUI
         }
     }
 
-    public VisualElement AddTemplateToColumn(Column col, VisualTreeAsset template, int index = 0)
+    public T AddTemplateToColumn<T>(Column col, VisualTreeAsset template) where T: VisualElement
     {
         TemplateContainer element = template.Instantiate();
-        AddElementToRow(col, element, index);
-        return element;
+        AddElement(col, element);
+        return element.ElementAt(0) as T;
     }
 
-
-    public T AddTemplateToColumn<T>(Column col, VisualTreeAsset template, int index = 0) where T: VisualElement
+    public T AddTemplateToColumnWithRow<T>(Column col, VisualTreeAsset template, int rowIndex) where T: VisualElement
     {
         TemplateContainer element = template.Instantiate();
-        AddElementToRow(col, element, index);
+        AddElementToRow(col, element, rowIndex);
         return element.ElementAt(0) as T;
     }
 
