@@ -11,7 +11,7 @@ public class Player
         collectedLetter.Add(letter);
     }
 
-    public static List<Letter> GetCollectedLetters()
+    public static List<Letter> GetLetters()
     {
         return collectedLetter;
     }

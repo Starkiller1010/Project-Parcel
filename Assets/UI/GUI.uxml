@@ -1,0 +1,8 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/GUI.uss?fileID=7433441132597879392&amp;guid=14de6ee1ae3f19d4ea76912169060a4a&amp;type=3#GUI" />
+    <engine:VisualElement name="Container" class="container">
+        <engine:VisualElement name="Col" class="col left" />
+        <engine:VisualElement name="Col" class="col middle" />
+        <engine:VisualElement name="Col" class="col right" />
+    </engine:VisualElement>
+</engine:UXML>

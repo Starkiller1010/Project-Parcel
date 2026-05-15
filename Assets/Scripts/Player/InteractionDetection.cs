@@ -11,7 +11,7 @@ public class InteractionDetection
     {
         // This method is intentionally left empty to ensure that the Rigidbody2D's collision detection is active.
         // The actual interaction logic is handled in the OnCollisionStay2D and OnCollisionExit2D methods.
-        Debug.Log("Player has collided with an object: " + collision.gameObject.name);
+        // Debug.Log("Player has collided with an object: " + collision.gameObject.name);
     }
 
     public void OnCollisionExit2D(Collision2D collision)
@@ -29,17 +29,19 @@ public class InteractionDetection
                 HUD.HideDialoguePanel(); // Hide the dialogue panel when the player moves away from the DialogueEmitter
                 HUD.HideConfirmationPanel(); // Hide the confirmation panel as well, in case it was triggered by the DialogueEmitter
             }
+        } else if (gameObject.tag == "Workstation")
+        {
+            Workstation workstation = gameObject.GetComponent<Workstation>();
+            workstation.DisableWorkTable();
         }
     }
-
-    #region Tags (Constants)
 
     public void CollisionCheck(GameObject gameObject)
     {
         if (isInteracting && !processingInteraction)
         {
             processingInteraction = true;
-            Debug.Log("Player is touching a collider and has pressed E.");
+            Debug.Log(string.Format("Interacting with {0}", gameObject.name));
             switch (gameObject.tag)
             {
                 case "TransitionObject":
@@ -54,9 +56,9 @@ public class InteractionDetection
                 case "Mail Container":
                     interactWithMailContainer(gameObject.GetComponent<Mailbox>());
                     break;
-                // case "Mail Chute":
-                //     interactWithChute();
-                //     break;
+                case "Workstation":
+                    interactWithWorkTable(gameObject.GetComponent<Workstation>());
+                    break;
                 case "Test":
                     Debug.Log("Interacting with Test Object");
                     interactToSave();
@@ -70,7 +72,11 @@ public class InteractionDetection
         }
     }
     
-    #endregion
+    private void interactWithWorkTable(Workstation workstation)
+    {
+        workstation.EnableWorkTable();
+    }
+
 
     private void interactToSave()
     {
@@ -82,7 +88,6 @@ public class InteractionDetection
         int mailCount = mailbox.GetMailCount();
         if (mailCount > 0)
         {
-            Debug.Log("Player has collected " + mailCount + " pieces of mail from the mailbox.");
             Player.AddLetters(mailbox.GetLetters());
             mailbox.ClearMail();
         }

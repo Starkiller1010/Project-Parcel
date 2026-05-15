@@ -7,9 +7,9 @@ using Random = UnityEngine.Random;
 
 public class MailSystem
 {
-    private List<Mailbox> mailboxes = new List<Mailbox>();
+    private static List<Mailbox> mailboxes = new List<Mailbox>();
     private int offset = 0;
-
+    private static List<int> AllAddresses = new List<int>();
     private Dictionary<int, List<LetterProbabilityTable>> LetterDeliveryTable = new Dictionary<int, List<LetterProbabilityTable>>(); 
 
     public MailSystem()
@@ -21,7 +21,7 @@ public class MailSystem
     {
         FindAllMailBoxes();
         SetMailBoxAddresses(character_addresses);
-        offset = Game.GET_GAME_STATE().GetGameFlags().GetOffset();
+        SetOffset();
     }
 
     public static int GenerateOffset()
@@ -29,19 +29,31 @@ public class MailSystem
         return Random.Range(0, 5);
     }
 
+    void SetOffset()
+    {
+        offset = Game.GET_GAME_STATE().GetGameFlags().GetOffset();
+    }
+
+    public int GetCharacterAddress(int toIndex)
+    {
+        int characterIndex = (offset + toIndex) % CharacterGenerator.getCharacterNames().Length;
+        return 99999;
+    }
+
     public static int[] GenerateCharacterAddresses(int mailboxCount)
     {
-        List<int> addresses = new List<int>();
+        if (AllAddresses.Count != 0) AllAddresses.Clear();
         for (int i = 0; i < mailboxCount * 2; i++) // Assuming each mailbox has 2 addresses
         {
-            int address = GenerateCharacterAddress(); // Generate a random address between 1000 and 9999
-            while (addresses.Contains(address)) // Ensure the address is unique
+            int address;
+            // Generate a random unique address between 10000 and 99999
+            do
             {
                 address = GenerateCharacterAddress();
-            }
-            addresses.Add(address);
+            } while (AllAddresses.Contains(address));
+            AllAddresses.Add(address);
         }
-        return addresses.ToArray();
+        return AllAddresses.ToArray();
     }
 
     public void FindAllMailBoxes()
@@ -74,29 +86,9 @@ public class MailSystem
 
     public int[] GetAllMailBoxAddresses()
     {
-        List<int> addresses = new List<int>();
-        foreach (Mailbox mailbox in mailboxes)
-        {
-            addresses.AddRange(mailbox.addresses); // Add the addresses from each mailbox to the list
-        }
-        return addresses.ToArray();
-    }
-
-    public void SetMailBoxAddresses()
-    {
-        if (mailboxes.Count == 0)
-        {
-            Debug.LogError("No mailboxes found in the scene.");
-        }
-        else
-        {
-            foreach (Mailbox mailbox in mailboxes)
-            {
-                mailbox.ClearAddresses();
-                mailbox.addAddress(GenerateCharacterAddress());
-                mailbox.addAddress(GenerateCharacterAddress());
-            }
-        }
+        if (AllAddresses.Count == 0)
+            GenerateCharacterAddresses(4);
+        return AllAddresses.ToArray();
     }
 
     public void SetMailBoxAddresses(int[] _addresses)
@@ -129,8 +121,8 @@ public class MailSystem
         foreach(Letter letter in letters)
         {
             int index = CalculateMailbox(letter.toIndex);
-            Debug.Log(string.Format("Populating mailbox {0}", index));
-            Mailbox mailbox = mailboxes.ToArray()[index];
+            string name = string.Format("Mailbox {0}", index);
+            Mailbox mailbox = mailboxes.Find(x => x.name == name);
             if (mailbox != null)
             {
                 mailbox.GenerateMail(letter);
@@ -163,16 +155,16 @@ public class MailSystem
         }
         return true;
     }
-    
+
     private int CalculateMailbox(int toIndex)
     {
         int mailBoxIndex = Math.Abs(toIndex / 2);
-        return 0 + mailBoxIndex;
+        return (offset + mailBoxIndex) % mailboxes.Count;
     }
 
     private static int GenerateCharacterAddress()
     {
-        return Random.Range(1000, 9999);
+        return Random.Range(10000, 99999);
     }
     
     struct LetterProbabilityTable {

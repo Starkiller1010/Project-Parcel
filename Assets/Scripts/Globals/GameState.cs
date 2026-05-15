@@ -8,11 +8,10 @@ public class GameState : MonoBehaviour
     void Start()
     {
         Director.InitDirector();
-        GetMailSystem();
         GetGameFlags();
         TimeTracker timeTracker = Game.GET_TIME_TRACKER();
         timeTracker.GetTimer().StartTimer(timeTracker.GetTimer().GetTimeinSeconds());
-        mailSystem.PopulateMailboxes(timeTracker.GetDay());
+        GetMailSystem().PopulateMailboxes(timeTracker.GetDay());
     }
     
     void FixedUpdate()

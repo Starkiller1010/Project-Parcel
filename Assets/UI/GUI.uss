@@ -1,0 +1,61 @@
+.center {
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+.table {
+    position: relative;
+    align-self: auto;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-shrink: 0;
+    flex-grow: 1;
+    background-color: rgba(229, 214, 20, 0.72);
+    background-image: resource('Sprite/9Sliced');
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.row {
+    justify-content: center;
+    align-self: auto;
+    align-items: center;
+    flex-shrink: 1;
+    flex-direction: row;
+}
+
+.container {
+    flex-shrink: 0;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    align-self: auto;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    flex-direction: row;
+}
+
+.col {
+    flex-shrink: 0;
+    flex-grow: 1;
+    align-self: stretch;
+    justify-content: center;
+}
+
+.left {
+}
+
+.middle {
+}
+
+.right {
+}

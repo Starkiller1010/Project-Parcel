@@ -1,0 +1,37 @@
+.mail-button {
+    background-image: url("project://database/Assets/Layer%20Lab/2D%20Icons-PictoIconPack01/Icons/PictoIcon_512/Icon_PictoIcon_Mail_Unread.Png?fileID=21300000&guid=54cb24372682247ecbb71460beec5fe1&type=3#Icon_PictoIcon_Mail_Unread");
+    background-color: rgba(60, 127, 173, 0);
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-slice-scale: 1px;
+    -unity-slice-left: 0;
+    -unity-slice-top: 0;
+    -unity-slice-right: 0;
+    -unity-slice-bottom: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    color: rgb(27, 27, 27);
+    font-size: 50px;
+    letter-spacing: 15px;
+    justify-content: center;
+    align-items: auto;
+    align-self: auto;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-top-width: 50px;
+    -unity-text-align: upper-center;
+    flex-shrink: 0;
+}
+
+.mail-button:hover {
+    scale: 1.2 1.2;
+    transition-duration: 0.3s, 0.1s;
+    transition-property: scale, background-color;
+    transition-timing-function: ease-out-elastic, ease;
+    transition-delay: 0.1s, 0.12s;
+    background-color: rgb(60, 127, 173);
+}

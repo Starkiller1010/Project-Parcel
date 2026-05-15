@@ -408,6 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ae80d9f6f35a244b712a5a43af6b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  letters: []
   addresses: 
 --- !u!61 &195937392
 BoxCollider2D:
@@ -1074,6 +1075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ae80d9f6f35a244b712a5a43af6b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  letters: []
   addresses: 
 --- !u!61 &762467838
 BoxCollider2D:
@@ -1698,6 +1700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ae80d9f6f35a244b712a5a43af6b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  letters: []
   addresses: 
 --- !u!1 &853296379
 GameObject:
@@ -1875,9 +1878,11 @@ GameObject:
   - component: {fileID: 1349646465}
   - component: {fileID: 1349646466}
   - component: {fileID: 1349646467}
+  - component: {fileID: 1349646469}
+  - component: {fileID: 1349646468}
   m_Layer: 0
   m_Name: Workstation
-  m_TagString: Untagged
+  m_TagString: Workstation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2024,6 +2029,35 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1.0548427}
   m_EdgeRadius: 0
+--- !u!114 &1349646468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349646463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c98e07b6f3f27a4183fb1e3e180f292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mailButton: {fileID: 9197481963319205126, guid: a75cb9bcd6a8fa441b0043a3f812e57f, type: 3}
+--- !u!114 &1349646469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349646463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 03b30bd55966b2345acf47ed4f15e11a, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 4683f5ef7daaf36458a4ac37a627efd1, type: 3}
+  m_SortingOrder: 0
 --- !u!1 &1396505185
 GameObject:
   m_ObjectHideFlags: 0
@@ -2677,6 +2711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ae80d9f6f35a244b712a5a43af6b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  letters: []
   addresses: 
 --- !u!61 &2141530399
 BoxCollider2D:
