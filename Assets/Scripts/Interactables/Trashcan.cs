@@ -1,24 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class Trashcan : MonoBehaviour
 {
-    private BoxCollider2D boxCollider;
 
-    // Start is called before the first frame update
-    void Start()
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        boxCollider = GetComponent<BoxCollider2D>();
-        if(boxCollider == null)
+        if (collision.gameObject.tag == "Player")
         {
-            Debug.LogError("Trashcan requires a BoxCollider2D component.");
+            Player.GetLetters().Clear();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

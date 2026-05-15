@@ -18,10 +18,11 @@ public class Dialogue : TextEmitter
     protected override string PathBuilder()
     {
         StringBuilder pathBuilder = new StringBuilder();
+        pathBuilder.Append(DIALOGUE_DIRECTORY);
         GameState gameState = Game.GET_GAME_STATE();
         if (transform.parent == null || !gameAreas.Contains(transform.parent.name))
         {
-            pathBuilder.Append("Default");
+            pathBuilder.Append("/Default");
         }
         else
         {
@@ -29,7 +30,6 @@ public class Dialogue : TextEmitter
             pathBuilder.Append(Game.GET_TIME_TRACKER().GetDay() + "/");
             pathBuilder.Append(this.name);
         }
-        Debug.Log("Constructed path: " + pathBuilder.ToString());
         return pathBuilder.ToString();
     }
 }

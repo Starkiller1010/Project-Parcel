@@ -1,322 +1,354 @@
 {
     "letters": [
         {
-            "uuid": 1,
-            "fromSymbol": "A",
-            "toAddress": 123,
+            "UID": 1,
+            "fromIndex": 0,
+            "toIndex": 2,
+            "requirements": [],
             "content": "Hello, this is a letter from A to 123."
         },
         {
-            "uuid": 2,
-            "fromSymbol": "B",
-            "toAddress": 456,
+            "UID": 2,
+            "fromIndex": 1,
+            "toIndex": 5,
+            "requirements": [],
             "content": "Hi, this is a letter from B to 456."
         },
         {
-            "uuid": 3,
-            "fromSymbol": "C",
-            "toAddress": 789,
+            "UID": 3,
+            "fromIndex": 2,
+            "toIndex": 6,
+            "requirements": [1],
             "content": "Greetings, this is a letter from C to 789."
         },
         {
-            "uuid": 4,
-            "fromSymbol": "D",
-            "toAddress": 321,
-            "content": "Hey, this is a letter from D to 321."
+            "UID": 4,
+            "fromIndex": 3,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hey, this is a letter from D to 321.\nThis will probably have to be a path to the actual letter so it could find it.\nWe will see what this is capable of though."
         },
         {
-            "uuid": 5,
-            "fromSymbol": "E",
-            "toAddress": 654,
+            "UID": 5,
+            "fromIndex": 4,
+            "toIndex": 0,
+            "requirements": [],
             "content": "Hello, this is a letter from E to 654."
         },
         {
-            "uuid": 6,
-            "fromSymbol": "F",
-            "toAddress": 987,
+            "UID": 6,
+            "fromIndex": 5,
+            "toIndex": 7,
+            "requirements": [],
             "content": "Hi, this is a letter from F to 987."
         },
         {
-            "uuid": 7,
-            "fromSymbol": "G",
-            "toAddress": 111,
+            "UID": 7,
+            "fromIndex": 6,
+            "toIndex": 3,
+            "requirements": [3],
             "content": "Greetings, this is a letter from G to 111."
         },
         {
-            "uuid": 8,
-            "fromSymbol": "H",
-            "toAddress": 222,
+            "UID": 8,
+            "fromIndex": 7,
+            "toIndex": 5,
+            "requirements": [],
             "content": "Hey, this is a letter from H to 222."
         },
         {
-            "uuid": 9,
-            "fromSymbol": "I",
-            "toAddress": 333,
+            "UID": 9,
+            "fromIndex": 0,
+            "toIndex": 3,
+            "requirements": [1],
             "content": "Hello, this is a letter from I to 333."
         },
         {
-            "uuid": 10,
-            "fromSymbol": "J",
-            "toAddress": 444,
+            "UID": 10,
+            "fromIndex": 1,
+            "toIndex": 4,
+            "requirements": [2],
             "content": "Hi, this is a letter from J to 444."
         },
         {
-            "uuid": 11,
-            "fromSymbol": "K",
-            "toAddress": 555,
+            "UID": 11,
+            "fromIndex": 2,
+            "toIndex": 0,
+            "requirements": [15, 3],
             "content": "Greetings, this is a letter from K to 555."
         },
         {
-            "uuid": 12,
-            "fromSymbol": "L",
-            "toAddress": 666,
+            "UID": 12,
+            "fromIndex": 3,
+            "toIndex": 6,
+            "requirements": [],
             "content": "Hey, this is a letter from L to 666."
         },
         {
-            "uuid": 13,
-            "fromSymbol": "M",
-            "toAddress": 777,
+            "UID": 13,
+            "fromIndex": 4,
+            "toIndex": 1,
+            "requirements": [5, 10],
             "content": "Hello, this is a letter from M to 777."
         },
         {
-            "uuid": 14,
-            "fromSymbol": "N",
-            "toAddress": 888,
+            "UID": 14,
+            "fromIndex": 5,
+            "toIndex": 7,
+            "requirements": [8, 6],
             "content": "Hi, this is a letter from N to 888."
         },
         {
-            "uuid": 15,
-            "fromSymbol": "O",
-            "toAddress": 999,
+            "UID": 15,
+            "fromIndex": 6,
+            "toIndex": 2,
+            "requirements": [7],
             "content": "Greetings, this is a letter from O to 999."
         },
         {
-            "uuid": 16,
-            "fromSymbol": "P",
-            "toAddress": 112,
+            "UID": 16,
+            "fromIndex": 7,
+            "toIndex": 4,
+            "requirements": [5],
             "content": "Hey, this is a letter from P to 112."
         },
         {
-            "uuid": 17,
-            "fromSymbol": "Q",
-            "toAddress": 223,
+            "UID": 17,
+            "fromIndex": 0,
+            "toIndex": 6,
+            "requirements": [9],
             "content": "Hello, this is a letter from Q to 223."
         },
         {
-            "uuid": 18,
-            "fromSymbol": "R",
-            "toAddress": 334,
+            "UID": 18,
+            "fromIndex": 1,
+            "toIndex": 7,
+            "requirements": [10, 22],
             "content": "Hi, this is a letter from R to 334."
         },
         {
-            "uuid": 19,
-            "fromSymbol": "S",
-            "toAddress": 445,
+            "UID": 19,
+            "fromIndex": 2,
+            "toIndex": 4,
+            "requirements": [11],
             "content": "Greetings, this is a letter from S to 445."
         },
         {
-            "uuid": 20,
-            "fromSymbol": "T",
-            "toAddress": 556,
+            "UID": 20,
+            "fromIndex": 3,
+            "toIndex": 0,
+            "requirements": [12, 9],
             "content": "Hey, this is a letter from T to 556."
         },
         {
-            "uuid": 21,
-            "fromSymbol": "U",
-            "toAddress": 667,
+            "UID": 21,
+            "fromIndex": 4,
+            "toIndex": 6,
+            "requirements": [13],
             "content": "Hello, this is a letter from U to 667."
         },
         {
-            "uuid": 22,
-            "fromSymbol": "V",
-            "toAddress": 778,
+            "UID": 22,
+            "fromIndex": 5,
+            "toIndex": 1,
+            "requirements": [14, 2],
             "content": "Hi, this is a letter from V to 778."
         },
         {
-            "uuid": 23,
-            "fromSymbol": "W",
-            "toAddress": 889,
+            "UID": 23,
+            "fromIndex": 6,
+            "toIndex": 7,
+            "requirements": [15],
             "content": "Greetings, this is a letter from W to 889."
         },
         {
-            "uuid": 24,
-            "fromSymbol": "X",
-            "toAddress": 990,
+            "UID": 24,
+            "fromIndex": 7,
+            "toIndex": 2,
+            "requirements": [18, 16],
             "content": "Hey, this is a letter from X to 990."
         },
         {
-            "uuid": 25,
-            "fromSymbol": "Y",
-            "toAddress": 1234,
+            "UID": 25,
+            "fromIndex": 0,
+            "toIndex": 4,
+            "requirements": [17],
             "content": "Hello, this is a letter from Y to 1234."
         },
         {
-            "uuid": 26,
-            "fromSymbol": "Z",
-            "toAddress": 5678,
+            "UID": 26,
+            "fromIndex": 1,
+            "toIndex": 2,
+            "requirements": [18],
             "content": "Hi, this is a letter from Z to 5678."
         },
         {
-            "uuid": 27,
-            "fromSymbol": "AA",
-            "toAddress": 9101,
+            "UID": 27,
+            "fromIndex": 2,
+            "toIndex": 1,
+            "requirements": [19, 22],
             "content": "Greetings, this is a letter from AA to 9101."
         },
         {
-            "uuid": 28,
-            "fromSymbol": "BB",
-            "toAddress": 1121,
+            "UID": 28,
+            "fromIndex": 3,
+            "toIndex": 6,
+            "requirements": [20],
             "content": "Hey, this is a letter from BB to 1121."
         },
         {
-            "uuid": 29,
-            "fromSymbol": "CC",
-            "toAddress": 3141,
+            "UID": 29,
+            "fromIndex": 4,
+            "toIndex": 0,
+            "requirements": [21, 25],
             "content": "Hello, this is a letter from CC to 3141."
         },
         {
-            "uuid": 30,
-            "fromSymbol": "DD",
-            "toAddress": 5161,
+            "UID": 30,
+            "fromIndex": 5,
+            "toIndex": 7,
+            "requirements": [22],
             "content": "Hi, this is a letter from DD to 5161."
         },
         {
-            "uuid": 31,
-            "fromSymbol": "EE",
-            "toAddress": 7181,
+            "UID": 31,
+            "fromIndex": 6,
+            "toIndex": 5,
+            "requirements": [23],
             "content": "Greetings, this is a letter from EE to 7181."
         },
         {
-            "uuid": 32,
-            "fromSymbol": "FF",
-            "toAddress": 9202,
+            "UID": 32,
+            "fromIndex": 7,
+            "toIndex": 6,
+            "requirements": [23, 24],
             "content": "Hey, this is a letter from FF to 9202."
         },
         {
-            "uuid": 33,
-            "fromSymbol": "GG",
-            "toAddress": 1222,
+            "UID": 33,
+            "fromIndex": 0,
+            "toIndex": 3,
+            "requirements": [25],
             "content": "Hello, this is a letter from GG to 1222."
         },
         {
-            "uuid": 34,
-            "fromSymbol": "HH",
-            "toAddress": 3242,
+            "UID": 34,
+            "fromIndex": 3,
+            "toIndex": 1,
+            "requirements": [28],
             "content": "Hi, this is a letter from HH to 3242."
         },
         {
-            "uuid": 35,
-            "fromSymbol": "II",
-            "toAddress": 5262,
+            "UID": 35,
+            "fromIndex": 5,
+            "toIndex": 6,
+            "requirements": [30, 31],
             "content": "Greetings, this is a letter from II to 5262."
         },
         {
-            "uuid": 36,
-            "fromSymbol": "JJ",
-            "toAddress": 7282,
+            "UID": 36,
+            "fromIndex": 6,
+            "toIndex": 4,
+            "requirements": [31],
             "content": "Hey, this is a letter from JJ to 7282."
         },
         {
-            "uuid": 37,
-            "fromSymbol": "KK",
-            "toAddress": 9303,
-            "content": "Hello, this is a letter from KK to 9303."
-        },
-        {
-            "uuid": 38,
-            "fromSymbol": "LL",
-            "toAddress": 1323,
+            "UID": 37,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
             "content": "Hi, this is a letter from LL to 1323."
         },
         {
-            "uuid": 39,
-            "fromSymbol": "MM",
-            "toAddress": 3343,
+            "UID": 38,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
             "content": "Greetings, this is a letter from MM to 3343."
         },
         {
-            "uuid": 40,
-            "fromSymbol": "NN",
-            "toAddress": 5363,
+            "UID": 39,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
             "content": "Hey, this is a letter from NN to 5363."
         },
         {
-            "uuid": 41,
-            "fromSymbol": "OO",
-            "toAddress": 7383,
+            "UID": 40,
+            "fromIndex": 8,
+            "toIndex": 4,
+            "requirements": [],
             "content": "Hello, this is a letter from OO to 7383."
         },
         {
-            "uuid": 42,
-            "fromSymbol": "PP",
-            "toAddress": 9404,
+            "UID": 41,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
             "content": "Hi, this is a letter from PP to 9404."
         },
         {
-            "uuid": 43,
-            "fromSymbol": "QQ",
-            "toAddress": 1424,
+            "UID": 42,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
             "content": "Greetings, this is a letter from QQ to 1424."
         },
         {
-            "uuid": 44,
-            "fromSymbol": "RR",
-            "toAddress": 3444,
+            "UID": 43,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
             "content": "Hey, this is a letter from RR to 3444."
         },
         {
-            "uuid": 45,
-            "fromSymbol": "SS",
-            "toAddress": 5464,
+            "UID": 44,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
             "content": "Hello, this is a letter from SS to 5464."
         },
         {
-            "uuid": 46,
-            "fromSymbol": "TT",
-            "toAddress": 7484,
+            "UID": 45,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
             "content": "Hi, this is a letter from TT to 7484."
         },
         {
-            "uuid": 47,
-            "fromSymbol": "UU",
-            "toAddress": 9505,
+            "UID": 46,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
             "content": "Greetings, this is a letter from UU to 9505."
         },
         {
-            "uuid": 48,
-            "fromSymbol": "VV",
-            "toAddress": 1525,
+            "UID": 47,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
             "content": "Hey, this is a letter from VV to 1525."
         },
         {
-            "uuid": 49,
-            "fromSymbol": "WW",
-            "toAddress": 3545,
+            "UID": 48,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
             "content": "Hello, this is a letter from WW to 3545."
         },
-        {
-            "uuid": 50,
-            "fromSymbol": "XX",
-            "toAddress": 5565,
-            "content": "Hi, this is a letter from XX to 5565."
+                {
+            "UID": 49,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "Hello, this is a letter from KK to 9303."
         },
         {
-            "uuid": 51,
-            "fromSymbol": "YY",
-            "toAddress": 7585,
-            "content": "Greetings, this is a letter from YY to 7585."
-        },
-        {
-            "uuid": 52,
-            "fromSymbol": "ZZ",
-            "toAddress": 9606,
-            "content": "Hey, this is a letter from ZZ to 9606."
-        }, 
-        {
-            "uuid": 53,
-            "fromSymbol": "AAA",
-            "toAddress": 1726,
-            "content": "Hello, this is a letter from AAA to 1726."
+            "UID": 50,
+            "fromIndex": 8,
+            "toIndex": 0,
+            "requirements": [],
+            "content": "If you're seeing this message, you got the wrong letter."
         }
     ]
 }

@@ -1,48 +1,96 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Text;
+using Newtonsoft.Json;
 using Unity.VisualScripting;
-using UnityEngine;
 
+public class Letters
+{
+    public List<Letter> letters { get; set; }
+
+    public override string ToString()
+    {
+        List<string> output = new List<string>();
+        foreach(Letter letter in letters)
+        {
+            output.Add(letter.ToString() + "\n");
+        }
+        return string.Join(", ", output);
+    }
+}
+
+[Serializable]
 public class Letter
 {
-    private int uuid;
-    private Sprite fromSymbol;
-    private int toAddress;
-    private string content;
-    public GameObject gameObject; // Reference to the GameObject representing the letter in the scene
+    public int UID;
+    public int fromIndex;
+    public int toIndex;
+    public string content;
+    public List<int> requirements;
 
-    public Letter(Sprite fromSymbol, int toAddress, string content, int uuid = 0)
+    public int GetUID()
     {
-        this.uuid = uuid;
-        this.fromSymbol = fromSymbol;
-        this.toAddress = toAddress;
-        this.content = content;
+        return UID;
     }
 
-    public int getAddress()
+    public void SetUID(int newUid)
     {
-        return toAddress;
+        UID = newUid;
     }
 
-    public int setAddress(int newAddress)
+    public int GetToIndex()
     {
-        toAddress = newAddress;
-        return toAddress;
-    }   
+        return toIndex;
+    }
 
-    public string getContent()
+    public void SetToIndex(int newAddress)
+    {
+        toIndex = newAddress;
+    }
+
+    public string GetContent()
     {
         return content;
     }
 
-    public string getFromSymbol()
+    public void SetContent(string content)
     {
-        return fromSymbol.name; // Return the name of the sprite as the symbol representing the sender
+        this.content = content;
     }
 
-    public void setFromSymbol(Sprite newSymbol)
+    public int GetFromIndex()
     {
-        fromSymbol = newSymbol;
-        this.gameObject = new GameObject("Letter for " + toAddress); // Create a new GameObject for the letter
-        SpriteRenderer renderer = this.gameObject.AddComponent<SpriteRenderer>(); // Add a SpriteRenderer component to the GameObject
-        renderer.sprite = fromSymbol; // Set the sprite of the SpriteRenderer to the symbol representing the sender
+        return fromIndex;
+    }
+
+    public void SetFromIndex(int newIndex)
+    {
+        fromIndex = newIndex;
+    }
+
+    public List<int> GetRequirements()
+    {
+        return requirements;
+    }
+
+    public void SetRequirements(int[] requirements)
+    {
+        if (requirements != null)
+        {
+            this.requirements = new List<int>(requirements);
+        }
+    }
+
+    public override string ToString()
+    {
+        StringBuilder builder = new StringBuilder();
+        string template = "{0}: {1}\n";
+        builder.Append(string.Format(template, "UID", GetUID()));
+        builder.Append(string.Format(template, "To", GetToIndex()));
+        builder.Append(string.Format(template, "From", GetFromIndex()));
+        builder.Append(string.Format(template, "Requirements", GetRequirements().ToSeparatedString(",")));
+        builder.Append(string.Format(template, "Content", GetContent()));
+        return builder.ToString();
     }
 }

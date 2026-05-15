@@ -35,13 +35,13 @@ public abstract class TextEmitter : MonoBehaviour
             return text;
         } else if (textFile == null)
         {
-            textFile = FileManager.LoadTextFile(directory, PathBuilder());
+            textFile = FileUtils.LoadTextFile(PathBuilder());
             if (textFile == null)
             {
-                Debug.LogError("Failed to load text for: " + this.name + " at path: " + directory + "/" + PathBuilder() + ".txt");
+                Debug.LogError("Failed to load text for: " + this.name + " at path: " + PathBuilder() + ".txt");
                 return null;
             }
-            Debug.Log("Dialogue text loaded successfully: " + textFile.text);
+            Debug.Log("Text loaded successfully: " + textFile.text);
             SetText(textFile.text);
         }
         return text;
@@ -51,42 +51,4 @@ public abstract class TextEmitter : MonoBehaviour
     {
         this.text = newText;
     }
-
-    // public void DisplayText()
-    // {
-    //     GetText();
-    //     if (text != null)
-    //     {
-    //         UpdateTextPanel(text);
-    //     }
-    //     else
-    //     {
-    //         Debug.LogError("Text is null. Cannot display text.");
-    //     }
-    // }
-
-    // private void UpdateTextPanel(string newText = "")
-    // {
-    //     if (textPanel != null)
-    //     {
-    //         textPanel.SetActive(true);
-    //         textPanel.GetComponentInChildren<Text>().text = newText;
-    //     }
-    //     else
-    //     {
-    //         Debug.LogError("Panel GameObject with name 'Dialogue Box' not found in the scene.");
-    //     }
-    // }
-
-    // public void HideTextPanel()
-    // {
-    //     if (textPanel != null)
-    //     {
-    //         textPanel.SetActive(false);
-    //     }
-    //     else
-    //     {
-    //         Debug.LogError("Panel GameObject with name 'Dialogue Box' not found in the scene.");
-    //     }
-    // }
 }

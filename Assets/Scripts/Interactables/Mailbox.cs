@@ -1,17 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Mailbox : MonoBehaviour
 {
-    private List<Letter> letters;
-    public List<int> addresses; // Array to store the addresses of the characters associated with this mailbox  
+    public List<Letter> letters = new List<Letter>();
+    public List<int> addresses = new List<int>(); // Array to store the addresses of the characters associated with this mailbox  
 
     void Start()
     {
-        // Initialize the mailbox with a random number of mails for the day
-        letters = new List<Letter>(); // Initialize the letters list to store the mail for the day
-        addresses = new List<int>(); // Initialize the addresses list to store the character addresses
+
     }
 
     public int GetMailCount()
@@ -26,6 +23,9 @@ public class Mailbox : MonoBehaviour
 
     public Letter[] GetLetters()
     {
+        if (letters == null) {
+            letters = new List<Letter>();
+        }
         return this.letters.ToArray();
     }
 
@@ -42,9 +42,8 @@ public class Mailbox : MonoBehaviour
         this.addresses.Clear(); // Clear the addresses list to remove all character associations from the mailbox
     }
 
-    public void GenerateMail(Sprite Symbol, int address, string content = "Empty letter content")
+    public void GenerateMail(Letter letter)
     {
-        Letter letter = new Letter(Symbol, address, content); // Create a new letter with the character's address and name
         this.letters.Add(letter); // Add the letter to the mailbox's letters list
     }
 }

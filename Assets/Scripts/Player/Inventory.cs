@@ -26,8 +26,8 @@ public class Inventory : MonoBehaviour
     public void addLetter(Letter letter)
     {
         letters.Add(letter);
-        letter.gameObject = new GameObject("Letter for " + letter);
-        letter.gameObject.transform.position = letterSlots[letters.Count - 1].GetChild(1).transform.position; // Position the letter in the corresponding slot in the inventory UI
+        // letter.gameObject = new GameObject("Letter for " + letter);
+        // letter.gameObject.transform.position = letterSlots[letters.Count - 1].GetChild(1).transform.position; // Position the letter in the corresponding slot in the inventory UI
 
     }
 

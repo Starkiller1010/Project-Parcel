@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class Flags
 {
-    private List<Letter> completedLetters = new List<Letter>();
+    // private List<Letter> completedLetters = new List<Letter>();
+    private Dictionary<int, Letter> completedLetters = new Dictionary<int, Letter>();
     private int mailboxOffset = -1;
     private bool[,] markers = null;
 
@@ -22,14 +23,15 @@ public class Flags
         this.mailboxOffset = offset;
     }
 
-    public List<Letter> GetCompletedLetters()
+    public Dictionary<int, Letter> GetCompletedLetters()
     {
         return completedLetters;
     }
 
     public void AddCompletedLetter(Letter letter)
     {
-        completedLetters.Add(letter);
+        completedLetters.Add(letter.UID, letter);
+        Player.GetLetters().Remove(letter);
     }
 
     public bool[,] GetMarkers()
