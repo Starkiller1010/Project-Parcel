@@ -9,7 +9,7 @@
                     },
                     {
                         "UID": 8,
-                        "probability": 0.50
+                        "probability": 1
                     }
                 ],
                 "eventProbabilities" : [

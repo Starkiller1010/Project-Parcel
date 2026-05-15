@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -44,9 +45,11 @@ public class Workstation : MonoBehaviour
         if (letters.Count < rowCount * 3)
         {
             Button letterElement = ui.AddTemplateToColumn<Button>(GUI.Column.Middle, mailButton, index);
-            Debug.Log(letter);
             //index needs to be generated from letter toIndex
-            letterElement.text = mailSystem.GetAllMailBoxAddresses()[0].ToString();
+            letterElement.text = mailSystem.GetCharacterAddress(letter.toIndex).ToString();
+            // letterElement.RegisterCallback<OnButtonClick>(letter.Deliver);
+            // letterElement.clicked += OpenLetter;
+            letterElement.clicked += delegate { OpenLetter(letter); };
             letters.Add(letterElement);
         }
 
@@ -54,6 +57,11 @@ public class Workstation : MonoBehaviour
         {
             ui.AddRow(GUI.Column.Middle);
         }
+    }
+
+    private void OpenLetter(Letter letter)
+    {
+        Debug.Log(string.Format("Letter Opened: \n{0}", letter ));
     }
 
     private void CheckLetters()

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Newtonsoft.Json;
+using Unity.VisualScripting;
 
 public class Letters
 {
@@ -87,7 +89,7 @@ public class Letter
         builder.Append(string.Format(template, "UID", GetUID()));
         builder.Append(string.Format(template, "To", GetToIndex()));
         builder.Append(string.Format(template, "From", GetFromIndex()));
-        builder.Append(string.Format(template, "Requirements", GetRequirements()));
+        builder.Append(string.Format(template, "Requirements", GetRequirements().ToSeparatedString(",")));
         builder.Append(string.Format(template, "Content", GetContent()));
         return builder.ToString();
     }

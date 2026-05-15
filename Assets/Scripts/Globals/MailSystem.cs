@@ -37,7 +37,9 @@ public class MailSystem
     public int GetCharacterAddress(int toIndex)
     {
         int characterIndex = (offset + toIndex) % CharacterGenerator.getCharacterNames().Length;
-        return 99999;
+        Debug.Log(string.Format("Character index of {0} is {1}", characterIndex, CharacterGenerator.getCharacterNames()[characterIndex]));
+        int address = GetAllMailBoxAddresses()[characterIndex];
+        return address;
     }
 
     public static int[] GenerateCharacterAddresses(int mailboxCount)
@@ -59,6 +61,7 @@ public class MailSystem
     public void FindAllMailBoxes()
     {
         GameObject[] boxes = GameObject.FindGameObjectsWithTag("Mail Container");
+        mailboxes.Clear();
         foreach (GameObject box in boxes) mailboxes.Add(box.GetComponent<Mailbox>());
     }
 
@@ -86,8 +89,9 @@ public class MailSystem
 
     public int[] GetAllMailBoxAddresses()
     {
+        if (mailboxes == null || mailboxes.Count == 0) FindAllMailBoxes();
         if (AllAddresses.Count == 0)
-            GenerateCharacterAddresses(4);
+            GenerateCharacterAddresses(mailboxes.Count);
         return AllAddresses.ToArray();
     }
 
@@ -117,33 +121,48 @@ public class MailSystem
     public void PopulateMailboxes(int dayIndex)
     {
         List<Letter> letters = GenerateMail(dayIndex);
-        if (mailboxes == null) FindAllMailBoxes();
-        foreach(Letter letter in letters)
+        foreach (Letter letter in letters)
         {
-            int index = CalculateMailbox(letter.toIndex);
-            string name = string.Format("Mailbox {0}", index);
-            Mailbox mailbox = mailboxes.Find(x => x.name == name);
+            Mailbox mailbox = GetMailbox(letter.toIndex);
             if (mailbox != null)
             {
                 mailbox.GenerateMail(letter);
             }
         }
     }
+    
+    private Mailbox GetMailbox(int index)
+    {
+        string name = string.Format("Mailbox {0}", CalculateMailbox(index));
+        FindAllMailBoxes();
+        return mailboxes.Find(x =>
+        {
+            if (x != null)
+                return x.name == name;
+            else
+                return false;
+        });
+    }
 
     private List<Letter> GenerateMail(int dayIndex)
     {
-        List<Letter> letters = new List<Letter>();
-        List<Letter> allLetters = FileManager.GetLetters();
+        List<Letter> letters = new List<Letter>(), allLetters = FileManager.GetLetters();
         List<Probability> letterChances = FileManager.LoadDayTable().days[dayIndex].probabilities.letterProbabilities;
         foreach (Probability chance in letterChances)
         {
             Letter letter = allLetters.Find(x => x.GetUID() == chance.UID);
             if (letter != null && CheckRequirements(letter))
             {
+                Debug.Log(string.Format("Chance probability: {0}. Rolled {1}.", chance.probability * 100, ChanceRoll()));
                 letters.Add(letter);
             }
         }
         return letters;
+    }
+
+    private int ChanceRoll()
+    {
+        return Random.Range(0, 101);
     }
     
     private bool CheckRequirements(Letter letter)
