@@ -36,7 +36,6 @@ public class CharacterGenerator
         string name = string.Join(" ", firstName, lastName);
         character.setName(name);
         character.setAddress(address);
-        Debug.Log(character);
         return character;
     }
 
