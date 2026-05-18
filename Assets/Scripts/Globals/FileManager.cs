@@ -6,7 +6,8 @@ using UnityEngine;
 public class FileManager
 {
     private static string RNG_TABLE_FILE_NAME = "/RNGTable";
-    private static string LETTERS_FILE_NAME = "/letters";
+    private static string LETTERS_FILE_NAME = "/Letters";
+    private static string NAMES_FILE_NAME = "/Names";
 
     public static void SaveGameState(GameState gameState)
     {
@@ -33,6 +34,13 @@ public class FileManager
         string filePath = FileUtils.GetResourcesDirectory(RNG_TABLE_FILE_NAME);
         RNGTable table = FileUtils.LoadJsonFile<RNGTable>(filePath);
         return table;
+    }
+
+    public static Names LoadNames()
+    {
+        string filePath = FileUtils.GetResourcesDirectory(NAMES_FILE_NAME);
+        Names names = FileUtils.LoadJsonFile<Names>(filePath);
+        return names;
     }
 
 

@@ -1,10 +1,10 @@
+using System.Text;
 using UnityEngine;
 
 public class Character
 {
     private int Address;
     private string Name;
-    private Sprite Symbol;
 
     internal void setName(string v)
     {
@@ -26,13 +26,11 @@ public class Character
         return this.Address;
     }
 
-    internal void setSymbol(Sprite v)
+    public override string ToString()
     {
-        this.Symbol = v;
-    }
-
-    internal Sprite getSymbol()
-    {
-        return this.Symbol;
+        StringBuilder builder = new StringBuilder();
+        builder.Append("Name: " + getName());
+        builder.Append("\nAddress: " + getAddress());
+        return builder.ToString();
     }
 }

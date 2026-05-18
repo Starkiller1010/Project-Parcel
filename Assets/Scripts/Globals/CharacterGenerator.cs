@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterGenerator
 {
-    private static string[] characterNames = new string[] {
+    private static string[] roleNames = new string[] {
         "Diplomat",
         "Wife",
         "Mistress",
@@ -11,22 +12,37 @@ public class CharacterGenerator
         "Mother",
         "Cult Leader",
         "Kidnapper" };
+
+    private static string[] characterNames = null;
     // Start is called before the first frame update
-    public static void generateCharacters(int[] addresses, int offset = 0)
+    public static List<Character> generateCharacters(int[] addresses, int offset = 0)
     {
-        int index = offset * 2; // Start index for character names based on the offset, multiplied by 2 because each mailbox has 2 addresses
+        characterNames = new string[roleNames.Length];
+        List<Character> characters = new List<Character>();
+        Names names = FileManager.LoadNames();
         foreach (int address in addresses)
         {
-            generateCharacter(address, index);
-            index = (index + 1) % characterNames.Length; // Move to the next character for the next address, wrap around if we exceed the array length
+            characters.Add(generateCharacter(address, names));
         }
+        return characters;
     }
 
-    public static void generateCharacter(int address, int offset)
+    public static Character generateCharacter(int address, Names names)
     {
         Character character = new Character();
-        character.setName(characterNames[offset]);
+        string firstName = getRandomName(names.first);
+        names.first.Remove(firstName);
+        string lastName = getRandomName(names.last);
+        string name = string.Join(" ", firstName, lastName);
+        character.setName(name);
         character.setAddress(address);
+        Debug.Log(character);
+        return character;
+    }
+
+    private static string getRandomName(List<string> names)
+    {
+        return names[Random.Range(0, names.Count)];
     }
 
     static public string[] getCharacterNames()
@@ -34,6 +50,9 @@ public class CharacterGenerator
         return characterNames;
     }
 
-
+    static public string[] getRoleNames()
+    {
+        return roleNames;
+    }
 
 }

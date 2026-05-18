@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameState : MonoBehaviour
 {
     MailSystem mailSystem = null;
     Flags gameFlags = null;
+    List<Character> characters = null;
 
     void Start()
     {
@@ -12,6 +14,7 @@ public class GameState : MonoBehaviour
         TimeTracker timeTracker = Game.GET_TIME_TRACKER();
         timeTracker.GetTimer().StartTimer(timeTracker.GetTimer().GetTimeinSeconds());
         GetMailSystem().PopulateMailboxes(timeTracker.GetDay());
+        CharacterGenerator.generateCharacters(GetMailSystem().GetAllMailBoxAddresses(), GetGameFlags().GetOffset());
     }
     
     void FixedUpdate()
