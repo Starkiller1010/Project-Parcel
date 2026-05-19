@@ -1,10 +1,19 @@
 using System.Text;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Character
 {
     private int Address;
     private string Name;
+
+    public Character() {}
+
+    public Character(string name, int address)
+    {
+        setName(name);
+        setAddress(address);
+    }
 
     internal void setName(string v)
     {

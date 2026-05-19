@@ -18,8 +18,9 @@ public class FileManager
             playtime = Game.GET_TIME_TRACKER().GetTimer().GetPlayTime(),
             dayCount = Game.GET_TIME_TRACKER().GetDay(),
             characterAddresses = gameState.GetMailSystem().GetAllMailBoxAddresses(),
-            offset = gameState.GetGameFlags().GetOffset(),
-            flags = FileUtils.StringifyFlags(gameState.GetGameFlags().GetMarkers())
+            characterNames = gameState.GetCharacterNames(),
+            offset = gameState.GetGameFlags().GetOffset()
+            // flags = FileUtils.StringifyFlags(gameState.GetGameFlags().GetMarkers())
         };
         FileUtils.SaveGameFile(meta);
     }

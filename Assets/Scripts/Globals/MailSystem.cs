@@ -36,8 +36,7 @@ public class MailSystem
 
     public int GetCharacterAddress(int toIndex)
     {
-        int characterIndex = (offset + toIndex) % CharacterGenerator.getCharacterNames().Length;
-        Debug.Log(string.Format("Character index of {0} is {1}", characterIndex, CharacterGenerator.getCharacterNames()[characterIndex]));
+        int characterIndex = (offset + toIndex) % CharacterGenerator.getRoleNames().Length;
         int address = GetAllMailBoxAddresses()[characterIndex];
         return address;
     }

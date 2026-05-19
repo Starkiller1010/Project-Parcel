@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterGenerator
@@ -13,21 +14,33 @@ public class CharacterGenerator
         "Cult Leader",
         "Kidnapper" };
 
-    private static string[] characterNames = null;
+
+    private static Names characterNames = null;
     // Start is called before the first frame update
-    public static List<Character> generateCharacters(int[] addresses, int offset = 0)
+    public static List<Character> generateCharacters(int[] addresses)
     {
-        characterNames = new string[roleNames.Length];
         List<Character> characters = new List<Character>();
-        Names names = FileManager.LoadNames();
+        GetCharacterNames();
         foreach (int address in addresses)
         {
-            characters.Add(generateCharacter(address, names));
+            characters.Add(generateCharacter(address, characterNames));
         }
         return characters;
     }
 
-    public static Character generateCharacter(int address, Names names)
+    public static List<Character> generateCharacters(int[] addresses, string[] names)
+    {
+        List<Character> characters = new List<Character>();
+        int index = 0;
+        foreach (int address in addresses)
+        {
+            characters.Add(new Character(names[index], address));
+            index++;
+        }
+        return characters;
+    }
+
+    private static Character generateCharacter(int address, Names names)
     {
         Character character = new Character();
         string firstName = getRandomName(names.first);
@@ -39,14 +52,15 @@ public class CharacterGenerator
         return character;
     }
 
+    private static Character generateCharacter(int address, string name)
+    {
+        Character character = new Character();
+        return character;
+    }
+
     private static string getRandomName(List<string> names)
     {
         return names[Random.Range(0, names.Count)];
-    }
-
-    static public string[] getCharacterNames()
-    {
-        return characterNames;
     }
 
     static public string[] getRoleNames()
@@ -54,4 +68,15 @@ public class CharacterGenerator
         return roleNames;
     }
 
+    static public Names GetCharacterNames()
+    {
+        if (characterNames == null)
+            SetCharacterNames(FileManager.LoadNames());
+        return characterNames;
+    }
+
+    static public void SetCharacterNames(Names names)
+    {
+        characterNames = names;
+    }
 }

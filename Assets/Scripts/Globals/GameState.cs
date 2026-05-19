@@ -14,7 +14,7 @@ public class GameState : MonoBehaviour
         TimeTracker timeTracker = Game.GET_TIME_TRACKER();
         timeTracker.GetTimer().StartTimer(timeTracker.GetTimer().GetTimeinSeconds());
         GetMailSystem().PopulateMailboxes(timeTracker.GetDay());
-        CharacterGenerator.generateCharacters(GetMailSystem().GetAllMailBoxAddresses(), GetGameFlags().GetOffset());
+        GetCharacters();
     }
     
     void FixedUpdate()
@@ -44,6 +44,29 @@ public class GameState : MonoBehaviour
             gameFlags = new Flags();
         }
         return gameFlags;
+    }
+
+    public List<Character> GetCharacters()
+    {
+        if (characters == null)
+        {
+            SetCharacters(CharacterGenerator.generateCharacters(GetMailSystem().GetAllMailBoxAddresses()));
+        }
+        return characters;
+    }
+
+    public string[] GetCharacterNames()
+    {
+        if (characters != null)
+        {
+            List<string> names = new List<string>();
+            foreach (Character character in characters)
+            {
+                names.Add(character.getName());
+            }
+            return names.ToArray();
+        }
+        return null;
     }
 
     public void EndDay()
@@ -106,6 +129,11 @@ public class GameState : MonoBehaviour
     {
         TimeTracker timeTracker = Game.GET_TIME_TRACKER();
         timeTracker.SetDay(dayCount);
+    }
+
+    private void SetCharacters(List<Character> characters)
+    {
+        this.characters = characters;
     }
 
     private void endGame()

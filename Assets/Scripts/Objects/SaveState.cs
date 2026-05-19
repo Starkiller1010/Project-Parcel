@@ -11,7 +11,8 @@ public class SaveState
     public int dayCount;
     public int offset;
     public int[] characterAddresses;
-    public string flags;
+    public string[] characterNames;
+    // public string flags;
 
     public SaveState(string version = "1.0",
                     string created_at = "",
@@ -20,7 +21,9 @@ public class SaveState
                     int dayCount = 0,
                     int offset = 0,
                     int[] characterAddresses = null,
-                    string flags = null)
+                    string[] characterNames = null
+                    // string flags = null
+                    )
     {
         this.version = version;
         this.created_at = created_at;
@@ -29,7 +32,8 @@ public class SaveState
         this.dayCount = dayCount;
         this.offset = offset;
         this.characterAddresses = characterAddresses;
-        this.flags = flags;
+        this.characterNames = characterNames;
+        // this.flags = flags;
     }
 
     public override string ToString()
@@ -41,7 +45,9 @@ public class SaveState
         stringBuilder.Append("playtime: " + this.playtime + "\n");
         stringBuilder.Append("dayCount: " + this.dayCount + "\n");
         stringBuilder.Append("offset: " + this.offset + "\n");
-        stringBuilder.Append("flags: " + this.flags + "\n");
+        stringBuilder.Append("addresses: " + string.Join(",", characterAddresses) + "\n");
+        stringBuilder.Append("names: " + string.Join(",", characterNames) + "\n");
+        // stringBuilder.Append("flags: " + this.flags + "\n");
         return stringBuilder.ToString();
     }
 }
