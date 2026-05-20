@@ -1,13 +1,18 @@
+using System;
+using System.Collections.Generic;
 using System.Text;
-using Unity.VisualScripting;
-using UnityEngine;
+using Newtonsoft.Json;
 
+[Serializable]
 public class Character
 {
-    private int Address;
-    private string Name;
 
-    public Character() {}
+    [JsonProperty]
+    private string Name;
+    [JsonProperty]
+    private int Address;
+    [JsonProperty(NullValueHandling = NullValueHandling.Include)]
+    private List<int?> ReceivedLetters;
 
     public Character(string name, int address)
     {
@@ -15,24 +20,34 @@ public class Character
         setAddress(address);
     }
 
-    internal void setName(string v)
+    public void setName(string v)
     {
         this.Name = v;
     }
 
-    internal string getName()
+    public string getName()
     {
         return this.Name;
     }
 
-    internal void setAddress(int v)
+    public void setAddress(int v)
     {
         this.Address = v;
     }
 
-    internal int getAddress()
+    public int getAddress()
     {
         return this.Address;
+    }
+
+    public List<int?> getLetters()
+    {
+        return ReceivedLetters;
+    }
+
+    public void setCharacters(List<int?> letters)
+    {
+        ReceivedLetters = letters;
     }
 
     public override string ToString()
@@ -40,6 +55,7 @@ public class Character
         StringBuilder builder = new StringBuilder();
         builder.Append("Name: " + getName());
         builder.Append("\nAddress: " + getAddress());
+        builder.Append("\nReceived Letters:" + getLetters());
         return builder.ToString();
     }
 }

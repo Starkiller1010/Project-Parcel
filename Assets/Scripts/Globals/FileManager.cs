@@ -19,8 +19,7 @@ public class FileManager
             updated_at = DateTime.UtcNow.ToString("o"),
             playtime = Game.GET_TIME_TRACKER().GetTimer().GetPlayTime(),
             dayCount = Game.GET_TIME_TRACKER().GetDay(),
-            characterAddresses = gameState.GetMailSystem().GetAllMailBoxAddresses(),
-            characterNames = gameState.GetCharacterNames(),
+            characters = gameState.GetCharacters(),
             offset = gameState.GetGameFlags().GetOffset()
             // flags = FileUtils.StringifyFlags(gameState.GetGameFlags().GetMarkers())
         };

@@ -86,8 +86,9 @@ public class InteractionDetection
 
     private void interactToLoad()
     {
-        string fileName = FileManager.GetSavedGameStates()[1];
+        string fileName = FileManager.GetSavedGameStates()[0];
         GameState gameState = FileManager.LoadGameState("/" + fileName);
+        Game.GET_GAME_STATE().SetState(gameState);
     }
 
     private void interactWithMailContainer(Mailbox mailbox)

@@ -96,21 +96,24 @@ public class MailSystem
 
     public void SetMailBoxAddresses(int[] _addresses)
     {
-        if (mailboxes.Count == 0)
+        if (mailboxes == null || mailboxes.Count == 0)
         {
             Debug.LogError("No mailboxes found in the scene.");
         }
         else
         {
             int index = 0;
+            AllAddresses.Clear();
             foreach (Mailbox mailbox in mailboxes)
             {
                 mailbox.ClearAddresses();
                 if (index < _addresses.Length)
                 {
                     mailbox.addAddress(_addresses[index]);
+                    AllAddresses.Add(_addresses[index]);
                     index++;
                     mailbox.addAddress(_addresses[index]);
+                    AllAddresses.Add(_addresses[index]);
                     index++;
                 }
             }

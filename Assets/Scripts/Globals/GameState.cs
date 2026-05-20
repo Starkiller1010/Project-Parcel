@@ -24,6 +24,12 @@ public class GameState : MonoBehaviour
         Game.GET_TIME_TRACKER().GetTimer().tick();
     }
 
+    public GameState(int dayCount, int offset, string playTime, List<Character> characters)
+    {
+        GetMailSystem().SetMailBoxAddresses(GetAllCharacterAddresses(characters));
+        SetState(dayCount, offset, playTime, characters);
+    }
+
     public GameState(int dayCount, int[] addresses, int offset, string playTime, string[] characterNames)
     {
         mailSystem = new MailSystem(addresses);
@@ -100,6 +106,22 @@ public class GameState : MonoBehaviour
             newState.GetCharacterNames());
     }
 
+    private string[] GetAllCharacterNames(List<Character> characters)
+    {
+        List<string> names = new List<string>();
+        foreach (Character character in characters)
+            names.Add(character.getName());
+        return names.ToArray();
+    }
+
+    private int[] GetAllCharacterAddresses(List<Character> characters)
+    {
+        List<int> addresses = new List<int>();
+        foreach (Character character in characters)
+            addresses.Add(character.getAddress());
+        return addresses.ToArray();
+    }
+
     public void SetState(int dayCount, int[] addresses, int offset, string playTime, string[] characterNames = null)
     {
         SetDay(dayCount);
@@ -107,7 +129,19 @@ public class GameState : MonoBehaviour
         GetMailSystem().SetMailBoxAddresses(addresses);
         // GetGameFlags().SetFlags(flags);
         GetGameFlags().SetOffset(offset);
-        SetCharacters(CharacterGenerator.generateCharacters(addresses, characterNames));
+        if (characterNames != null)
+            SetCharacters(CharacterGenerator.generateCharacters(addresses, characterNames));
+        else
+            SetCharacters(CharacterGenerator.generateCharacters(addresses));
+    }
+
+    public void SetState(int dayCount, int offset, string playTime, List<Character> characters)
+    {
+        SetDay(dayCount);
+        SetTime(playTime);
+        GetMailSystem().SetMailBoxAddresses(GetAllCharacterAddresses(characters));
+        GetGameFlags().SetOffset(offset);
+        SetCharacters(characters);
     }
 
     private int GetDay()
@@ -156,7 +190,7 @@ public class GameState : MonoBehaviour
         builder.Append("\nPlayTime: " + GetPlayTime());
         builder.Append("\nOffset: " + GetGameFlags().GetOffset());
         builder.Append("\nMailboxes: " + string.Join(",", GetMailSystem().GetAllMailBoxAddresses()));
-        builder.Append("\nCharacters: " + string.Join(",", GetCharacterNames()));
+        builder.Append("\nCharacters: " + string.Join(",", GetCharacters()));
         return builder.ToString();
     }
 }

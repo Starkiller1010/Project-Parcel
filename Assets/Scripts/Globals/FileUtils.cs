@@ -54,10 +54,9 @@ static class FileUtils
         GameState game = new GameState(
             dayCount: saveState.dayCount,
             offset: saveState.offset,
-            addresses: saveState.characterAddresses,
             // flags: ParseFlags(saveState.flags),
             playTime: saveState.playtime,
-            characterNames: saveState.characterNames);
+            characters: saveState.characters);
         return game;
     }
 

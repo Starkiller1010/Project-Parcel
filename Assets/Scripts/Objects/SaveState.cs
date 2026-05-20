@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 [Serializable]
@@ -10,8 +11,7 @@ public class SaveState
     public string playtime;
     public int dayCount;
     public int offset;
-    public int[] characterAddresses;
-    public string[] characterNames;
+    public List<Character> characters;
     // public string flags;
 
     public SaveState(string version = "1.0",
@@ -20,8 +20,7 @@ public class SaveState
                     string playtime = "0:00:00",
                     int dayCount = 0,
                     int offset = 0,
-                    int[] characterAddresses = null,
-                    string[] characterNames = null
+                    List<Character> characters = null
                     // string flags = null
                     )
     {
@@ -31,8 +30,7 @@ public class SaveState
         this.playtime = playtime;
         this.dayCount = dayCount;
         this.offset = offset;
-        this.characterAddresses = characterAddresses;
-        this.characterNames = characterNames;
+        this.characters = characters;
         // this.flags = flags;
     }
 
@@ -45,8 +43,7 @@ public class SaveState
         stringBuilder.Append("playtime: " + this.playtime + "\n");
         stringBuilder.Append("dayCount: " + this.dayCount + "\n");
         stringBuilder.Append("offset: " + this.offset + "\n");
-        stringBuilder.Append("addresses: " + string.Join(",", characterAddresses) + "\n");
-        stringBuilder.Append("names: " + string.Join(",", characterNames) + "\n");
+        stringBuilder.Append("characters: " + string.Join("\n", characters));
         return stringBuilder.ToString();
     }
 }

@@ -13,17 +13,13 @@ public class CharacterGenerator
         "Mother",
         "Cult Leader",
         "Kidnapper" };
-
-
-    private static Names characterNames = null;
     // Start is called before the first frame update
     public static List<Character> generateCharacters(int[] addresses)
     {
         List<Character> characters = new List<Character>();
-        GetCharacterNames();
         foreach (int address in addresses)
         {
-            characters.Add(generateCharacter(address, characterNames));
+            characters.Add(generateCharacter(address, GetCharacterNames()));
         }
         return characters;
     }
@@ -34,7 +30,7 @@ public class CharacterGenerator
         int index = 0;
         foreach (int address in addresses)
         {
-            characters.Add(new Character(names[index], address));
+            characters.Add(generateCharacter(name: names[index], address: address));
             index++;
         }
         return characters;
@@ -42,19 +38,17 @@ public class CharacterGenerator
 
     private static Character generateCharacter(int address, Names names)
     {
-        Character character = new Character();
         string firstName = getRandomName(names.first);
         names.first.Remove(firstName);
         string lastName = getRandomName(names.last);
         string name = string.Join(" ", firstName, lastName);
-        character.setName(name);
-        character.setAddress(address);
+        Character character = new Character(name, address);
         return character;
     }
 
     private static Character generateCharacter(int address, string name)
     {
-        Character character = new Character();
+        Character character = new Character(name, address);
         return character;
     }
 
@@ -70,13 +64,7 @@ public class CharacterGenerator
 
     static public Names GetCharacterNames()
     {
-        if (characterNames == null)
-            SetCharacterNames(FileManager.LoadNames());
-        return characterNames;
+        return FileManager.LoadNames();
     }
 
-    static public void SetCharacterNames(Names names)
-    {
-        characterNames = names;
-    }
 }
