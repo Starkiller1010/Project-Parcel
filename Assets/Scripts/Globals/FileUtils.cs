@@ -43,9 +43,8 @@ static class FileUtils
     //     }
     // }
 
-    public static void SaveGameFile(SaveState state)
+    public static void WriteJsonFile<T>(T state, string fileName)
     {
-        string fileName = string.Format("/SaveGames/SaveGame_{0}.json", DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
         string json = JsonConvert.SerializeObject(state);
         WriteFile(fileName, json);
     }

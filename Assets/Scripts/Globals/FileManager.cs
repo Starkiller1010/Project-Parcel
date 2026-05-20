@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Newtonsoft.Json;
+using UnityEditor;
 using UnityEngine;
 
 public class FileManager
@@ -22,7 +24,8 @@ public class FileManager
             offset = gameState.GetGameFlags().GetOffset()
             // flags = FileUtils.StringifyFlags(gameState.GetGameFlags().GetMarkers())
         };
-        FileUtils.SaveGameFile(meta);
+        string fileName = string.Format("/SaveGames/SaveGame_{0}.json", DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
+        FileUtils.WriteJsonFile(meta, fileName);
     }
 
     public static string[] GetSavedGameStates()
@@ -47,8 +50,16 @@ public class FileManager
 
     public static GameState LoadGameState(string fileName)
     {
-        SaveState loadState = FileUtils.LoadJsonFile<SaveState>(fileName);
-        return FileUtils.ParseSaveStateIntoGameState(loadState);
+        string savePath = FileUtils.GetSaveDirectory() + FileUtils.SAVE_DIRECTORY;
+        if (Directory.Exists(savePath))
+        {
+            SaveState loadState = FileUtils.LoadJsonFile<SaveState>(savePath + fileName);
+            return FileUtils.ParseSaveStateIntoGameState(loadState);
+        }
+        else {
+            Debug.LogError(string.Format("Failed to load {0} because directroy '{1}' did not exist", fileName, savePath));
+            return null;
+        }
     }
 
     public static List<Letter> GetLetters()

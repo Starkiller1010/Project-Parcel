@@ -86,7 +86,8 @@ public class InteractionDetection
 
     private void interactToLoad()
     {
-        GameState gameState = FileManager.LoadGameState("Assets/SaveGames/SaveGame_2026-05-19_13-10-40");
+        string fileName = FileManager.GetSavedGameStates()[1];
+        GameState gameState = FileManager.LoadGameState("/" + fileName);
     }
 
     private void interactWithMailContainer(Mailbox mailbox)
