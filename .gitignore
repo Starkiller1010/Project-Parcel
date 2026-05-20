@@ -124,3 +124,5 @@ InitTestScene*.unity*
 # Ignore Certain Game-specific folders/Files
 /**/SaveGame*
 
+# Ignore Save Games
+/**/SaveGames/*
