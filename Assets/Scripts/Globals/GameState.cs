@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Text;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameState : MonoBehaviour
@@ -16,16 +18,16 @@ public class GameState : MonoBehaviour
         GetMailSystem().PopulateMailboxes(timeTracker.GetDay());
         GetCharacters();
     }
-    
+
     void FixedUpdate()
     {
         Game.GET_TIME_TRACKER().GetTimer().tick();
     }
 
-    public GameState(int dayCount, int[] addresses, int offset, string playTime, bool[,] flags = null)
+    public GameState(int dayCount, int[] addresses, int offset, string playTime, string[] characterNames)
     {
         mailSystem = new MailSystem(addresses);
-        SetState(dayCount, addresses, offset, playTime, flags);
+        SetState(dayCount, addresses, offset, playTime, characterNames);
     }
 
     public MailSystem GetMailSystem()
@@ -95,16 +97,17 @@ public class GameState : MonoBehaviour
             newState.GetMailSystem().GetAllMailBoxAddresses(),
             newState.GetGameFlags().GetOffset(),
             newState.GetPlayTime(),
-            newState.GetGameFlags().GetMarkers());
+            newState.GetCharacterNames());
     }
 
-    public void SetState(int dayCount, int[] addresses, int offset, string playTime, bool[,] flags = null)
+    public void SetState(int dayCount, int[] addresses, int offset, string playTime, string[] characterNames = null)
     {
         SetDay(dayCount);
         SetTime(playTime);
         GetMailSystem().SetMailBoxAddresses(addresses);
-        GetGameFlags().SetFlags(flags);
+        // GetGameFlags().SetFlags(flags);
         GetGameFlags().SetOffset(offset);
+        SetCharacters(CharacterGenerator.generateCharacters(addresses, characterNames));
     }
 
     private int GetDay()
@@ -140,7 +143,6 @@ public class GameState : MonoBehaviour
     {
         string gameResult = string.Format("Congratulations! You have completed the game in {0} time.", Game.GET_TIME_TRACKER().GetTimer().GetPlayTime());
         Debug.Log(gameResult);
-        // Additional end game logic can be added here
         Application.Quit(0);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -149,10 +151,12 @@ public class GameState : MonoBehaviour
     
     public override string ToString()
     {
-        return string.Format("Day: {0}, PlayTime: {1}, Mailboxes: {2}, Flags Offset: {3}", 
-            GetDay(), 
-            GetPlayTime(), 
-            string.Join(", ", GetMailSystem().GetAllMailBoxAddresses()), 
-            GetGameFlags().GetOffset());
+        StringBuilder builder = new StringBuilder();
+        builder.Append("Day: " + GetDay());
+        builder.Append("\nPlayTime: " + GetPlayTime());
+        builder.Append("\nOffset: " + GetGameFlags().GetOffset());
+        builder.Append("\nMailboxes: " + string.Join(",", GetMailSystem().GetAllMailBoxAddresses()));
+        builder.Append("\nCharacters: " + string.Join(",", GetCharacterNames()));
+        return builder.ToString();
     }
 }

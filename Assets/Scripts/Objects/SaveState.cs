@@ -47,7 +47,6 @@ public class SaveState
         stringBuilder.Append("offset: " + this.offset + "\n");
         stringBuilder.Append("addresses: " + string.Join(",", characterAddresses) + "\n");
         stringBuilder.Append("names: " + string.Join(",", characterNames) + "\n");
-        // stringBuilder.Append("flags: " + this.flags + "\n");
         return stringBuilder.ToString();
     }
 }

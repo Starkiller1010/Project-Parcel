@@ -57,7 +57,8 @@ static class FileUtils
             offset: saveState.offset,
             addresses: saveState.characterAddresses,
             // flags: ParseFlags(saveState.flags),
-            playTime: saveState.playtime);
+            playTime: saveState.playtime,
+            characterNames: saveState.characterNames);
         return game;
     }
 
