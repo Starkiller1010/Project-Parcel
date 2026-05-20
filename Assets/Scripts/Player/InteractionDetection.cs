@@ -61,7 +61,8 @@ public class InteractionDetection
                     break;
                 case "Test":
                     Debug.Log("Interacting with Test Object");
-                    interactToSave();
+                    // interactToSave();
+                    interactToLoad();
                     break;
                 default:
                     Debug.LogWarning("Player is touching a collider with an unhandled tag: " + gameObject.tag);
@@ -81,6 +82,13 @@ public class InteractionDetection
     private void interactToSave()
     {
         FileManager.SaveGameState(Game.GET_GAME_STATE());
+    }
+
+    private void interactToLoad()
+    {
+        string fileName = FileManager.GetSavedGameStates()[0];
+        GameState gameState = FileManager.LoadGameState("/" + fileName);
+        Game.GET_GAME_STATE().SetState(gameState);
     }
 
     private void interactWithMailContainer(Mailbox mailbox)

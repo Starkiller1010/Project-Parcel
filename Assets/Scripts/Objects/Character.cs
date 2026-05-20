@@ -1,38 +1,61 @@
-using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Newtonsoft.Json;
 
+[Serializable]
 public class Character
 {
-    private int Address;
-    private string Name;
-    private Sprite Symbol;
 
-    internal void setName(string v)
+    [JsonProperty]
+    private string Name;
+    [JsonProperty]
+    private int Address;
+    [JsonProperty(NullValueHandling = NullValueHandling.Include)]
+    private List<int?> ReceivedLetters;
+
+    public Character(string name, int address)
+    {
+        setName(name);
+        setAddress(address);
+    }
+
+    public void setName(string v)
     {
         this.Name = v;
     }
 
-    internal string getName()
+    public string getName()
     {
         return this.Name;
     }
 
-    internal void setAddress(int v)
+    public void setAddress(int v)
     {
         this.Address = v;
     }
 
-    internal int getAddress()
+    public int getAddress()
     {
         return this.Address;
     }
 
-    internal void setSymbol(Sprite v)
+    public List<int?> getLetters()
     {
-        this.Symbol = v;
+        return ReceivedLetters;
     }
 
-    internal Sprite getSymbol()
+    public void setCharacters(List<int?> letters)
     {
-        return this.Symbol;
+        ReceivedLetters = letters;
+    }
+
+    public override string ToString()
+    {
+        StringBuilder builder = new StringBuilder();
+        builder.Append("Name: " + getName());
+        builder.Append("\nAddress: " + getAddress());
+        builder.Append("\nReceived Letters:" + getLetters());
+        return builder.ToString();
     }
 }

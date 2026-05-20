@@ -43,9 +43,8 @@ static class FileUtils
     //     }
     // }
 
-    public static void SaveGameFile(SaveState state)
+    public static void WriteJsonFile<T>(T state, string fileName)
     {
-        string fileName = string.Format("SaveGame_{0}.json", DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
         string json = JsonConvert.SerializeObject(state);
         WriteFile(fileName, json);
     }
@@ -55,9 +54,9 @@ static class FileUtils
         GameState game = new GameState(
             dayCount: saveState.dayCount,
             offset: saveState.offset,
-            addresses: saveState.characterAddresses,
-            flags: ParseFlags(saveState.flags),
-            playTime: saveState.playtime);
+            // flags: ParseFlags(saveState.flags),
+            playTime: saveState.playtime,
+            characters: saveState.characters);
         return game;
     }
 
@@ -80,7 +79,7 @@ static class FileUtils
         }
         return file;
     }
-    
+
     private static void WriteFile(string filePath, string content)
     {
         System.IO.File.WriteAllText(GetRootDirectory() + filePath, content);

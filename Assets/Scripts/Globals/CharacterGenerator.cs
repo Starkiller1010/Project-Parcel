@@ -1,8 +1,10 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterGenerator
 {
-    private static string[] characterNames = new string[] {
+    private static string[] roleNames = new string[] {
         "Diplomat",
         "Wife",
         "Mistress",
@@ -12,28 +14,57 @@ public class CharacterGenerator
         "Cult Leader",
         "Kidnapper" };
     // Start is called before the first frame update
-    public static void generateCharacters(int[] addresses, int offset = 0)
+    public static List<Character> generateCharacters(int[] addresses)
     {
-        int index = offset * 2; // Start index for character names based on the offset, multiplied by 2 because each mailbox has 2 addresses
+        List<Character> characters = new List<Character>();
         foreach (int address in addresses)
         {
-            generateCharacter(address, index);
-            index = (index + 1) % characterNames.Length; // Move to the next character for the next address, wrap around if we exceed the array length
+            characters.Add(generateCharacter(address, GetCharacterNames()));
         }
+        return characters;
     }
 
-    public static void generateCharacter(int address, int offset)
+    public static List<Character> generateCharacters(int[] addresses, string[] names)
     {
-        Character character = new Character();
-        character.setName(characterNames[offset]);
-        character.setAddress(address);
+        List<Character> characters = new List<Character>();
+        int index = 0;
+        foreach (int address in addresses)
+        {
+            characters.Add(generateCharacter(name: names[index], address: address));
+            index++;
+        }
+        return characters;
     }
 
-    static public string[] getCharacterNames()
+    private static Character generateCharacter(int address, Names names)
     {
-        return characterNames;
+        string firstName = getRandomName(names.first);
+        names.first.Remove(firstName);
+        string lastName = getRandomName(names.last);
+        string name = string.Join(" ", firstName, lastName);
+        Character character = new Character(name, address);
+        return character;
     }
 
+    private static Character generateCharacter(int address, string name)
+    {
+        Character character = new Character(name, address);
+        return character;
+    }
 
+    private static string getRandomName(List<string> names)
+    {
+        return names[Random.Range(0, names.Count)];
+    }
+
+    static public string[] getRoleNames()
+    {
+        return roleNames;
+    }
+
+    static public Names GetCharacterNames()
+    {
+        return FileManager.LoadNames();
+    }
 
 }

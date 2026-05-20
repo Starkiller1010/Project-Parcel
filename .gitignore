@@ -121,4 +121,6 @@ InitTestScene*.unity*
 # Ignore Package Folder
 /Packages/
 
+# Ignore Certain Game-specific folders/Files
+/**/SaveGame*
 
