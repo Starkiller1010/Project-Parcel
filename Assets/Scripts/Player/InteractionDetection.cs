@@ -29,10 +29,16 @@ public class InteractionDetection
                 HUD.HideDialoguePanel(); // Hide the dialogue panel when the player moves away from the DialogueEmitter
                 HUD.HideConfirmationPanel(); // Hide the confirmation panel as well, in case it was triggered by the DialogueEmitter
             }
-        } else if (gameObject.tag == "Workstation")
+        }
+        else if (gameObject.tag == "Workstation")
         {
             Workstation workstation = gameObject.GetComponent<Workstation>();
             workstation.DisableWorkTable();
+        }
+        else if (gameObject.tag == "Mail Container")
+        {
+            Mailbox mailbox = gameObject.GetComponent<Mailbox>();
+            mailbox.CloseMailboxMenu();
         }
     }
 
@@ -103,6 +109,8 @@ public class InteractionDetection
         {
             Debug.Log("Player attempted to collect mail from an empty mailbox.");
         }
+        if (!mailbox.isUIOpen)
+            mailbox.OpenMailboxMenu();
     }
 
     private void interactWithBed()

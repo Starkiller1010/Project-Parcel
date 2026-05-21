@@ -97,7 +97,6 @@ public class GameState : MonoBehaviour
 
     public void SetState(GameState newState)
     {
-        Debug.Log(newState.ToString());
         SetState(
             newState.GetDay(),
             newState.GetMailSystem().GetAllMailBoxAddresses(),

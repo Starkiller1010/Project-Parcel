@@ -1,0 +1,59 @@
+.modal {
+    justify-content: center;
+    align-self: auto;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+
+.container {
+    flex-shrink: 0;
+    justify-content: center;
+    align-self: auto;
+}
+
+.button {
+    align-self: center;
+    justify-content: center;
+}
+
+.confirm {
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0);
+    -unity-background-scale-mode: stretch-to-fill;
+    visibility: visible;
+}
+
+.cancel {
+}
+
+.cursor {
+    position: absolute;
+    background-image: url("project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-1087164816274819069&guid=5b917cfb2f2467346a5027a40d814a8c&type=3#arrow-right@2x");
+    width: 100px;
+    height: 100px;
+    right: 51%;
+    transform: 0 var(--offset, 0);
+}
+
+.confirm:hover {
+    --offset: var(--confirm-offset);
+    scale: 1.2 1.2;
+    transition-property: scale;
+    transition-duration: 0.1s;
+    transition-delay: 0.2s;
+}
+
+.cancel:hover {
+    --offset: var(--cancel-offset);
+    scale: 1.2 1.2;
+    transition-property: scale;
+    transition-duration: 0.1s;
+    transition-delay: 0.2s;
+}
+
+:root {
+    --confirm-offset: -20px;
+    --cancel-offset: 20px;
+}
+
+.mailbox-menu {
+}

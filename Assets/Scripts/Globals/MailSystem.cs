@@ -165,7 +165,7 @@ public class MailSystem
     
     private bool Deliver(int roll, double probability)
     {
-        return roll <= probability * 100;
+        return roll >= probability * 100;
     }
 
     private int ChanceRoll()

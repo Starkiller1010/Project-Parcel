@@ -12,7 +12,7 @@ public class Character
     [JsonProperty]
     private int Address;
     [JsonProperty(NullValueHandling = NullValueHandling.Include)]
-    private List<int?> ReceivedLetters;
+    private List<int?> ReceivedLetters = new List<int?>();
 
     public Character(string name, int address)
     {
@@ -45,7 +45,7 @@ public class Character
         return ReceivedLetters;
     }
 
-    public void setCharacters(List<int?> letters)
+    public void setLetters(List<int?> letters)
     {
         ReceivedLetters = letters;
     }

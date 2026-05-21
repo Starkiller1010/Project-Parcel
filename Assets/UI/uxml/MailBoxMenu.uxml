@@ -1,0 +1,7 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/uss/MailBoxMenu.uss?fileID=7433441132597879392&amp;guid=c85573a47a0b0b848add824a553892b2&amp;type=3#MailBoxMenu" />
+    <engine:VisualElement name="Modal" class="modal" style="background-color: rgb(60, 127, 173); align-self: auto;">
+        <engine:Button text="Deliver Mail" name="Confirm" focusable="false" selectable="true" class="button confirm" />
+        <engine:Button text="Cancel Delivery" name="Cancel" enable-rich-text="false" focusable="true" parse-escape-sequences="true" selectable="true" class="button cancel" />
+    </engine:VisualElement>
+</engine:UXML>

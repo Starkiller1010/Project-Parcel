@@ -82,6 +82,11 @@ public class Letter
         }
     }
 
+    public int GetAddress()
+    {
+        return Game.GET_GAME_STATE().GetMailSystem().GetCharacterAddress(toIndex);
+    }
+
     public override string ToString()
     {
         StringBuilder builder = new StringBuilder();

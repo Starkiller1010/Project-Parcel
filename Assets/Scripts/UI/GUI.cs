@@ -7,12 +7,13 @@ using UnityEngine.UIElements;
 
 public class GUI
 {
-    private VisualElement gui;
+    private static VisualElement gui;
     public enum Column { Left, Middle, Right };
 
-    public GUI(GameObject gameObject)
+    public GUI()
     {
-        CreateGUI(gameObject);
+        if (gui == null)
+            CreateGUI();
     }
 
     void OnDestroy()
@@ -20,10 +21,28 @@ public class GUI
         DestroyGUI();
     }
 
-    private void CreateGUI(GameObject gameObject)
+    private VisualTreeAsset LoadTemplate(string fileName)
     {
-        gui = gameObject.GetComponent<UIDocument>().rootVisualElement;
-        gui.Bind(new SerializedObject(gameObject));
+        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(string.Format("Assets/UI/uxml/{0}.uxml", fileName));
+        if (visualTree != null)
+        {
+            // Clone the UXML and add it to the root VisualElement
+            VisualElement root = visualTree.CloneTree();
+            gui.Add(root);
+            return visualTree;
+        }
+        else
+        {
+            Debug.LogError("UXML file not found at specified path.");
+            return null;
+        }
+    }
+
+    private void CreateGUI()
+    {
+        GameObject obj = GameObject.Find("GUI");
+        gui = obj.GetComponent<UIDocument>().rootVisualElement;
+        gui.Bind(new SerializedObject(obj));
     }
 
     public void DestroyGUI()
@@ -91,9 +110,22 @@ public class GUI
         if (element != null)
         {
             GetCol(column).Add(element);
-        } else
+        }
+        else
         {
             LogError("Add", "AddElement");
+        }
+    }
+
+    public void RemoveElement(Column column, VisualElement element)
+    {
+        if (element != null)
+        {
+            GetCol(column).Remove(element);
+        }
+        else
+        {
+            LogError("Remove", "RemoveElement");
         }
     }
 
@@ -102,7 +134,8 @@ public class GUI
         if (element != null)
         {
             CheckRows(column)[index].Add(element);
-        } else
+        }
+        else
         {
             LogError("Add", "AddElementToRow");
         }
@@ -120,14 +153,28 @@ public class GUI
         }
     }
 
-    public T AddTemplateToColumn<T>(Column col, VisualTreeAsset template) where T: VisualElement
+    public T AddTemplateToColumn<T>(Column col, string fileName) where T : VisualElement
+    {
+        VisualTreeAsset template = LoadTemplate(fileName);
+        if (template != null)
+        {
+            return AddTemplateToColumn<T>(col, template);
+        }
+        else
+        {
+            LogError("Load", "AddTemplateToColumn");
+            return null;
+        }
+    }
+
+    public T AddTemplateToColumn<T>(Column col, VisualTreeAsset template) where T : VisualElement
     {
         TemplateContainer element = template.Instantiate();
         AddElement(col, element);
         return element.ElementAt(0) as T;
     }
 
-    public T AddTemplateToColumnWithRow<T>(Column col, VisualTreeAsset template, int rowIndex) where T: VisualElement
+    public T AddTemplateToColumnWithRow<T>(Column col, VisualTreeAsset template, int rowIndex) where T : VisualElement
     {
         TemplateContainer element = template.Instantiate();
         AddElementToRow(col, element, rowIndex);

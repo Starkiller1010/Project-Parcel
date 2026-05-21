@@ -38,7 +38,7 @@ public class Workstation : MonoBehaviour
     private void CreateTable()
     {
         if (ui == null) 
-            ui = new GUI(gameObject);
+            ui = new GUI();
         ShowTable();
     }
 
