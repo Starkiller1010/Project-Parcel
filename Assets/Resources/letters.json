@@ -26,7 +26,7 @@
             "fromIndex": 3,
             "toIndex": 0,
             "requirements": [],
-            "content": "Hey, this is a letter from D to 321.\nThis will probably have to be a path to the actual letter so it could find it.\nWe will see what this is capable of though."
+            "content": "0301"
         },
         {
             "UID": 5,
@@ -54,7 +54,7 @@
             "fromIndex": 7,
             "toIndex": 5,
             "requirements": [],
-            "content": "Hey, this is a letter from H to 222."
+            "content": "0301"
         },
         {
             "UID": 9,

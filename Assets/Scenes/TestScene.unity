@@ -1084,7 +1084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   letters: []
   addresses: 
-  mailboxMenu: {fileID: 0}
+  mailboxMenu: {fileID: 9197481963319205126, guid: 0b2d5c343db0b344abbeff5ae4ba064b, type: 3}
   isUIOpen: 0
 --- !u!61 &762467838
 BoxCollider2D:
@@ -1711,7 +1711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   letters: []
   addresses: 
-  mailboxMenu: {fileID: 0}
+  mailboxMenu: {fileID: 9197481963319205126, guid: 0b2d5c343db0b344abbeff5ae4ba064b, type: 3}
   isUIOpen: 0
 --- !u!1 &853296379
 GameObject:
@@ -2543,7 +2543,7 @@ Transform:
   m_GameObject: {fileID: 1735837989}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7085476, w: 0.705663}
-  m_LocalPosition: {x: -2.07, y: -1.74, z: 10}
+  m_LocalPosition: {x: -2.07, y: -2.35, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

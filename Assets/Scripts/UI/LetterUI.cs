@@ -39,7 +39,7 @@ public class LetterUI : MonoBehaviour
 
     private void SetText(Label label)
     {
-        label.text = letter.content;
+        label.text = FileManager.GetLetterContent(letter);
     }
 
     private void SetButtons(VisualElement container)

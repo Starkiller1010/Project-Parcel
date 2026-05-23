@@ -68,6 +68,20 @@ public class FileManager
         return letters.letters;
     }
 
+    public static string GetLetterContent(Letter letter)
+    {
+        string filePath = "Letter/" + letter.content;
+        Debug.Log("Attempting to load letter content from file: " + filePath);
+        TextAsset textAsset = FileUtils.LoadTextFile(filePath);
+        if (textAsset == null)
+        {
+            Debug.LogError("Failed to load letter content. TextAsset was null for file: " + filePath);
+            return "Letter content could not be loaded.";
+        }
+        Debug.Log("Successfully loaded letter content from file: " + textAsset.name);
+        return FileUtils.LoadTextFile(filePath).text;
+    }
+
     public static TextAsset[] GetLetterFiles(int dayIndex)
     {
         string path = "Letter/Day " + dayIndex;
