@@ -1,3 +1,15 @@
 Hey, this is a letter from Wife to Doctor.
-This will probably have to be a path to the actual letter so it could find it.
-We will see what this is capable of though.
+
+Hey Doctor,
+
+I'm been a little uneasy lately. Recently,
+I've been getting a rash on my lower nether
+regions and wonder if I have been using
+bad healthcare objects. I would like to think
+that's the case because the only other alternative
+is my husband which causes me worry. I know you two
+are good friends so I don't want that to come between
+you. I would like to schedule an appointment sometime soon.
+Thank you.
+
+~ {1}

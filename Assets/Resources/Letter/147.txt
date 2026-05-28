@@ -1,3 +1,14 @@
 Hey, this is a letter from Wife to Mistress.
-This will probably have to be a path to the actual letter so it could find it.
-We will see what this is capable of though.
+
+{0},
+
+Can I ask a question to you dear? Do
+you know who my husband has been talking
+to lately? He's been secretly mailing someone
+this week and it has me worried that he
+may be having an affair. I know you 
+and him spend a lot of time together before
+I married him and think you would know him best.
+Please let me know if you know anything at all.
+I just want to know what's going on and if I
+should be worried.

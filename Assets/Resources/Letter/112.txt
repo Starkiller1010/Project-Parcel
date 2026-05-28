@@ -1,3 +1,9 @@
 Hey, this is a letter from Wife to Mother.
-This will probably have to be a path to the actual letter so it could find it.
-We will see what this is capable of though.
+
+{0},
+I'm wondering if you are okay. At the
+book club this week, you sounded very
+ill and looked pale. I fear that you
+may have gotten sick and I want to make
+sure that you are okay. If there's anything
+I can do to help, let me know.
