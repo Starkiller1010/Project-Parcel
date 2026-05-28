@@ -1,3 +1,12 @@
 Hey, this is a letter from Diplomat to Cult Leader.
-This will probably have to be a path to the actual letter so it could find it.
-We will see what this is capable of though.
+
+Dear Resident,
+I am a fellow countrymen whom found your 
+mail number through a government friend because
+I need your aid. I'm being blackmailed by a
+malevolent individual and can see that you
+have been in contact with that individual.
+Do you know anything about the person who
+uses the mail number {0}? Please tell me
+all you know about them and where they
+reside. This is my mail number {1} to respond.

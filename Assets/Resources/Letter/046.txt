@@ -1,3 +1,10 @@
 Hey, this is a letter from Diplomat to Doctor.
-This will probably have to be a path to the actual letter so it could find it.
-We will see what this is capable of though.
+
+Dear Friend,
+I am in need of help. I'm afraid that
+I've been committed in an offense towards
+my marriage and would like to ensure that
+I've not contracted anything from the
+third-party. May I come in for a screening
+this week?
+- Your friend, {0}
