@@ -1,3 +1,15 @@
 Hey, this is a letter from Doctor to Diplomat.
-This will probably have to be a path to the actual letter so it could find it.
-We will see what this is capable of though.
+
+Hey {0},
+The letter I received for you brings
+me no comfort and makes me deeply ashamed
+to call you my friend. Your actions have
+caused an irreparable amount of damages
+that will cause a rift with every one
+in your life. Come into the office whenever
+you can and I can discuss more about what I mean
+since I now have an inkling of what the situation is
+especially since your wife talked to me earlier in
+the week. This is a discussion you should bring
+her in for as well.
+- {1}

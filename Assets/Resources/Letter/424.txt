@@ -1,3 +1,15 @@
 Hey, this is a letter from Doctor to Wife.
-This will probably have to be a path to the actual letter so it could find it.
-We will see what this is capable of though.
+
+Dear {0},
+
+I understand the secrecy you would
+like to keep from the wording you have
+put into your letter. You can come by
+to the office any time and I'll see that
+you are let into the first availability that day.
+Your husband and I go way back and I do not
+see him to be the kind of man who would do
+something like that so let's find out the 
+reason for your symptoms.
+
+- Dr. {1}

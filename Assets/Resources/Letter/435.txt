@@ -1,3 +1,16 @@
 Hey, this is a letter from Doctor to Mistress.
-This will probably have to be a path to the actual letter so it could find it.
-We will see what this is capable of though.
+
+Dear {0},
+I do not let my wife know about any
+of my patients as that breaches
+doctor-patient priviledge. If you call
+my office, the secretary at the front desk
+can set you up an appointment this week. Just
+let her know that you are a "book club" member
+and she should know what you mean. I will need
+to ask what has you concerned and embarassed to
+even be unable to write it down though. If it 
+not something medical, I may not be able to help
+you.
+
+- Dr. {1}

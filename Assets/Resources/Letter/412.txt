@@ -1,3 +1,11 @@
 Hey, this is a letter from Doctor to Kidnapper.
-This will probably have to be a path to the actual letter so it could find it.
-We will see what this is capable of though.
+
+Dear {0},
+
+Due to the nature of your insurance and
+the debt you have accrued, we are no longer
+providing you with medication or welcoming you
+to our office until you submit a payment that
+covers the entire amount. 
+
+- Dr. {1}
