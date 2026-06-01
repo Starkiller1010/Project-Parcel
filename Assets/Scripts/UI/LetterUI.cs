@@ -14,6 +14,7 @@ public class LetterUI : MonoBehaviour
     private Letter letter;
     private Button confirmBtn;
     private Button cancelBtn;
+    private TextMeshProUGUI letterText;
 
     public void Open(GUI gui,Letter letter)
     {
@@ -42,7 +43,8 @@ public class LetterUI : MonoBehaviour
     private void SetLetter(Letter letter)
     {
         this.letter = letter;
-        ShowLetter();
+        Puzzle cipher = new Cipher().CreatePuzzle(letter);
+        ShowLetter(cipher.puzzleText);
         // SetText(page.Q<Label>());
         // SetButtons(page.Q("Button-Container"));
 
@@ -65,16 +67,22 @@ public class LetterUI : MonoBehaviour
             Image bg = panel.GetComponent<Image>();
             bg.sprite = Resources.Load<Sprite>("Sprite/Square");
             bg.color = new Color(0, 0, 0, 0.5f); // Semi-transparent black background
-            // panelRect.position = Vector3.zero; // Position the background at the center of the screen
+            panelRect.localPosition = Vector3.zero; // Position the background at the center of the screen
         }
     }
 
-    private void ShowLetter()
+    private void ShowLetter(string content = "")
     {
         CreateBackground();
         CreateLetterUI();
-        RectTransform panelRect = panel.GetComponent<RectTransform>();
-        panelRect.localPosition = Vector3.zero; // Position the background at the center of the screen
+        // CreateButtons();
+        if (content != "")
+        {
+            letterText.text = content;
+        } else
+        {
+            letterText.text = FileManager.GetLetterContent(letter);
+        }
     }
 
     private void CreateLetterUI()
@@ -92,16 +100,13 @@ public class LetterUI : MonoBehaviour
     {
         GameObject textObj = CreateUIObject(parent.transform, "LetterText");
         DestroyImmediate(textObj.GetComponent<Image>());// Remove the Image component since we only want to display text  
-        TextMeshProUGUI text = textObj.AddComponent<TextMeshProUGUI>();
-        text.text = FileManager.GetLetterContent(letter);
-        // text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        text.fontSize = 14;
-        text.alignment = TextAlignmentOptions.Center;
-        text.color = Color.black;
+        letterText = textObj.AddComponent<TextMeshProUGUI>();
+        letterText.fontSize = 14;
+        letterText.alignment = TextAlignmentOptions.Center;
+        letterText.color = Color.black;
         RectTransform rectTransform = textObj.GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(180, 200);
         rectTransform.anchoredPosition = Vector2.up; // Position the text slightly above the center of the letter UI
-        // CreateButtons(parent);
     }
 
     private GameObject CreateUIObject(Transform parent, string name = "uiElement")
