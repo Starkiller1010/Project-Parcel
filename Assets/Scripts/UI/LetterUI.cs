@@ -15,11 +15,30 @@ public class LetterUI : MonoBehaviour
     private Button confirmBtn;
     private Button cancelBtn;
     private TextMeshProUGUI letterText;
+    private Puzzle puzzle = null;
 
-    public void Open(GUI gui,Letter letter)
+    public void Open(Letter letter)
     {
-        // ui = gui;
-        SetLetter(letter); 
+        if (letter != null && letter.GetContent() != "")
+        {
+            SetLetter(letter);
+        }
+        else
+        {
+            Debug.LogError("Invalid letter provided to LetterUI.Open");
+        }
+    }
+
+    public void Open(Puzzle puzzle)
+    {
+        if (puzzle != null && puzzle.GetPuzzleText() != "")
+        {
+            SetPuzzle(puzzle);
+        }
+        else
+        {
+            Debug.LogError("Invalid puzzle provided to LetterUI.Open");
+        }
     }
 
     public void Close()
@@ -29,25 +48,30 @@ public class LetterUI : MonoBehaviour
             ui = null;
             letter = null;
             page.RemoveFromHierarchy();
-        } else if (panel != null)
+        }
+        else if (panel != null)
         {
             Destroy(panel);
             panel = null;
         }
-         else
+        
+        if (puzzle != null)
         {
-            Debug.LogError("No UI to close.");
+            // puzzle.EndPuzzle();
+            puzzle = null;
         }
     }
 
     private void SetLetter(Letter letter)
     {
         this.letter = letter;
-        Puzzle cipher = new Cipher().CreatePuzzle(letter);
-        ShowLetter(cipher.puzzleText);
-        // SetText(page.Q<Label>());
-        // SetButtons(page.Q("Button-Container"));
+        ShowLetter();
+    }
 
+    private void SetPuzzle(Puzzle puzzle)
+    {
+        this.puzzle = puzzle;
+        ShowLetter(puzzle.GetPuzzleText());
     }
 
     private void CreateBackground()

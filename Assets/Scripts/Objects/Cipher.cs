@@ -10,9 +10,9 @@ public class Cipher : Puzzle
         return this;
     }
 
-    public override void EndPuzzle()
+    public override PuzzleName GetPuzzleName()
     {
-        throw new System.NotImplementedException();
+        return PuzzleName.Cipher;
     }
 
     private void CreateCipher(string text)

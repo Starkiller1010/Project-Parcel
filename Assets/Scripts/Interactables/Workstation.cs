@@ -37,7 +37,7 @@ public class Workstation : MonoBehaviour
 
     private void CreateTable()
     {
-        if (ui == null) 
+        if (ui == null)
             ui = new GUI();
         ShowTable();
     }
@@ -98,7 +98,32 @@ public class Workstation : MonoBehaviour
     {
         Debug.Log(string.Format("Letter Opened: \n{0}", letter));
         RemoveTable();
-        letterUI.Open(ui, letter);
+        Puzzle puzzle = PuzzleMaker(letter);
+        if (puzzle != null)
+        {
+            letterUI.Open(puzzle);
+        } else
+        {
+            letterUI.Open(letter);
+        }
+    }
+
+    private Puzzle PuzzleMaker(Letter letter)
+    {
+        string[] roleNames = CharacterGenerator.getRoleNames();
+        string role = roleNames[letter.fromIndex];
+        Debug.Log(string.Format("Role: {0}, Index: {1}", role, letter.toIndex));
+        switch (role)
+        {
+            case "Blackmailer":
+                return PuzzleFactory.CreatePuzzle(Puzzle.PuzzleName.Mirror, letter);
+            case "Cult Leader":
+                return PuzzleFactory.CreatePuzzle(Puzzle.PuzzleName.Cipher, letter);
+            // case "Kidnapper":
+            //     return PuzzleFactory.CreatePuzzle(Puzzle.PuzzleName.HiddenMessage, letter);
+            default:
+                return null;
+        }
     }
 
     private void CheckLetters()
