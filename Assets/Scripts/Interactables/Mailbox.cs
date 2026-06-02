@@ -62,6 +62,7 @@ public class Mailbox : MonoBehaviour
     public void ClearMail()
     {
         this.letters.Clear(); // Clear the letters list to remove all mail from the mailbox
+        GetComponent<SpriteRenderer>().color = Color.red; // Change the mailbox's color to red to indicate it is empty
     }
 
     public Letter[] GetLetters()
@@ -88,5 +89,6 @@ public class Mailbox : MonoBehaviour
     public void GenerateMail(Letter letter)
     {
         this.letters.Add(letter); // Add the letter to the mailbox's letters list
+        GetComponent<SpriteRenderer>().color = Color.green; // Change the mailbox's color to green to indicate it has mail
     }
 }

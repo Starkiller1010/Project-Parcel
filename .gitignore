@@ -126,3 +126,10 @@ InitTestScene*.unity*
 
 # Ignore Save Games
 /**/SaveGames/*
+
+# Ignore Logs
+/**/Logs/*
+
+# Ignore TextMesh Pro files
+/[Aa]ssets/TextMesh Pro/Documentation/*
+/[Aa]ssets/TextMesh Pro/Examples/*
