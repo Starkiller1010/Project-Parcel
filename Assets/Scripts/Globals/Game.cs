@@ -10,8 +10,11 @@ public static class Game
     [RuntimeInitializeOnLoadMethod]
     static void OnGameStart()
     {
-        // string[] paths = { "/SaveGames" };
-        // FileUtils.MakeDirectories(paths);
+        #if UNITY_EDITOR
+        string fileName = FileManager.GetSavedGameStates()[0];
+        GameState gameState = FileManager.LoadGameState("/" + fileName);
+        GET_GAME_STATE().SetState(gameState);
+        #endif
     }
 
     public static GameState GET_GAME_STATE()
