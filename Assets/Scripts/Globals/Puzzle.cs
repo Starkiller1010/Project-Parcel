@@ -21,8 +21,8 @@ public static class PuzzleFactory
     {
         switch (puzzleName)
         {
-            // case Puzzle.PuzzleName.HiddenMessage:
-            //     return new HiddenMessage().CreatePuzzle(letter);
+            case Puzzle.PuzzleName.HiddenMessage:
+                return new HiddenMessage().CreatePuzzle(letter);
             case Puzzle.PuzzleName.Cipher:
                 return new Cipher().CreatePuzzle(letter);
             case Puzzle.PuzzleName.Mirror:

@@ -112,15 +112,14 @@ public class Workstation : MonoBehaviour
     {
         string[] roleNames = CharacterGenerator.getRoleNames();
         string role = roleNames[letter.fromIndex];
-        Debug.Log(string.Format("Role: {0}, Index: {1}", role, letter.toIndex));
         switch (role)
         {
             case "Blackmailer":
                 return PuzzleFactory.CreatePuzzle(Puzzle.PuzzleName.Mirror, letter);
             case "Cult Leader":
                 return PuzzleFactory.CreatePuzzle(Puzzle.PuzzleName.Cipher, letter);
-            // case "Kidnapper":
-            //     return PuzzleFactory.CreatePuzzle(Puzzle.PuzzleName.HiddenMessage, letter);
+            case "Kidnapper":
+                return PuzzleFactory.CreatePuzzle(Puzzle.PuzzleName.HiddenMessage, letter);
             default:
                 return null;
         }
