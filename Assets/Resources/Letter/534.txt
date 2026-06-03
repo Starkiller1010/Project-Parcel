@@ -1,6 +1,6 @@
 Hey, this is a letter from Mother to Wife.
 
-I need your help {0}.
+I need your help.
 I won't be going to the book club this
 week and for a good reason. My son has
 been kidnapped. I have gone to the police,
@@ -9,5 +9,5 @@ even replied back to the kidnapper but
 none of them have gotten back to me. I
 have not been able to sleep, eat, or
 even breathe when my baby is out there
-with some stranger. Please {0}, you have
+with some stranger. Please, you have
 to help me get my boy back. I need him back.
