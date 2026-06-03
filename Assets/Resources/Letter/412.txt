@@ -2,10 +2,15 @@ Hey, this is a letter from Doctor to Kidnapper.
 
 Dear {0},
 
-Due to the nature of your insurance and
-the debt you have accrued, we are no longer
-providing you with medication or welcoming you
-to our office until you submit a payment that
-covers the entire amount. 
+We have received word that you no longer
+need any medical attention. We will not
+prevent you from seeking help elsewhere
+but, due to national security, will not
+release our medical records of your treatment
+to any outside party.
+
+We thank you for your service and aid
+in our advancements of health and 
+technology. We hope for your recovery.
 
 - Dr. {1}

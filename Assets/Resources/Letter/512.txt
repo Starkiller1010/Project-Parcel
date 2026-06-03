@@ -1,3 +1,12 @@
 Hey, this is a letter from Mother to Diplomat.
-This will probably have to be a path to the actual letter so it could find it.
-We will see what this is capable of though.
+
+Something terrible has happened!
+My boy has been taken from me and
+some person sent me mail asking me to
+pay him. I don't know what to do and
+don't know who to go to. Please {0},
+you have to help me. I have already gone
+to the police but they said they will look
+into it and see what they can do. That isn't
+enough when my boy is not with me. You must
+find out who did this. Please.
