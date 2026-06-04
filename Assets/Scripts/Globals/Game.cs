@@ -78,4 +78,19 @@ public static class Game
         if (GAME_STATE == null) FindGameState();
         GAME_STATE.SetState(startDayCount, null, MailSystem.GenerateOffset(), "00:00:00");
     }
+
+    private static void LogError(string action, string method)
+    {
+        Debug.LogError($"Failed to {action} element in {method}.");
+    }
+
+    public static void END_GAME()
+    {
+        string gameResult = string.Format("Congratulations! You have completed the game in {0} time.", Game.GET_TIME_TRACKER().GetTimer().GetPlayTime());
+        Debug.Log(gameResult);
+        Application.Quit(0);
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
 }

@@ -6,6 +6,7 @@ public class Flags
 {
     // private List<Letter> completedLetters = new List<Letter>();
     private Dictionary<int, Letter> completedLetters = new Dictionary<int, Letter>();
+    private List<int> selectedCharacterAddresses = new List<int>();
     private int mailboxOffset = -1;
     private bool[,] markers = null;
 
@@ -42,5 +43,20 @@ public class Flags
     public void SetFlags(bool[,] flags)
     {
         this.markers = flags;
+    }
+
+    public List<int> GetSelectedCharacterAddresses()
+    {
+        return selectedCharacterAddresses;
+    }
+
+    private void AddCharacterAddress(int address)
+    {
+        selectedCharacterAddresses.Add(address);
+    }
+
+    private void RemoveCharacterAddress(int address)
+    {
+        selectedCharacterAddresses.Remove(address);
     }
 }

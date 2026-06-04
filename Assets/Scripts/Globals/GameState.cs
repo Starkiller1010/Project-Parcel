@@ -174,13 +174,9 @@ public class GameState : MonoBehaviour
 
     private void endGame()
     {
-        string gameResult = string.Format("Congratulations! You have completed the game in {0} time.", Game.GET_TIME_TRACKER().GetTimer().GetPlayTime());
-        Debug.Log(gameResult);
-        Application.Quit(0);
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
+        Game.END_GAME();
     }
+
     
     public override string ToString()
     {
