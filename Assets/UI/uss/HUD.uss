@@ -117,9 +117,8 @@
 }
 
 .ui-header {
-    flex-shrink: 0;
-    flex-basis: 15%;
     top: auto;
+    justify-content: flex-end;
 }
 
 .dialogue-box {
@@ -130,19 +129,18 @@
     right: auto;
     bottom: 10%;
     flex-shrink: 0;
-    flex-grow: 0;
+    flex-grow: 1;
     flex-direction: row;
     flex-wrap: nowrap;
     padding-left: 10px;
     padding-right: 10px;
+    align-self: stretch;
 }
 
 .modal-area {
     flex-grow: 1;
     flex-shrink: 0;
     bottom: auto;
-    max-height: 50%;
-    max-width: 100%;
     flex-basis: 100%;
 }
 
@@ -158,4 +156,21 @@
     flex-grow: 1;
     -unity-background-scale-mode: scale-and-crop;
     -unity-slice-scale: 2px;
+}
+
+.table {
+    position: relative;
+    align-self: auto;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-shrink: 0;
+    flex-grow: 1;
+    background-color: rgba(229, 214, 20, 0.72);
+    background-image: resource('Sprite/9Sliced');
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
 }

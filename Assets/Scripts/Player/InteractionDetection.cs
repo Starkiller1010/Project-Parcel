@@ -66,9 +66,7 @@ public class InteractionDetection
                     interactWithWorkTable(gameObject.GetComponent<Workstation>());
                     break;
                 case "Test":
-                    Debug.Log("Interacting with Test Object");
-                    // interactToSave();
-                    interactToLoad();
+                    interactWithTest(gameObject);
                     break;
                 default:
                     Debug.LogWarning("Player is touching a collider with an unhandled tag: " + gameObject.tag);
@@ -78,16 +76,17 @@ public class InteractionDetection
             isInteracting = false;
         }
     }
-    
+
     private void interactWithWorkTable(Workstation workstation)
     {
         workstation.EnableWorkTable();
     }
-
-
-    private void interactToSave()
+    
+    private void interactWithTest(GameObject gameObject)
     {
-        FileManager.SaveGameState(Game.GET_GAME_STATE());
+        Debug.Log("Interacting with Test Object");
+        // Example interaction logic for the test object
+        gameObject.GetComponent<InsurgentSelector>().Open();
     }
 
     private void interactToLoad()
@@ -122,6 +121,7 @@ public class InteractionDetection
 
     private void OnBedConfirmation()
     {
+        FileManager.SaveGameState(Game.GET_GAME_STATE());
         Game.GET_GAME_STATE().EndDay();
     }
 

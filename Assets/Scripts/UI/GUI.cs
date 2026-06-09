@@ -9,6 +9,7 @@ public class GUI
 {
     private static VisualElement gui;
     public enum Column { Left, Middle, Right };
+    public enum Row { Header, Body, Footer };
 
     public GUI()
     {
@@ -55,11 +56,11 @@ public class GUI
         switch (col)
         {
             case Column.Left:
-                return gui.Q<VisualElement>(className: "left");
+                return gui.Q<VisualElement>(".body").Q<VisualElement>(className: "left");
             case Column.Middle:
-                return gui.Q<VisualElement>(className: "middle");
+                return gui.Q<VisualElement>(".body").Q<VisualElement>(className: "middle");
             case Column.Right:
-                return gui.Q<VisualElement>(className: "right");
+                return gui.Q<VisualElement>(".body").Q<VisualElement>(className: "right");
             default:
                 Debug.LogError("No Column Found");
                 return null;

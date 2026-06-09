@@ -1,24 +1,13 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/TextOutputBox.uss?fileID=7433441132597879392&amp;guid=a9466373b2dfcb44aa1167a8d305f8e1&amp;type=3#TextOutputBox" />
+    <ui:Template name="ModalArea" src="project://database/Assets/UI/temp/uxml/ModalArea.uxml?fileID=9197481963319205126&amp;guid=c434995f754da9f4c8973509cb623dfd&amp;type=3#ModalArea" />
+    <ui:Template name="DialogueBox" src="project://database/Assets/UI/temp/uxml/DialogueBox.uxml?fileID=9197481963319205126&amp;guid=904d7fa3f4d73c4478d41ca56d90d2b0&amp;type=3#DialogueBox" />
+    <ui:Template name="DayCounter" src="project://database/Assets/UI/temp/uxml/DayCounter.uxml?fileID=9197481963319205126&amp;guid=3362137a234b894468834179f9d0695c&amp;type=3#DayCounter" />
+    <Style src="project://database/Assets/UI/uss/HUD.uss?fileID=7433441132597879392&amp;guid=a9466373b2dfcb44aa1167a8d305f8e1&amp;type=3#HUD" />
     <ui:VisualElement name="Container" style="flex-grow: 1;">
         <ui:VisualElement name="Header" class="ui-header" style="flex-grow: 0; flex-shrink: 0; width: auto; height: -22px;">
-            <ui:Label text="Label" name="DayCounter" class="day-label" />
+            <ui:Instance template="DayCounter" name="DayCounter" />
         </ui:VisualElement>
-        <ui:VisualElement name="ModalArea" class="modal-area" style="flex-grow: 0; background-color: rgba(212, 212, 212, 0); background-image: none; border-bottom-width: 0; height: auto; transform-origin: center; flex-shrink: 0; align-items: auto; flex-basis: 50%; top: 5%;">
-            <ui:VisualElement name="ConfirmationPanel" class="confirmation-panel" style="scale: 1 1; -unity-background-image-tint-color: rgb(45, 46, 152); opacity: 0.8;">
-                <ui:Label text="Title" name="ConfirmationHeader" emoji-fallback-support="false" enable-rich-text="false" parse-escape-sequences="false" class="confirmation-title-label" />
-                <ui:VisualElement name="ButtonContainer" style="flex-grow: 0; flex-direction: row; align-self: center; justify-content: space-evenly; align-items: auto; flex-shrink: 0; width: 30%; top: 20%;">
-                    <ui:Button text="Yes" name="ConfirmButton" enable-rich-text="false" emoji-fallback-support="true" class="confirmation-button" />
-                    <ui:Button text="No" name="RejectButton" enable-rich-text="true" emoji-fallback-support="true" display-tooltip-when-elided="false" class="confirmation-button" />
-                </ui:VisualElement>
-            </ui:VisualElement>
-        </ui:VisualElement>
-        <ui:GroupBox name="DialogueBox" view-data-key="DialogueBox" class="dialogue-box" style="flex-direction: row; align-items: flex-end;">
-            <ui:TextField name="DialogueText" password="false" readonly="true" is-delayed="false" multiline="true" data-source-type="Dialogue, Assembly-CSharp" data-source-path="text" focusable="true" select-all-on-focus="false" select-all-on-mouse-up="false" select-word-by-double-click="false" select-line-by-triple-click="false" emoji-fallback-support="false" hide-mobile-input="false" value="Test" placeholder-text="Where is this text?" hide-placeholder-on-focus="false" picking-mode="Ignore" label="Me: " style="top: auto; flex-direction: row; flex-wrap: wrap; left: 25%; bottom: auto; flex-grow: 0.5; visibility: visible; display: flex; overflow: hidden; opacity: 1; flex-shrink: 0; right: auto;">
-                <Bindings>
-                    <ui:DataBinding property="value" binding-mode="ToTarget" data-source-type="Dialogue, Assembly-CSharp" data-source-path="text" />
-                </Bindings>
-            </ui:TextField>
-        </ui:GroupBox>
+        <ui:Instance template="ModalArea" name="ModalArea" />
+        <ui:Instance template="DialogueBox" name="DialogueBox" />
     </ui:VisualElement>
 </ui:UXML>

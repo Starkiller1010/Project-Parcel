@@ -50,6 +50,11 @@ public class Flags
         return selectedCharacterAddresses;
     }
 
+    public void SetSelectedCharacterAddresses(List<int> selection)
+    {
+        this.selectedCharacterAddresses = selection;
+    }
+
     private void AddCharacterAddress(int address)
     {
         selectedCharacterAddresses.Add(address);

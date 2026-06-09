@@ -1,11 +1,4 @@
-.center {
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-}
-
 .table {
-    position: relative;
     align-self: auto;
     justify-content: flex-start;
     align-items: stretch;
@@ -49,6 +42,12 @@
     flex-grow: 1;
     align-self: stretch;
     justify-content: center;
+}
+
+.center {
+    align-items: center;
+    justify-content: center;
+    align-self: center;
 }
 
 .left {

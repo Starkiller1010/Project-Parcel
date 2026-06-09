@@ -1,0 +1,20 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <engine:Template name="DayCounter" src="project://database/Assets/UI/static/uxml/DayCounter.uxml?fileID=9197481963319205126&amp;guid=3362137a234b894468834179f9d0695c&amp;type=3#DayCounter" />
+    <engine:Template name="ModalArea" src="project://database/Assets/UI/static/uxml/ModalArea.uxml?fileID=9197481963319205126&amp;guid=c434995f754da9f4c8973509cb623dfd&amp;type=3#ModalArea" />
+    <engine:Template name="DialogueBox" src="project://database/Assets/UI/static/uxml/DialogueBox.uxml?fileID=9197481963319205126&amp;guid=904d7fa3f4d73c4478d41ca56d90d2b0&amp;type=3#DialogueBox" />
+    <Style src="project://database/Assets/UI/static/uss/UI.uss?fileID=7433441132597879392&amp;guid=1f8bf482d2cf2fd4bb619c2b76f3228b&amp;type=3#UI" />
+    <Style src="project://database/Assets/UI/uss/HUD.uss?fileID=7433441132597879392&amp;guid=a9466373b2dfcb44aa1167a8d305f8e1&amp;type=3#HUD" />
+    <engine:VisualElement name="Header" class="ui-header" style="flex-grow: 1;">
+        <engine:Instance template="DayCounter" name="DayDisplay" />
+    </engine:VisualElement>
+    <engine:VisualElement name="Body" class="body" style="flex-grow: 1; height: 100px;">
+        <engine:VisualElement name="Left" class="left" style="flex-grow: 1;" />
+        <engine:VisualElement name="Middle" class="middle" style="flex-shrink: 0; flex-grow: 1;">
+            <engine:Instance template="ModalArea" name="Modal" class="container" />
+        </engine:VisualElement>
+        <engine:VisualElement name="Right" class="right" style="flex-grow: 1;" />
+    </engine:VisualElement>
+    <engine:VisualElement name="Footer" style="flex-grow: 1;">
+        <engine:Instance template="DialogueBox" name="Dialogue" class="container" />
+    </engine:VisualElement>
+</engine:UXML>

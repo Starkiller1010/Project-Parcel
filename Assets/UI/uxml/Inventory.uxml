@@ -1,7 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <Style src="project://database/Assets/UI/uss/GUI.uss?fileID=7433441132597879392&amp;guid=14de6ee1ae3f19d4ea76912169060a4a&amp;type=3#GUI" />
     <Style src="project://database/Assets/UI/uss/LetterGUI.uss?fileID=7433441132597879392&amp;guid=9ffdbd422dac07d43b76679d81c78d68&amp;type=3#LetterGUI" />
-    <engine:VisualElement name="Container" class="table" style="flex-grow: 1;">
+    <engine:VisualElement name="Container" class="table">
         <engine:VisualElement name="Button-Container" class="container button-container" style="flex-grow: 1;">
             <engine:Button text="Button" name="Confirm" class="confirm" />
             <engine:Button text="Button" name="Cancel" class="cancel" />
