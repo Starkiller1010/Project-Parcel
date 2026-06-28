@@ -59,6 +59,10 @@
 .right {
 }
 
+.absolute-position {
+    position: absolute;
+}
+
 .center {
     align-items: center;
     justify-content: center;

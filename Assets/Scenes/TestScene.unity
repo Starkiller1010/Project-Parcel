@@ -734,9 +734,10 @@ GameObject:
   - component: {fileID: 344213329}
   - component: {fileID: 344213328}
   - component: {fileID: 344213331}
+  - component: {fileID: 344213332}
   m_Layer: 0
   m_Name: Military Log
-  m_TagString: Mail Chute
+  m_TagString: Test
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -890,12 +891,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344213326}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3deb9a2e7b199f0449b66221bf598ce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  togglePrefab: {fileID: 0}
+  toggleUI: {fileID: 9197481963319205126, guid: f54622af19a64a8479b07bf4dc753ef1, type: 3}
+--- !u!114 &344213332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344213326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 03b30bd55966b2345acf47ed4f15e11a, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: f54622af19a64a8479b07bf4dc753ef1, type: 3}
+  m_SortingOrder: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,6 +1578,7 @@ GameObject:
   - component: {fileID: 795028868}
   - component: {fileID: 795028867}
   - component: {fileID: 795028866}
+  - component: {fileID: 795028869}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Bed
@@ -1710,6 +1728,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &795028869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795028864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6a3fac6d4a03f4db08a86edb435f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: {fileID: 0}
 --- !u!1 &843157520
 GameObject:
   m_ObjectHideFlags: 0
@@ -2698,6 +2729,7 @@ GameObject:
   - component: {fileID: 1735837992}
   - component: {fileID: 1735837991}
   - component: {fileID: 1735837993}
+  - component: {fileID: 1735837994}
   m_Layer: 0
   m_Name: SaveGame
   m_TagString: Test
@@ -2832,7 +2864,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3deb9a2e7b199f0449b66221bf598ce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  togglePrefab: {fileID: 1263214892173071206, guid: 7206b538dcc9bc74986be03750f81ec4, type: 3}
+  toggleUI: {fileID: 0}
+--- !u!114 &1735837994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735837989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 0}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 0}
+  m_SortingOrder: 0
 --- !u!1 &1756658345
 GameObject:
   m_ObjectHideFlags: 0
@@ -3019,6 +3067,7 @@ GameObject:
   - component: {fileID: 1836025219}
   - component: {fileID: 1836025221}
   - component: {fileID: 1836025220}
+  - component: {fileID: 1836025222}
   m_Layer: 5
   m_Name: GUI
   m_TagString: Untagged
@@ -3083,6 +3132,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d98683388db846848891d0d9acd4414a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1836025222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836025217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b55ff595103ce064a873ec27134d61c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1934080297

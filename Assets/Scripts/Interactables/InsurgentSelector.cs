@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
+using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
+[RequireComponent(typeof(UIDocument))]
 public class InsurgentSelector : MonoBehaviour
 {
     [SerializeField]
-    private GameObject togglePrefab;
+    public VisualTreeAsset toggleUI;
     List<int> selectedCharacterAddresses = null;
     List<int> characterAddresses = null;
-    // private VisualElement root = null;
+    private VisualElement root = null;
     private bool isOpen = false;
     private List<Toggle> toggles = new List<Toggle>();
 
@@ -19,12 +21,29 @@ public class InsurgentSelector : MonoBehaviour
     {
         characterAddresses = Game.GET_GAME_STATE().GetMailSystem().GetAllMailBoxAddresses().ToList();
         selectedCharacterAddresses = Game.GET_GAME_STATE().GetGameFlags().GetSelectedCharacterAddresses();
-        GameObject toggleGroup = new GameObject("Selector");
-        toggleGroup.gameObject.transform.SetParent(transform);
-        // root = GetComponent<UIDocument>().rootVisualElement;
-        // root.Bind(new SerializedObject(this));
+        // GameObject toggleGroup = new GameObject("Selector");
+        // toggleGroup.gameObject.transform.SetParent(transform);
         // Load();
-        // root.AddToClassList("hide");
+        root = GetComponent<UIDocument>().rootVisualElement;
+        root.AddToClassList("hide");
+        // StartCoroutine("BindObject");
+
+    }
+
+    void BindObject()
+    {
+        do
+        {
+            root = GetComponent<UIDocument>().rootVisualElement;
+        } while (root == null);
+        Debug.Log("Got root. " + root);
+        // root.Bind(new SerializedObject(this));
+        root.AddToClassList("hide");
+    }
+
+    void OnEnable()
+    {
+
     }
 
     public void Update()
@@ -34,7 +53,7 @@ public class InsurgentSelector : MonoBehaviour
             Close();
         }
     }
-    
+
     // private ToggleButtonGroup Load()
     // {
     //     // var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(string.Format("Assets/UI/uxml/{0}.uxml", fileName));
@@ -50,11 +69,19 @@ public class InsurgentSelector : MonoBehaviour
 
     public void Open()
     {
-        // root.style.display = DisplayStyle.Flex;
-        Game.GET_PLAYER().GetControls().ToggleMovementState(false);
-        // root.RemoveFromClassList("hide");
-        PopulateInsurgentSelector();
         isOpen = true;
+        Game.GET_PLAYER().GetControls().ToggleMovementState(false);
+        root.RemoveFromClassList("hide");
+        // GUI ui = new GUI();
+        // TemplateContainer container = toggleUI.Instantiate();
+        // root.style.display = DisplayStyle.Flex;
+        // UIDocument ui = gameObject.AddComponent<UIDocument>();
+        // ui.panelSettings = settings;
+        // root = GetComponent<UIDocument>().rootVisualElement;
+        // root.Bind(new SerializedObject(this));
+        // root.RemoveFromClassList("hide");
+        ToggleButtonGroup element = root.Q<ToggleButtonGroup>("AddressList");
+        PopulateInsurgentSelector(element);
     }
 
     public void Close()
@@ -62,12 +89,12 @@ public class InsurgentSelector : MonoBehaviour
         // root.style.display = DisplayStyle.None;
         Game.GET_PLAYER().GetControls().ToggleMovementState(true);
         Game.GET_GAME_STATE().GetGameFlags().SetSelectedCharacterAddresses(selectedCharacterAddresses);
-        // root.AddToClassList("hide");
+        root.AddToClassList("hide");
         // root = null;
         isOpen = false;
     }
 
-    private void PopulateInsurgentSelector()
+    private void PopulateInsurgentSelector(ToggleButtonGroup toggleGroup)
     {
         // ToggleButtonGroup AddressList = Load();
         // ToggleButtonGroup AddressList = root.Q<ToggleButtonGroup>("AddressList");
@@ -75,16 +102,16 @@ public class InsurgentSelector : MonoBehaviour
         // AddressList.Add(new Label("Select up to 3 Mailing IDs for possible Insurgents:"));
         // AddressList.BringToFront();
         // Toggle[] characterButton = AddressList.Query<Toggle>("Toggle").ToList().ToArray();
-        // int index = 0;
+        int index = 0;
+        Toggle[] toggles = toggleGroup.Query<Toggle>().ToList().ToArray();
         foreach (int address in characterAddresses)
         {
-            GameObject toggleObject = Instantiate(togglePrefab, transform);
-            
-            // AddressList.Add(new Toggle() { text = address.ToSafeString(), tooltip = "Help Me"});
-            // Toggle characterButton = new Toggle();
-            // SetButtonDetails(characterButton[index], address);
-            // index++;
-            // AddressList.Add(characterButton);
+            toggles[index].label = address.ToString();
+            if (selectedCharacterAddresses.Contains(address))
+            {
+                toggles[index].value = true;
+            }
+            index++;
         }
         // characterList.Clear();
         // foreach (int address in characterAddresses)
@@ -157,7 +184,8 @@ public class InsurgentSelector : MonoBehaviour
                 selectedCharacterAddresses.Add(address);
             }
 
-        } else
+        }
+        else
         {
             DeselectCharacter(address);
         }

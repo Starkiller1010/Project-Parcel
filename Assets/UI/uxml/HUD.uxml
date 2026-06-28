@@ -1,13 +1,14 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:Template name="ModalArea" src="project://database/Assets/UI/temp/uxml/ModalArea.uxml?fileID=9197481963319205126&amp;guid=c434995f754da9f4c8973509cb623dfd&amp;type=3#ModalArea" />
-    <ui:Template name="DialogueBox" src="project://database/Assets/UI/temp/uxml/DialogueBox.uxml?fileID=9197481963319205126&amp;guid=904d7fa3f4d73c4478d41ca56d90d2b0&amp;type=3#DialogueBox" />
-    <ui:Template name="DayCounter" src="project://database/Assets/UI/temp/uxml/DayCounter.uxml?fileID=9197481963319205126&amp;guid=3362137a234b894468834179f9d0695c&amp;type=3#DayCounter" />
+    <ui:Template name="DayCounter" src="project://database/Assets/UI/static/uxml/DayCounter.uxml?fileID=9197481963319205126&amp;guid=3362137a234b894468834179f9d0695c&amp;type=3#DayCounter" />
+    <ui:Template name="ModalArea" src="project://database/Assets/UI/static/uxml/ModalArea.uxml?fileID=9197481963319205126&amp;guid=c434995f754da9f4c8973509cb623dfd&amp;type=3#ModalArea" />
+    <ui:Template name="DialogueBox" src="project://database/Assets/UI/static/uxml/DialogueBox.uxml?fileID=9197481963319205126&amp;guid=904d7fa3f4d73c4478d41ca56d90d2b0&amp;type=3#DialogueBox" />
     <Style src="project://database/Assets/UI/uss/HUD.uss?fileID=7433441132597879392&amp;guid=a9466373b2dfcb44aa1167a8d305f8e1&amp;type=3#HUD" />
+    <Style src="project://database/Assets/UI/static/uss/UI.uss?fileID=7433441132597879392&amp;guid=1f8bf482d2cf2fd4bb619c2b76f3228b&amp;type=3#UI" />
     <ui:VisualElement name="Container" style="flex-grow: 1;">
         <ui:VisualElement name="Header" class="ui-header" style="flex-grow: 0; flex-shrink: 0; width: auto; height: -22px;">
             <ui:Instance template="DayCounter" name="DayCounter" />
         </ui:VisualElement>
-        <ui:Instance template="ModalArea" name="ModalArea" />
+        <ui:Instance template="ModalArea" name="ModalArea" class="center" />
         <ui:Instance template="DialogueBox" name="DialogueBox" />
     </ui:VisualElement>
 </ui:UXML>

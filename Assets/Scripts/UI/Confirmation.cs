@@ -21,18 +21,21 @@ public class Confirmation : MonoBehaviour
 
     void Update()
     {
-        if (onConfirm)
+        if (false)
         {
-            OnConfirmFocus();
-        }
-        else
-        {
-            OnRejectFocus();
-        }
-        
-        if (Game.GET_PLAYER().GetControls().ChangeOption())
-        {
-            onConfirm = !onConfirm;
+            if (onConfirm)
+            {
+                OnConfirmFocus();
+            }
+            else
+            {
+                OnRejectFocus();
+            }
+
+            if (Game.GET_PLAYER().GetControls().ChangeOption())
+            {
+                onConfirm = !onConfirm;
+            }
         }
     }
 

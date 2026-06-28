@@ -79,9 +79,14 @@ public static class Game
         GAME_STATE.SetState(startDayCount, null, MailSystem.GenerateOffset(), "00:00:00");
     }
 
-    private static void LogError(string action, string method)
+    public static void LogError(string action, string method)
     {
         Debug.LogError($"Failed to {action} element in {method}.");
+    }
+
+    public static void FreezePlayer(bool freeze)
+    {
+        GET_PLAYER().GetControls().ToggleMovementState();
     }
 
     public static void END_GAME()

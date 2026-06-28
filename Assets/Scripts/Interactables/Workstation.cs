@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(UIDocument))]
 public class Workstation : MonoBehaviour
 {
-    private GUI ui;
+    private GUI ui = null;
 
     [SerializeField]
     public VisualTreeAsset mailButton;
@@ -56,6 +56,7 @@ public class Workstation : MonoBehaviour
     private void ShowTable()
     {
         ui.ChangeColumnWithClass(GUI.Column.Middle, "table");
+        opened = true;
         CheckLetters();
     }
 
@@ -68,9 +69,9 @@ public class Workstation : MonoBehaviour
 
     public void DisableWorkTable()
     {
+        RemoveTable();
         if (ui != null)
         {
-            RemoveTable();
             letterUI.Close();
         }
         Game.GET_PLAYER().GetControls().ToggleMovementState(true);

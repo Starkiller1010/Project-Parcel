@@ -1,16 +1,14 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <Style src="project://database/Assets/UI/uss/AddressBook.uss?fileID=7433441132597879392&amp;guid=dba857e75db547b4abc00a8464dc2a34&amp;type=3#AddressBook" />
     <Style src="project://database/Assets/UI/uss/GUI.uss?fileID=7433441132597879392&amp;guid=14de6ee1ae3f19d4ea76912169060a4a&amp;type=3#GUI" />
-    <engine:VisualElement name="Container" class="center" style="flex-grow: 1; background-color: rgb(255, 255, 255); max-height: 50%; position: absolute; top: 30%;">
-        <engine:ToggleButtonGroup label="Character Addresses" name="AddressList" style="flex-direction: column; justify-content: center; align-self: center;">
-            <engine:Toggle label="Toggle" />
-            <engine:Toggle label="Toggle" />
-            <engine:Toggle label="Toggle" />
-            <engine:Toggle label="Toggle" />
-            <engine:Toggle label="Toggle" />
-            <engine:Toggle label="Toggle" />
-            <engine:Toggle label="Toggle" />
-            <engine:Toggle label="Toggle" />
-        </engine:ToggleButtonGroup>
-    </engine:VisualElement>
+    <engine:ToggleButtonGroup label="Character Addresses" name="AddressList" is-multiple-selection="false" allow-empty-selection="false" class="center" style="flex-direction: column; flex-grow: 0; flex-basis: auto; overflow: hidden; background-color: rgba(255, 255, 255, 0); background-image: resource(&apos;Sprite/Square&apos;); max-height: 50%; align-self: center; top: 30%;">
+        <engine:Toggle label="Toggle" />
+        <engine:Toggle label="Toggle" />
+        <engine:Toggle label="Toggle" />
+        <engine:Toggle label="Toggle" />
+        <engine:Toggle label="Toggle" />
+        <engine:Toggle label="Toggle" />
+        <engine:Toggle label="Toggle" />
+        <engine:Toggle label="Toggle" />
+    </engine:ToggleButtonGroup>
 </engine:UXML>

@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(UIDocument))]
 public class HUD : MonoBehaviour
 {
-    public VisualElement ui;
+    public static VisualElement ui;
     static VisualElement interactionBox = null;
     static VisualElement confirmationPanel = null;
     public static Confirmation confirmationCommands = null;
@@ -25,9 +25,8 @@ public class HUD : MonoBehaviour
 
     void Start()
     {
-        interactionBox = ui.Q<VisualElement>("DialogueBox");
-        confirmationPanel = ui.Q<VisualElement>("ConfirmationPanel");
-        confirmationCommands = this.gameObject.GetComponentInChildren<Confirmation>();
+        interactionBox = GetElement("DialogueBox");
+        confirmationCommands = GetComponent<Confirmation>();
         SetDayText(Game.GET_TIME_TRACKER().GetDay().ToString());
         HideAllUI();
     }
@@ -36,6 +35,11 @@ public class HUD : MonoBehaviour
     {
         HideDialoguePanel();
         HideConfirmationPanel();
+    }
+
+    private static VisualElement GetElement(string elementName)
+    {
+        return ui.Q<VisualElement>(elementName);
     }
 
     public void SetDayText(string text)
@@ -66,23 +70,18 @@ public class HUD : MonoBehaviour
 
     public static void ShowConfirmationPanel(string promptText, Action onConfirm, Action onReject)
     {
-        if (confirmationPanel != null)
-        {
-            SetConfirmationPromptText(promptText);
-            SetConfirmationActions(onConfirm, onReject);
-            confirmationPanel.RemoveFromClassList("hide");
-        }
-        else
-        {
-            Debug.LogError("Panel GameObject with name 'Confirmation Box' not found in the scene.");
-        }
+        GUI.LoadModal();
+        confirmationPanel = GetElement("ConfirmationPanel");
+        SetConfirmationPromptText(promptText);
+        SetConfirmationActions(onConfirm, onReject);
     }
 
     public static void HideConfirmationPanel()
     {
         if (confirmationPanel != null)
         {
-            confirmationPanel.AddToClassList("hide");
+            // confirmationPanel.AddToClassList("hide");
+            confirmationPanel.RemoveFromHierarchy();
         }
         else
         {

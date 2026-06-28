@@ -51,13 +51,13 @@ public class InteractionDetection
             switch (gameObject.tag)
             {
                 case "TransitionObject":
-                    interactWithDoorway();
+                    interactWithDoorway(gameObject.GetComponent<SpriteRenderer>());
                     break;
                 case "DialogueEmitter":
                     interactWithDialogueEmitter(gameObject.GetComponent<Dialogue>());
                     break;
                 case "Bed":
-                    interactWithBed();
+                    interactWithBed(gameObject.GetComponent<Bed>());
                     break;
                 case "Mail Container":
                     interactWithMailContainer(gameObject.GetComponent<Mailbox>());
@@ -112,25 +112,11 @@ public class InteractionDetection
             mailbox.OpenMailboxMenu();
     }
 
-    private void interactWithBed()
+    private void interactWithBed(Bed bed)
     {
-        Game.GET_PLAYER().GetControls().ToggleMovementState(); // Freeze player movement when interacting with a DialogueEmitter
-        HUD.ShowConfirmationPanel("Do you want to sleep and end the day?", OnBedConfirmation, OnBedReject);
-
+        bed.Interact();
     }
 
-    private void OnBedConfirmation()
-    {
-        FileManager.SaveGameState(Game.GET_GAME_STATE());
-        Game.GET_GAME_STATE().EndDay();
-    }
-
-    private void OnBedReject()
-    {
-        Debug.Log("Player has chosen not to sleep and end the day.");
-        ToggleFreezePlayer(); // Unfreeze player movement after rejecting the action
-        HUD.HideConfirmationPanel(); // Hide the confirmation panel after the player makes a choice
-    }
     
     private void interactWithDialogueEmitter(Dialogue textEmitter = null)
     {
@@ -138,14 +124,12 @@ public class InteractionDetection
         HUD.ShowDialoguePanel(textEmitter.GetText());
     }
 
-    private void interactWithDoorway()
+    private void interactWithDoorway(SpriteRenderer sprite)
     {
-        Debug.Log("Interacted with doorway, switching cameras.");
-        Director.SwitchCamera(Director.GetNextCameraIndex());
-    }
-
-    private void ToggleFreezePlayer()
-    {
-        Game.GET_PLAYER().GetControls().ToggleMovementState();
+        if (sprite.isVisible)
+        {
+            Debug.Log("Interacted with doorway, switching cameras.");
+            Director.SwitchCamera(Director.GetNextCameraIndex());
+        }
     }
 }

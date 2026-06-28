@@ -1,11 +1,10 @@
-using System;
-using Unity.VisualScripting;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class GUI
+public class GUI : MonoBehaviour
 {
     private static VisualElement gui;
     public enum Column { Left, Middle, Right };
@@ -13,13 +12,45 @@ public class GUI
 
     public GUI()
     {
-        if (gui == null)
-            CreateGUI();
+        // if (gui == null)
+        //     CreateGUI();
     }
 
-    void OnDestroy()
+    void Start()
     {
-        DestroyGUI();
+        CreateGUI();
+    }
+
+    // void OnDestroy()
+    // {
+    //     DestroyGUI();
+    // }
+
+    public static VisualTreeAsset LoadModal()
+    {
+        return LoadStaticTemplate("ModalArea");
+    }
+
+    public static VisualTreeAsset LoadDialogueBox()
+    {
+        return LoadStaticTemplate("DialogueBox");
+    }
+
+    private static VisualTreeAsset LoadStaticTemplate(string fileName)
+    {
+        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(string.Format("Assets/UI/static/uxml/{0}.uxml", fileName));
+        if (visualTree != null)
+        {
+            // Clone the UXML and add it to the root VisualElement
+            VisualElement root = visualTree.CloneTree();
+            gui.Add(root);
+            return visualTree;
+        }
+        else
+        {
+            Debug.LogError("UXML file not found at specified path.");
+            return null;
+        }
     }
 
     private VisualTreeAsset LoadTemplate(string fileName)
@@ -41,9 +72,9 @@ public class GUI
 
     private void CreateGUI()
     {
-        GameObject obj = GameObject.Find("GUI");
-        gui = obj.GetComponent<UIDocument>().rootVisualElement;
-        gui.Bind(new SerializedObject(obj));
+        // GameObject obj = GameObject.Find("GUI");
+        gui = GetComponent<UIDocument>().rootVisualElement;
+        gui.Bind(new SerializedObject(this));
     }
 
     public void DestroyGUI()
@@ -56,11 +87,11 @@ public class GUI
         switch (col)
         {
             case Column.Left:
-                return gui.Q<VisualElement>(".body").Q<VisualElement>(className: "left");
+                return gui.Q<VisualElement>("Body").Q<VisualElement>(className: "left");
             case Column.Middle:
-                return gui.Q<VisualElement>(".body").Q<VisualElement>(className: "middle");
+                return gui.Q<VisualElement>("Body").Q<VisualElement>(className: "middle");
             case Column.Right:
-                return gui.Q<VisualElement>(".body").Q<VisualElement>(className: "right");
+                return gui.Q<VisualElement>("Body").Q<VisualElement>(className: "right");
             default:
                 Debug.LogError("No Column Found");
                 return null;
@@ -77,7 +108,7 @@ public class GUI
     public void RemoveClassFromColumn(Column column, string className)
     {
         VisualElement element = GetCol(column);
-        element.RemoveFromClassList(className);
+        element.RemoveFromClassList(className.ToLower());
     }
 
     public void AddRow(Column col)
