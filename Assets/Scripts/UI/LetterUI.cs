@@ -8,7 +8,8 @@ public class LetterUI : MonoBehaviour
 {
     [SerializeField]
     public VisualTreeAsset letterUXML;
-    private VisualElement page;
+    private GameObject letterUI;
+    // private VisualElement page;
     private GameObject panel;
     private GUI ui;
     private Letter letter;
@@ -43,11 +44,12 @@ public class LetterUI : MonoBehaviour
 
     public void Close()
     {
+        // page.RemoveFromHierarchy();
+        Destroy(letterUI);
         if (ui != null)
         {
             ui = null;
             letter = null;
-            page.RemoveFromHierarchy();
         }
         else if (panel != null)
         {
@@ -111,7 +113,7 @@ public class LetterUI : MonoBehaviour
 
     private void CreateLetterUI()
     {
-        GameObject letterUI = CreateUIObject(panel.transform, "LetterUI");
+        letterUI = CreateUIObject(panel.transform, "LetterUI");
         // Set the position and size of the letter UI as needed
         RectTransform rectTransform = letterUI.GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(200, 225);
@@ -122,13 +124,13 @@ public class LetterUI : MonoBehaviour
 
     private void CreateLetterText(Transform parent)
     {
-        GameObject textObj = CreateUIObject(parent.transform, "LetterText");
-        DestroyImmediate(textObj.GetComponent<Image>());// Remove the Image component since we only want to display text  
-        letterText = textObj.AddComponent<TextMeshProUGUI>();
+        letterUI = CreateUIObject(parent.transform, "LetterText");
+        DestroyImmediate(letterUI.GetComponent<Image>());// Remove the Image component since we only want to display text  
+        letterText = letterUI.AddComponent<TextMeshProUGUI>();
         letterText.fontSize = 14;
         letterText.alignment = TextAlignmentOptions.Center;
         letterText.color = Color.black;
-        RectTransform rectTransform = textObj.GetComponent<RectTransform>();
+        RectTransform rectTransform = letterUI.GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(180, 200);
         rectTransform.anchoredPosition = Vector2.up; // Position the text slightly above the center of the letter UI
     }
@@ -153,11 +155,11 @@ public class LetterUI : MonoBehaviour
         // CreateCancelButton(buttonContainer.transform);
     }
 
-    private void ShowLetter(VisualElement container)
-    {
-        page = letterUXML.CloneTree();
-        container.Add(page);
-    }
+    // private void ShowLetter(VisualElement container)
+    // {
+    //     page = letterUXML.CloneTree();
+    //     container.Add(page);
+    // }
 
     private void SetText(Label label)
     {
